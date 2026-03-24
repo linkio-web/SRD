@@ -9,8 +9,6 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface ContactPayload {
   name: string
   company?: string
@@ -44,6 +42,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: validationError }, { status: 422 })
   }
 
+  const resend    = new Resend(process.env.RESEND_API_KEY)
   const toEmail   = process.env.CONTACT_EMAIL   ?? 'cremilde.hirschi@srdpartners.ch'
   const fromEmail = process.env.RESEND_FROM     ?? 'onboarding@resend.dev'
 
