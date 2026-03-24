@@ -16,7 +16,9 @@
       "Bash(cmd.exe:*)",
       "Bash(powershell.exe:*)",
       "Bash(echo no root images:*)",
-      "Bash(find /c/work/fiducaire-rayan/src/app/[locale]/services -type f -name \"*.tsx\")"
+      "Bash(find /c/work/fiducaire-rayan/src/app/[locale]/services -type f -name \"*.tsx\")",
+      "Bash(npm uninstall:*)",
+      "Bash(npx:*)"
     ]
   }
 }

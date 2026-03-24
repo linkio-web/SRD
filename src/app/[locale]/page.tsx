@@ -66,7 +66,7 @@ export default async function HomePage({
           aria-hidden="true"
         >
           <Image
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80"
+            src="/imgages/dd9685_afdddc3055804f4a8b4851f53718c39d~mv2.avif"
             alt=""
             fill
             priority

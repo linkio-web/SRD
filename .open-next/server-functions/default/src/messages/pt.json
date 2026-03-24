@@ -1,0 +1,410 @@
+{
+  "nav": {
+    "home": "Início",
+    "services": "Serviços",
+    "whoWeAre": "Quem somos",
+    "contact": "Contacto",
+    "cta": "Pedir proposta"
+  },
+  "header": {
+    "tagline": "Fiduciária & Consultoria",
+    "closeMenu": "Fechar menu",
+    "openMenu": "Abrir menu",
+    "mainNav": "Navegação principal",
+    "mobileNav": "Navegação mobile",
+    "megaMenu": {
+      "col1Title": "Finanças & Fiscalidade",
+      "col2Title": "Administração & Imobiliário",
+      "featuredTitle": "Todos os nossos serviços",
+      "featuredDesc": "Acompanhamento completo para cada dimensão da sua empresa.",
+      "featuredCta": "Ver serviços"
+    }
+  },
+  "hero": {
+    "overline": "Fiduciária & Consultoria Empresarial",
+    "baseline": "O seu parceiro de confiança para gestão, fiscalidade e crescimento do seu negócio na Suíça francófona.",
+    "ctaSecondary": "Descobrir os nossos serviços",
+    "scroll": ""
+  },
+  "features": {
+    "overline": "Porquê escolher-nos",
+    "titleMain": "O nosso compromisso",
+    "titleAccent": "ao seu lado",
+    "items": [
+      {
+        "title": "Experiência reconhecida",
+        "description": "Mais de 15 anos de experiência ao serviço de PME na Suíça francófona. Conselhos comprovados, visão estratégica apurada e profundo domínio do enquadramento legal suíço."
+      },
+      {
+        "title": "Abordagem personalizada",
+        "description": "Cada cliente é único. Construímos uma relação de confiança duradoura e adaptamos as nossas soluções aos seus desafios específicos, independentemente da dimensão da sua estrutura."
+      },
+      {
+        "title": "Confidencialidade absoluta",
+        "description": "A discrição está no centro do nosso trabalho. Os seus dados e projetos são tratados com o máximo cuidado e no estrito respeito pela confidencialidade profissional."
+      }
+    ]
+  },
+  "services": {
+    "overline": "O que fazemos",
+    "titleMain": "As nossas áreas",
+    "titleAccent": "de expertise",
+    "subtitle": "Acompanhamento completo em todas as etapas da vida da sua empresa.",
+    "cta": "Ver todos os serviços",
+    "discoverCta": "Descobrir",
+    "pageOverline": "As nossas prestações",
+    "pageTitle1": "Os nossos",
+    "pageTitle2": "Serviços",
+    "pageSubtitle": "Quatro domínios de expertise complementares para cobrir todas as suas necessidades administrativas, fiscais e imobiliárias.",
+    "promiseOverline": "A nossa promessa",
+    "promiseTitle": "Uma empresa à escala humana, expertise de alto nível",
+    "promiseText": "Na SRD Partners, acreditamos que cada empresário merece um parceiro fiduciário totalmente comprometido ao seu lado — não apenas um prestador de serviços. As nossas equipas combinam expertise técnica e disponibilidade para lhe oferecer um acompanhamento personalizado, reativo e confidencial.",
+    "promiseCta1": "Entrar em contacto",
+    "promiseCta2": "Quem somos",
+    "chargeTitle": "O que tratamos",
+    "forWhoTitle": "Para quem?",
+    "items": [
+      {
+        "title": "Contabilidade & Fiscalidade",
+        "shortDesc": "Escrituração contabilística, declarações de IVA e otimização fiscal.",
+        "heroTitle1": "Contabilidade",
+        "heroTitle2": "& Fiscalidade",
+        "heroIntro": "Gerimos a sua contabilidade e optimizamos a sua situação fiscal em total conformidade com a lei suíça.",
+        "bullets": [
+          "Escrituração corrente & encerramento anual",
+          "IVA & declarações fiscais — sociedades e pessoas singulares",
+          "Consultoria & otimização fiscal",
+          "Elaboração das contas anuais"
+        ],
+        "forWho": [
+          "PMEs — Acompanhamento mensal, encerramento anual, IVA.",
+          "Independentes — Contabilidade simplificada e otimização fiscal.",
+          "Startups — Estrutura contabilística desde a criação.",
+          "Empresas em crescimento — Acompanhamento estruturado e antecipação fiscal."
+        ]
+      },
+      {
+        "title": "Recursos Humanos",
+        "shortDesc": "Recibos de vencimento, declarações sociais e consultoria RH.",
+        "heroTitle1": "Recursos",
+        "heroTitle2": "Humanos",
+        "heroIntro": "A gestão de pessoal exige rigor e conhecimento das obrigações sociais suíças. Tratamos dos seus processos de RH para que se possa concentrar totalmente na sua atividade.",
+        "bullets": [
+          "Elaboração dos recibos de vencimento",
+          "Declarações sociais (AVS, LPP, LAA…)",
+          "Consultoria em gestão de pessoal"
+        ],
+        "forWho": [
+          "Empresas com colaboradores na Suíça",
+          "Empregadores confrontados com obrigações sociais",
+          "Gestores que pretendem delegar o processamento salarial",
+          "Estruturas em expansão que recrutam novos colaboradores"
+        ]
+      },
+      {
+        "title": "Gestão administrativa",
+        "shortDesc": "Faturação, acompanhamento de devedores/credores e domiciliação.",
+        "heroTitle1": "Gestão",
+        "heroTitle2": "administrativa",
+        "heroIntro": "Uma administração saudável é a base de uma empresa tranquila. Gerimos os seus fluxos administrativos diários com rigor para que nada seja deixado ao acaso.",
+        "bullets": [
+          "Faturação e gestão de pagamentos",
+          "Acompanhamento de devedores e credores",
+          "Domiciliação de empresa e reencaminhamento de correspondência"
+        ],
+        "forWho": [
+          "Independentes e pequenas estruturas sem recursos internos",
+          "Empresas que pretendem externalizar o seu back-office",
+          "Sociedades recém-criadas que necessitam de um endereço profissional",
+          "Grupos com necessidade de acompanhamento rigoroso dos fluxos financeiros"
+        ]
+      },
+      {
+        "title": "Gestão Imobiliária",
+        "shortDesc": "Gestão de arrendamento, acompanhamento financeiro e apoio jurídico.",
+        "heroTitle1": "Gestão",
+        "heroTitle2": "Imobiliária",
+        "heroIntro": "Proprietário ou investidor, confie a gestão do seu património imobiliário aos nossos especialistas. Velamos pela rentabilidade e conformidade dos seus bens com profissionalismo.",
+        "bullets": [
+          "Gestão de arrendamento",
+          "Gestão administrativa e financeira",
+          "Apoio jurídico"
+        ],
+        "forWho": [
+          "Proprietários que pretendem delegar a gestão dos seus bens",
+          "Investidores imobiliários que procuram um acompanhamento profissional",
+          "Sociedades imobiliárias que necessitam de um gestor externo",
+          "Particulares que gerem um património de arrendamento na Suíça"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "overline": "A nossa abordagem",
+    "titleMain": "Um acompanhamento",
+    "titleAccent": "estruturado",
+    "deliverablesLabel": "Entregáveis",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Primeiro contacto",
+        "description": "Dedicamos tempo a compreender a sua situação, objetivos e limitações. Uma primeira reunião sem compromisso permite-lhe expor as suas necessidades e descobrir a nossa abordagem.",
+        "deliverables": ["Diagnóstico inicial", "Proposta personalizada", "Orçamento transparente"]
+      },
+      {
+        "number": "02",
+        "title": "Análise & Estratégia",
+        "description": "Os nossos especialistas analisam em profundidade a sua situação financeira, fiscal e administrativa. Definimos juntos a estratégia ideal para atingir os seus objetivos nas melhores condições.",
+        "deliverables": ["Relatório de análise", "Plano de ação detalhado", "Calendário de execução"]
+      },
+      {
+        "number": "03",
+        "title": "Implementação",
+        "description": "Executamos o plano de ação com rigor e nos prazos acordados. Beneficia de um acompanhamento regular e de uma comunicação proativa em cada etapa-chave da missão.",
+        "deliverables": ["Dossiers conformes", "Declarações entregues", "Relatórios intercalares"]
+      },
+      {
+        "number": "04",
+        "title": "Acompanhamento contínuo",
+        "description": "O nosso compromisso não termina com a missão inicial. Continuamos a ser o seu parceiro diário, disponíveis para responder às suas questões e antecipar as evoluções da sua situação.",
+        "deliverables": ["Monitorização regulatória", "Revisões periódicas", "Consultoria permanente"]
+      }
+    ]
+  },
+  "testimonials": {
+    "overline": "Eles confiam em nós",
+    "title": "O que dizem os nossos clientes",
+    "titleMain": "O que dizem",
+    "titleAccent": "os nossos clientes",
+    "items": [
+      {
+        "quote": "A SRD Partners transformou a nossa abordagem financeira. Graças à sua expertise apurada, otimizámos significativamente a nossa carga fiscal e ganhamos maior visibilidade sobre o nosso desempenho.",
+        "author": "Sr. Durand",
+        "role": "Diretor geral, PME industrial",
+        "initials": "JD"
+      },
+      {
+        "quote": "Uma equipa reativa, disponível e de rigor exemplar. Desde que lhes confiamos a nossa contabilidade, podemos concentrar-nos totalmente no nosso negócio principal.",
+        "author": "Sra. Laurent",
+        "role": "Gerente, empresa de serviços",
+        "initials": "ML"
+      },
+      {
+        "quote": "O acompanhamento na criação da nossa empresa foi irrepreensível. Profissionais pedagógicos e disponíveis, que anteciparam cada etapa com clareza.",
+        "author": "Sr. & Sra. Favre",
+        "role": "Fundadores, start-up tecnológica",
+        "initials": "FF"
+      }
+    ]
+  },
+  "faq": {
+    "overline": "Perguntas frequentes",
+    "titleMain": "As suas perguntas,",
+    "titleAccent": "as nossas respostas",
+    "subtitle": "Tudo o que precisa de saber antes de nos confiar o seu dossier.",
+    "items": [
+      {
+        "question": "Quanto custa uma declaração fiscal?",
+        "answer": "Os nossos honorários dependem da complexidade da sua situação fiscal e do tipo de declaração (pessoa singular, empresa, sucessão). Estabelecemos sistematicamente um orçamento transparente antes de qualquer missão. Não hesite em contactar-nos para uma reunião preliminar sem compromisso."
+      },
+      {
+        "question": "Que documentos devo fornecer?",
+        "answer": "A lista varia conforme o seu perfil, mas geralmente inclui: certificados de salário, extratos bancários e de previdência, atestados de seguro, títulos de propriedade e todos os documentos relativos aos seus rendimentos e deduções. Após um primeiro contacto, enviamos-lhe uma lista personalizada e precisa."
+      },
+      {
+        "question": "Quanto tempo demora o tratamento?",
+        "answer": "Para uma declaração fiscal standard, conte em média 2 a 4 semanas após a receção de todos os documentos. Os dossiers mais complexos têm um calendário definido antecipadamente. Informamo-lo em cada etapa-chave do tratamento."
+      },
+      {
+        "question": "Posso marcar uma reunião?",
+        "answer": "Absolutamente. Propomos reuniões em escritório em Genebra ou Lausana, bem como consultas por videoconferência. A primeira reunião é sem compromisso e permite-lhe expor a sua situação com serenidade. Contacte-nos através do formulário ou por telefone."
+      },
+      {
+        "question": "É confidencial?",
+        "answer": "A confidencialidade é um princípio fundamental da nossa profissão. Todas as informações que nos confia são protegidas pelo segredo profissional e tratadas com a máxima discrição. Os seus dados nunca são partilhados com terceiros sem o seu consentimento explícito."
+      }
+    ]
+  },
+  "about": {
+    "overline": "O gabinete",
+    "title1": "Quem",
+    "title2": "somos",
+    "subtitle": "Fundada por profissionais apaixonados da Suíça francófona, a SRD Partners é muito mais do que um gabinete fiduciário: é um parceiro comprometido a longo prazo.",
+    "missionOverline": "A nossa missão",
+    "missionTitle": "Acompanhar os empresários com rigor",
+    "missionP1": "Na SRD Partners, a nossa missão é simples: permitir-lhe concentrar-se no seu negócio principal, enquanto velamos pela saúde financeira, fiscal e administrativa da sua empresa.",
+    "missionP2": "Sediados em Corcelles NE, acompanhamos PME, independentes e famílias em toda a Suíça francófona. A nossa abordagem combina expertise técnica de alto nível e uma relação humana privilegiada.",
+    "missionP3": "Não somos simples prestadores de serviços: somos os seus parceiros, presentes em cada etapa importante da vida da sua empresa.",
+    "missionCta": "Marcar uma reunião",
+    "stats": {
+      "years": "Anos de experiência",
+      "clients": "Clientes acompanhados",
+      "experts": "Especialistas ao seu serviço",
+      "offices": "Escritórios na Suíça francófona"
+    },
+    "valuesOverline": "O que nos guia",
+    "valuesTitle": "Os nossos valores fundamentais",
+    "values": [
+      {
+        "title": "Rigor",
+        "description": "Cada dossier é tratado com o mesmo nível de exigência. A exatidão do nosso trabalho não é negociável."
+      },
+      {
+        "title": "Proximidade",
+        "description": "Conhecemo-lo pelo seu nome. Tem um interlocutor dedicado, disponível e reativo."
+      },
+      {
+        "title": "Independência",
+        "description": "Os nossos conselhos são objetivos e formulados no seu único interesse, sem conflito de interesses."
+      },
+      {
+        "title": "Sustentabilidade",
+        "description": "Construímos relações a longo prazo, baseadas na confiança e na transparência."
+      }
+    ]
+  },
+  "team": {
+    "overline": "A nossa equipa",
+    "title": "Especialistas ao seu serviço",
+    "subtitle": "Profissionais experientes, comprometidos com o seu trabalho e com a relação com o cliente.",
+    "members": [
+      {
+        "name": "Cremilde Hirschi",
+        "role": "Administração · Finanças · RH",
+        "bio": "Interlocutora principal do gabinete, Cremilde coordena todos os dossiers de clientes com rigor e disponibilidade.",
+        "initials": "CH",
+        "quote": "Comprometo-me pessoalmente a acompanhar cada cliente com rigor e total disponibilidade."
+      }
+    ]
+  },
+  "contact": {
+    "overline": "Fique em contacto",
+    "title1": "Contacte",
+    "title2": "nos",
+    "subtitle": "A nossa equipa está disponível de segunda a sexta-feira. Comprometemo-nos a responder em 24 horas úteis.",
+    "coordsOverline": "Coordenadas",
+    "coordsTitle": "Encontre-nos",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Telefone",
+    "mainOfficeLabel": "Sede principal",
+    "hours": "Seg–Sex: 8h00–18h00",
+    "directContact": "Contacto direto",
+    "responseDelay": "Prazo de resposta",
+    "country": "Suíça",
+    "form": {
+      "overline": "Contacte-nos",
+      "title": "Vamos falar do seu projeto",
+      "subtitle": "Preencha o formulário abaixo e responderemos dentro de 24 horas úteis.",
+      "trustLine": "Resposta em 24 horas úteis · Confidencialidade garantida",
+      "fullName": "Nome completo *",
+      "company": "Empresa",
+      "email": "Endereço de e-mail *",
+      "phone": "Telefone",
+      "subject": "Assunto *",
+      "subjectDefault": "Selecionar um assunto…",
+      "message": "Mensagem *",
+      "required": "* Campos obrigatórios",
+      "submit": "Enviar mensagem",
+      "submitting": "A enviar…",
+      "successTitle": "Mensagem enviada!",
+      "successMsg": "Obrigado pela sua mensagem. A nossa equipa entrará em contacto brevemente.",
+      "sendAnother": "Enviar outra mensagem",
+      "errorTitle": "Falha no envio",
+      "errorMsg": "Ocorreu um erro. Tente novamente ou contacte-nos diretamente por telefone.",
+      "retry": "Tentar novamente",
+      "subjects": {
+        "accounting": "Contabilidade & Fiscalidade",
+        "consulting": "Consultoria de gestão",
+        "audit": "Auditoria & Revisão",
+        "patrimony": "Planeamento patrimonial",
+        "creation": "Criação de empresa",
+        "hr": "RH & Salários",
+        "other": "Outro"
+      },
+      "errors": {
+        "name": "O seu nome é obrigatório.",
+        "email": "O seu endereço de e-mail é obrigatório.",
+        "emailInvalid": "Endereço de e-mail inválido.",
+        "subject": "O assunto é obrigatório.",
+        "message": "A sua mensagem é obrigatória."
+      },
+      "placeholders": {
+        "name": "Sophie Dupont",
+        "company": "A Minha Empresa Lda",
+        "email": "sophie@exemplo.ch",
+        "phone": "+41 79 000 00 00",
+        "message": "Descreva brevemente a sua necessidade…"
+      }
+    }
+  },
+  "activity": {
+    "overline": "Domínios de atividade",
+    "title": "A nossa expertise ao serviço do seu desenvolvimento",
+    "description": "Da revisão contabilística à gestão administrativa, cobrimos todas as necessidades fiduciárias da sua empresa com rigor e confidencialidade.",
+    "items": {
+      "revision": {
+        "title": "Revisão & Auditoria",
+        "description": "Controlo independente e rigoroso das suas demonstrações financeiras segundo as normas de auditoria suíças."
+      },
+      "payroll": {
+        "title": "Salários & RH",
+        "description": "Processamento de recibos de vencimento, declarações sociais e gestão de contratos de trabalho."
+      },
+      "tax": {
+        "title": "Fiscalidade",
+        "description": "Otimização da sua carga fiscal e conformidade com a legislação fiscal suíça."
+      },
+      "administration": {
+        "title": "Administração",
+        "description": "Secretariado jurídico, domiciliação de empresa e gestão administrativa completa."
+      }
+    }
+  },
+  "cta": {
+    "overline": "Vamos avançar",
+    "titleMain": "Vamos falar",
+    "titleAccent": "da sua empresa.",
+    "subtitle": "Primeira reunião sem compromisso. Resposta garantida em 24 horas úteis.",
+    "button": "Entrar em contacto"
+  },
+  "imageBreak": {
+    "tagline": "Excelência fiduciária ao serviço da sua ambição."
+  },
+  "footer": {
+    "navigation": "Navegação",
+    "services": "Serviços",
+    "contact": "Contacto",
+    "tagline": "Corcelles NE • Suíça",
+    "rights": "Todos os direitos reservados.",
+    "signature": "Gabinete fiduciário independente · Romandia",
+    "privacy": "Política de Privacidade"
+  },
+  "meta": {
+    "homeTitle": "SRD Partners Sàrl – Fiduciária & Consultoria Empresarial na Suíça francófona",
+    "homeDescription": "Gabinete fiduciário em Corcelles NE: contabilidade, fiscalidade, RH, gestão administrativa e imobiliária. A SRD Partners apoia as PME da Suíça francófona.",
+    "servicesTitle": "Os nossos Serviços – SRD Partners Sàrl",
+    "servicesDescription": "Descubra os nossos quatro domínios de expertise: contabilidade & fiscalidade, recursos humanos, gestão administrativa e gestão imobiliária.",
+    "comptaTitle": "Contabilidade & Fiscalidade – SRD Partners Sàrl",
+    "comptaDescription": "Escrituração contabilística, contas anuais e declarações fiscais. A SRD Partners gere a sua contabilidade com rigor e confidencialidade.",
+    "rhTitle": "Recursos Humanos – SRD Partners Sàrl",
+    "rhDescription": "Recibos de vencimento, declarações sociais e consultoria RH. A SRD Partners trata das suas obrigações de empregador na Suíça.",
+    "adminTitle": "Gestão administrativa – SRD Partners Sàrl",
+    "adminDescription": "Faturação, acompanhamento de devedores/credores e domiciliação de empresa. Externalize a sua administração com a SRD Partners.",
+    "immoTitle": "Gestão Imobiliária – SRD Partners Sàrl",
+    "immoDescription": "Gestão de arrendamento, acompanhamento financeiro e apoio jurídico para proprietários e investidores na Suíça.",
+    "whoWeAreTitle": "Quem somos – SRD Partners Sàrl",
+    "whoWeAreDescription": "Descubra a equipa e os valores da SRD Partners, o seu gabinete fiduciário de confiança na Suíça francófona.",
+    "aboutTitle": "Quem somos – SRD Partners Sàrl",
+    "aboutDescription": "Descubra a equipa e os valores da SRD Partners, o seu gabinete fiduciário de confiança na Suíça francófona.",
+    "contactTitle": "Contacto – SRD Partners Sàrl",
+    "contactDescription": "Contacte a SRD Partners para todas as suas necessidades fiduciárias. A nossa equipa está disponível de segunda a sexta-feira.",
+    "privacyTitle": "Política de Privacidade – SRD Partners Sàrl",
+    "privacyDescription": "Informações sobre a proteção dos seus dados pessoais em conformidade com a nLPD suíça.",
+    "titleTemplate": "%s | SRD Partners"
+  },
+  "brand": {
+    "name": "SRD Partners",
+    "legal": "SRD Partners Sàrl",
+    "baseline": "O seu parceiro de confiança para gestão, fiscalidade e crescimento do seu negócio na Suíça francófona."
+  }
+}
