@@ -9,6 +9,8 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
+export const runtime = 'edge'
+
 interface ContactPayload {
   name: string
   company?: string
