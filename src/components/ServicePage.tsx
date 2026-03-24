@@ -1,5 +1,6 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { contactInfo, BG } from '@/lib/siteData'
+import { services, contactInfo, BG } from '@/lib/siteData'
 import { Section } from '@/components/Section'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
 import { ContactForm } from '@/components/ContactForm'
@@ -28,32 +29,19 @@ function parseLine(text: string) {
 
 export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePageProps) {
   const service = t.services.items[serviceIndex]
+  const serviceId = services[serviceIndex].id
 
   return (
     <>
-      {/* ── Hero — typographic, no image ──────────────────── */}
+      {/* ── Hero ──────────────────────────────────────────── */}
       <section className="relative bg-navy overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
 
         {/* Decorative layers */}
         <div className="navy-grain absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
         <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
 
-        {/* Decorative concentric circles — right side */}
-        <svg
-          aria-hidden="true"
-          className="absolute right-[-8rem] top-1/2 -translate-y-1/2 pointer-events-none"
-          width="960"
-          height="960"
-          viewBox="-480 -480 960 960"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="0" cy="0" r="200" stroke="white" strokeOpacity="0.05" />
-          <circle cx="0" cy="0" r="340" stroke="white" strokeOpacity="0.05" />
-          <circle cx="0" cy="0" r="480" stroke="white" strokeOpacity="0.05" />
-        </svg>
-
         <div className="container-main relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-2xl">
 
             {/* Inline breadcrumb — white variant */}
@@ -101,6 +89,22 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
               {t.cta.button}
               <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
             </Link>
+
+          </div>
+
+            {/* Service illustration */}
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden bg-white/5">
+                <Image
+                  src={`/images/services/${serviceId}.png`}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 0px, 448px"
+                  className="object-contain p-4"
+                  priority
+                />
+              </div>
+            </div>
 
           </div>
         </div>

@@ -12,6 +12,7 @@ import { FaqSection } from '@/components/FaqSection'
 import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
 import { HomeParallax } from '@/components/HomeParallax'
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { Icon } from '@/lib/icons'
 
 export async function generateMetadata({
@@ -66,7 +67,7 @@ export default async function HomePage({
           aria-hidden="true"
         >
           <Image
-            src="/imgages/dd9685_afdddc3055804f4a8b4851f53718c39d~mv2.avif"
+            src="/images/dd9685_afdddc3055804f4a8b4851f53718c39d~mv2.png"
             alt=""
             fill
             priority
@@ -144,28 +145,44 @@ export default async function HomePage({
             </h2>
           </div>
 
-          {/* 3 engagements — liste réglée horizontale, aucune card */}
-          <div>
-            {t.features.items.map((item, i) => (
-              <div
-                key={item.title}
-                className="grid grid-cols-1 sm:grid-cols-[2rem_18rem_1fr] gap-x-10 lg:gap-x-16 gap-y-2 py-10 sm:py-12 border-t border-black/[0.06] items-start sm:items-center"
-              >
-                <span
-                  className="font-body text-[10px] tracking-[0.22em] text-champagne font-medium select-none"
-                  aria-hidden="true"
+          {/* Engagements — timeline verticale avec stagger */}
+          <div className="relative">
+
+            {/* Trait vertical continu */}
+            <div
+              className="hidden sm:block absolute left-[0.55rem] top-2 bottom-2 w-px bg-black/[0.06]"
+              aria-hidden="true"
+            />
+
+            <ScrollReveal stagger={0.18} distance={20} duration={0.9}>
+              {t.features.items.map((item, i) => (
+                <div
+                  key={item.title}
+                  className="relative sm:pl-10 py-10 sm:py-12"
                 >
-                  0{i + 1}
-                </span>
-                <h3 className="font-display text-xl sm:text-2xl font-light text-navy leading-tight">
-                  {item.title}
-                </h3>
-                <p className="font-body text-sm text-muted leading-[1.80] col-start-1 sm:col-start-auto">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-            <div className="border-t border-black/[0.06]" />
+                  {/* Dot sur le trait */}
+                  <div
+                    className="hidden sm:block absolute left-[0.2rem] top-[3.35rem] w-[0.6rem] h-[0.6rem] rounded-full border border-black/[0.12] bg-cream"
+                    aria-hidden="true"
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-[16rem_1fr] gap-x-12 lg:gap-x-16 gap-y-2 items-start sm:items-center">
+                    <h3 className="font-display text-xl sm:text-2xl font-light text-navy leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-sm text-muted leading-[1.80]">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Séparateur léger sauf dernier */}
+                  {i < t.features.items.length - 1 && (
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-black/[0.04]" aria-hidden="true" />
+                  )}
+                </div>
+              ))}
+            </ScrollReveal>
+
           </div>
 
         </div>
@@ -224,8 +241,17 @@ export default async function HomePage({
                   </div>
                 </div>
 
-                {/* Flèche en cercle */}
-                <div className="shrink-0 ml-4">
+                {/* Image + flèche */}
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0 ml-4">
+                  <div className="hidden sm:block relative w-20 h-14 lg:w-28 lg:h-[4.5rem] rounded-lg overflow-hidden opacity-50 group-hover:opacity-80 transition-opacity duration-300">
+                    <Image
+                      src={`/images/services/${s.id}.png`}
+                      alt=""
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/[0.08] flex items-center justify-center text-white/20 group-hover:border-champagne/35 group-hover:text-champagne transition-all duration-300 group-hover:scale-110">
                     <Icon name="arrow" size={14} strokeWidth={2} />
                   </div>
