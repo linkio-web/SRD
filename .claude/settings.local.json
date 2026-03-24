@@ -15,7 +15,8 @@
       "Bash(tasklist /FI \"PID eq 16412\" 2>&1 && tasklist /FI \"PID eq 12332\" 2>&1)",
       "Bash(cmd.exe:*)",
       "Bash(powershell.exe:*)",
-      "Bash(echo no root images:*)"
+      "Bash(echo no root images:*)",
+      "Bash(find /c/work/fiducaire-rayan/src/app/[locale]/services -type f -name \"*.tsx\")"
     ]
   }
 }

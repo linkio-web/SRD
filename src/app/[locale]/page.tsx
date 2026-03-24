@@ -1,3 +1,5 @@
+// MODIFIED: Refonte éditoriale — suppression des grilles de cards répétitives.
+// Features → liste réglée | Services → répertoire directory style index
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -5,10 +7,8 @@ import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i1
 import { services, BG } from '@/lib/siteData'
 import { Section } from '@/components/Section'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
-import { FeatureCard } from '@/components/FeatureCard'
-import { ServiceCard } from '@/components/ServiceCard'
-import { ScrollReveal } from '@/components/ScrollReveal'
 import { ProcessSection } from '@/components/ProcessSection'
+import { FaqSection } from '@/components/FaqSection'
 import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
 import { HomeParallax } from '@/components/HomeParallax'
@@ -49,55 +49,38 @@ export default async function HomePage({
       {/* Client-side parallax effects — no DOM output */}
       <HomeParallax />
 
-      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      {/* ─────────────────────────────────────────────────────────────────────
+          HERO
+          Image à remplacer : placez votre photo dans /public/images/hero-building.jpg
+          puis changez le src ci-dessous en "/images/hero-building.jpg"
+      ───────────────────────────────────────────────────────────────────── */}
       <section
         data-section="hero"
         className="relative min-h-[90vh] md:min-h-screen flex items-center overflow-hidden bg-primary-950 hero-grain"
       >
-        {/* L1 — Dégradé violet profond */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, #0E0816 0%, #150C21 60%, #1C102B 100%)' }}
-          aria-hidden="true"
-        />
+        <div className="hero-gradient absolute inset-0 pointer-events-none" aria-hidden="true" />
 
-        {/* L2 — Image bâtiment (target for GSAP hero parallax) */}
         <div
           data-parallax="hero-img"
           className="absolute inset-0 pointer-events-none select-none"
           aria-hidden="true"
         >
           <Image
-            src="/images/hero-building.png"
+            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80"
             alt=""
             fill
             priority
             sizes="100vw"
             className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        {/* L3 — Overlay premium */}
         <div className="hero-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
-
-        {/* L4 — Grille subtile */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }}
-          aria-hidden="true"
-        />
-
-        {/* L5 — Texture minérale (soft-light, quasi imperceptible) */}
+        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" />
         <div className="hero-mineral absolute inset-0 pointer-events-none" aria-hidden="true" />
-
-        {/* L6 — Fondu bas */}
         <div className="hero-bottom-fade absolute bottom-0 inset-x-0 h-48 pointer-events-none" aria-hidden="true" />
 
-        {/* Contenu */}
         <div className="relative z-10 container-main w-full py-36 lg:py-0 min-h-[90vh] md:min-h-screen flex items-center">
           <div className="w-full lg:max-w-[56%] text-center lg:text-left animate-fade-up">
 
@@ -117,17 +100,11 @@ export default async function HomePage({
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up delay-300">
-              <Link
-                href={`/${validLocale}/contact`}
-                className="btn-primary w-full sm:w-auto justify-center"
-              >
+              <Link href={`/${validLocale}/contact`} className="btn-primary w-full sm:w-auto justify-center">
                 {t.nav.cta}
                 <Icon name="arrow" size={16} strokeWidth={2} />
               </Link>
-              <Link
-                href={`/${validLocale}/services`}
-                className="btn-outline-dark w-full sm:w-auto justify-center"
-              >
+              <Link href={`/${validLocale}/services`} className="btn-outline-dark w-full sm:w-auto justify-center">
                 {t.hero.ctaSecondary}
               </Link>
             </div>
@@ -135,73 +112,141 @@ export default async function HomePage({
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-up delay-500 z-10"
-          aria-hidden="true"
-        >
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-up delay-500 z-10" aria-hidden="true">
           <div className="w-px h-10 bg-gradient-to-b from-white/25 to-transparent" />
         </div>
       </section>
 
-      {/* ── Features — Notre engagement ─────────────────────────────────── */}
-      <Section bg="stone" slant="right" slantFill={BG.navy}>
-        {/* Ligne de signature — haut */}
-        <div className="h-px bg-gold/70 mb-14 sm:mb-20" aria-hidden="true" />
+      {/* ─────────────────────────────────────────────────────────────────────
+          ENGAGEMENT — liste réglée éditoriale (remplace les 3 cards)
+          Transition hero navy → cream via biseau SVG
+      ───────────────────────────────────────────────────────────────────── */}
+      <section className="relative bg-cream overflow-hidden">
 
-        <div className="text-center mb-14 sm:mb-20">
-          <span className="section-label">{t.features.overline}</span>
-          <PremiumHeading as="h2" size="section" color="dark" className="mt-2">
-            {t.features.titleMain} <Accent>{t.features.titleAccent}</Accent>
-          </PremiumHeading>
+        {/* Biseau de transition hero → cream */}
+        <svg
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute top-0 left-0 w-full pointer-events-none z-0"
+          style={{ height: 'var(--slant-h)' }}
+        >
+          <polygon points="0,0 1440,0 0,80" fill={BG.navy} />
+        </svg>
+
+        <div className="relative z-10 container-main pt-32 sm:pt-40 pb-20 sm:pb-24">
+
+          {/* Titre éditorial centré */}
+          <div className="max-w-2xl mx-auto text-center mb-16 sm:mb-20">
+            <h2 className="font-display text-3xl sm:text-[2.6rem] lg:text-5xl font-light text-navy leading-[1.2] tracking-[-0.01em]">
+              {t.features.titleMain}{' '}
+              <span className="italic text-champagne">{t.features.titleAccent}</span>
+            </h2>
+          </div>
+
+          {/* 3 engagements — liste réglée horizontale, aucune card */}
+          <div>
+            {t.features.items.map((item, i) => (
+              <div
+                key={item.title}
+                className="grid grid-cols-1 sm:grid-cols-[2rem_18rem_1fr] gap-x-10 lg:gap-x-16 gap-y-2 py-10 sm:py-12 border-t border-black/[0.06] items-start sm:items-center"
+              >
+                <span
+                  className="font-body text-[10px] tracking-[0.22em] text-champagne font-medium select-none"
+                  aria-hidden="true"
+                >
+                  0{i + 1}
+                </span>
+                <h3 className="font-display text-xl sm:text-2xl font-light text-navy leading-tight">
+                  {item.title}
+                </h3>
+                <p className="font-body text-sm text-muted leading-[1.80] col-start-1 sm:col-start-auto">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+            <div className="border-t border-black/[0.06]" />
+          </div>
+
         </div>
+      </section>
 
-        <ScrollReveal className="grid grid-cols-1 md:grid-cols-3 gap-14 lg:gap-20">
-          {t.features.items.map((item, i) => (
-            <FeatureCard
-              key={item.title}
-              index={i}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
-        </ScrollReveal>
+      {/* ─────────────────────────────────────────────────────────────────────
+          SERVICES — répertoire / index éditorial (remplace la grille de cards)
+          Fond navy foncé — coupure franche depuis cream, effet intentionnel
+      ───────────────────────────────────────────────────────────────────── */}
+      <section className="bg-navy relative overflow-hidden">
+        {/* Grain texture */}
+        <div className="navy-grain absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true" />
 
-        {/* Ligne de signature — bas */}
-        <div className="h-px bg-gold/70 mt-14 sm:mt-20" aria-hidden="true" />
-      </Section>
+        <div className="relative z-10 container-main py-24 sm:py-32">
 
-      {/* ── Services — Aperçu des domaines ──────────────────────────────── */}
-      <Section bg="cream" slant="left" slantFill={BG.stone}>
-        <div className="text-center mb-16 sm:mb-20">
-          <span className="section-label">{t.services.overline}</span>
-          <PremiumHeading as="h2" size="section" color="dark" className="mt-2">
-            {t.services.titleMain} <Accent>{t.services.titleAccent}</Accent>
-          </PremiumHeading>
-          <p className="section-subtitle mx-auto text-center">{t.services.subtitle}</p>
+          {/* En-tête — titre à gauche, CTA à droite */}
+          <div className="flex items-end justify-between pb-10 sm:pb-14 border-b border-white/[0.07]">
+            <div>
+              <span className="section-label text-champagne/70">{t.services.overline}</span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-white mt-1 leading-tight">
+                {t.services.titleMain}{' '}
+                <span className="italic text-champagne">{t.services.titleAccent}</span>
+              </h2>
+            </div>
+            <Link
+              href={`/${validLocale}/services`}
+              className="hidden sm:flex items-center gap-2 font-body text-xs text-white/30 hover:text-champagne transition-colors duration-200 shrink-0 ml-8 pb-1"
+            >
+              {t.services.cta}
+              <Icon name="arrow" size={13} strokeWidth={2} />
+            </Link>
+          </div>
+
+          {/* Lignes de service — chaque service est un lien cliquable pleine largeur */}
+          <div>
+            {services.map((s, i) => (
+              <Link
+                key={s.id}
+                href={`/${validLocale}/services/${s.id}`}
+                className="group flex items-center justify-between py-7 sm:py-9 border-b border-white/[0.05] hover:border-champagne/25 transition-colors duration-300"
+              >
+                <div className="flex items-center gap-6 sm:gap-12">
+                  <span
+                    className="font-body text-[10px] tracking-[0.20em] text-white/18 font-medium w-5 shrink-0 select-none group-hover:text-champagne/50 transition-colors duration-300"
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <p className="font-display text-2xl sm:text-3xl lg:text-[2.6rem] font-light text-white group-hover:text-champagne transition-colors duration-300 leading-tight">
+                      {t.services.items[i].title}
+                    </p>
+                    <p className="font-body text-xs sm:text-sm text-white/28 mt-1.5 group-hover:text-white/50 transition-colors duration-300">
+                      {t.services.items[i].shortDesc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Flèche en cercle */}
+                <div className="shrink-0 ml-4">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/[0.08] flex items-center justify-center text-white/20 group-hover:border-champagne/35 group-hover:text-champagne transition-all duration-300 group-hover:scale-110">
+                    <Icon name="arrow" size={14} strokeWidth={2} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA mobile */}
+          <div className="mt-10 sm:hidden">
+            <Link href={`/${validLocale}/services`} className="btn-outline-dark w-full justify-center">
+              {t.services.cta}
+              <Icon name="arrow" size={16} strokeWidth={2} />
+            </Link>
+          </div>
+
         </div>
-        <ScrollReveal className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((s, i) => (
-            <ServiceCard
-              key={s.id}
-              icon={s.icon}
-              title={t.services.items[i].title}
-              description={t.services.items[i].shortDesc}
-              index={i}
-            />
-          ))}
-        </ScrollReveal>
-        <div className="text-center mt-14">
-          <Link href={`/${validLocale}/services`} className="btn-outline">
-            {t.services.cta}
-            <Icon name="arrow" size={16} strokeWidth={2} />
-          </Link>
-        </div>
-      </Section>
+      </section>
 
-      {/* ── Testimonials ─────────────────────────────────────────────────── */}
-      <Section bg="mineral" slant="right" slantFill={BG.cream}>
-        {/* En-tête */}
+      {/* ── Testimonials — reste éditorial, slantFill mis à jour (navy) ──── */}
+      <Section bg="mineral" slant="right" slantFill={BG.navy}>
         <div className="text-center mb-16 sm:mb-20">
           <span className="section-label">{t.testimonials.overline}</span>
           <PremiumHeading as="h2" size="section" color="dark">
@@ -209,7 +254,6 @@ export default async function HomePage({
           </PremiumHeading>
         </div>
 
-        {/* Témoignage vedette — grand format éditorial */}
         <figure className="text-center max-w-3xl mx-auto">
           <span
             className="font-display block leading-[0.75] text-gold/[0.13] select-none pointer-events-none -mb-5"
@@ -225,24 +269,18 @@ export default async function HomePage({
           </blockquote>
           <figcaption className="mt-8 flex flex-col items-center gap-1.5">
             <div className="w-8 h-px bg-gold/45 mb-3" aria-hidden="true" />
-            <p className="font-body text-sm font-semibold text-navy">
-              {t.testimonials.items[0].author}
-            </p>
-            <p className="font-body text-xs text-muted">
-              {t.testimonials.items[0].role}
-            </p>
+            <p className="font-body text-sm font-semibold text-navy">{t.testimonials.items[0].author}</p>
+            <p className="font-body text-xs text-muted">{t.testimonials.items[0].role}</p>
           </figcaption>
         </figure>
 
-        {/* Séparateur décoratif */}
         <div className="flex items-center gap-5 my-14 sm:my-16" aria-hidden="true">
           <div className="flex-1 h-px bg-black/[0.07]" />
           <div className="w-1 h-1 rounded-full bg-gold/40" />
           <div className="flex-1 h-px bg-black/[0.07]" />
         </div>
 
-        {/* Témoignages secondaires — typographie pure, sans boîtes */}
-        <ScrollReveal className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16">
           {t.testimonials.items.slice(1).map((item) => (
             <figure key={item.author} className="flex flex-col gap-5">
               <Icon name="quote" size={20} className="text-gold/35" />
@@ -259,24 +297,24 @@ export default async function HomePage({
                   {item.initials}
                 </div>
                 <div>
-                  <p className="font-body text-sm font-semibold text-navy leading-snug">
-                    {item.author}
-                  </p>
-                  <p className="font-body text-xs text-muted mt-0.5">
-                    {item.role}
-                  </p>
+                  <p className="font-body text-sm font-semibold text-navy leading-snug">{item.author}</p>
+                  <p className="font-body text-xs text-muted mt-0.5">{item.role}</p>
                 </div>
               </figcaption>
             </figure>
           ))}
-        </ScrollReveal>
+        </div>
       </Section>
 
-      {/* ── Process (horizontal scroll on desktop) ─────────────────────── */}
+      {/* ── Process (parallax — ne pas modifier) ─────────────────────────── */}
       <ProcessSection t={t.process} slantFill={BG.mineral} />
 
+      {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+      <FaqSection t={t.faq} />
+
       {/* ── Contact ──────────────────────────────────────────────────────── */}
-      <ContactBlock bg="stone" slant="left" slantFill={BG.navy} t={t.contact.form} />
+      {/* slantFill=BG.cream car FaqSection a bg-cream */}
+      <ContactBlock bg="stone" slant="left" slantFill={BG.cream} t={t.contact.form} />
 
       {/* ── Footer ───────────────────────────────────────────────────────── */}
       <Footer locale={validLocale} t={t} navItems={navItems} />

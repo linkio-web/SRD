@@ -51,17 +51,7 @@ export default async function QuiSommesNousPage({
     <>
       {/* ── Hero ───────────────────────────── */}
       <section className="relative bg-navy overflow-hidden pt-36 pb-20 sm:pt-48 sm:pb-24">
-        <div className="absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true">
-          <div
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-              backgroundSize: '80px 80px',
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </div>
+        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" />
         <div
           className="absolute -top-24 right-0 w-96 h-96 rounded-full border border-gold/8 pointer-events-none"
           aria-hidden="true"
@@ -96,8 +86,8 @@ export default async function QuiSommesNousPage({
           </Link>
         </div>
 
-        {/* Bande de stats — sans carte, sans ombre, sans fond */}
-        <div className="mt-16 pt-10 border-t border-black/[0.07] grid grid-cols-4 divide-x divide-black/[0.07]">
+        {/* MODIFIED: Stats grid — responsive (1 col mobile → 2 col sm → 4 col lg) */}
+        <div className="mt-16 pt-10 border-t border-black/[0.07] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 sm:divide-x divide-black/[0.07]">
           {stats.map((stat) => (
             <StatCounter key={stat.label} value={stat.value} label={stat.label} />
           ))}

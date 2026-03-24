@@ -84,19 +84,49 @@ export function ContactForm({ t, variant = 'premium' }: ContactFormProps) {
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  // MODIFIED: Real API submission via /api/contact (Resend)
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!validate()) return
     setFormState('sending')
-    setTimeout(() => {
-      // eslint-disable-next-line no-console
-      console.log('[ContactForm] submitted:', data)
-      setFormState('success')
-      setData(initialData)
-    }, 1200)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (res.ok) {
+        setFormState('success')
+        setData(initialData)
+      } else {
+        setFormState('error')
+      }
+    } catch {
+      setFormState('error')
+    }
   }
 
   const padding = variant === 'premium' ? 'p-8 sm:p-12' : 'p-6 sm:p-8'
+
+  /* État erreur */
+  if (formState === 'error') {
+    return (
+      <div className={cn(CARD[variant], 'p-10 sm:p-14 text-center')}>
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-50 text-red-500 mb-6">
+          <Icon name="close" size={22} strokeWidth={2.5} />
+        </div>
+        <h3 className="font-body text-xl font-semibold text-navy mb-3">{t.errorTitle}</h3>
+        <p className="font-body text-muted text-sm leading-relaxed max-w-xs mx-auto">
+          {t.errorMsg}
+        </p>
+        <button onClick={() => setFormState('idle')} className="btn-outline mt-8">
+          {t.retry}
+        </button>
+      </div>
+    )
+  }
 
   /* État succès */
   if (formState === 'success') {

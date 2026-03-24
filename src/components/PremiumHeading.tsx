@@ -2,10 +2,11 @@ import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 // ─── Accent ───────────────────────────────────────────────────────────────────
-// Mot ou fragment mis en valeur : italique + or.
+// Mot ou fragment mis en valeur : italique + champagne gold.
 // Usage : <PremiumHeading>Notre <Accent>engagement</Accent></PremiumHeading>
+// MODIFIED: text-gold → text-champagne pour un rendu plus luxueux et chaud
 export function Accent({ children }: { children: ReactNode }) {
-  return <span className="italic font-semibold text-gold">{children}</span>
+  return <span className="italic font-light text-champagne">{children}</span>
 }
 
 // ─── PremiumHeading ───────────────────────────────────────────────────────────

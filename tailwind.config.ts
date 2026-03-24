@@ -13,9 +13,10 @@ const config: Config = {
       // Primary : Manrope (sans-serif, corporate moderne)
       // Display : Playfair Display (serif, accentuation italique éditoriale)
       // ─────────────────────────────────────────
+      // MODIFIED: Updated fonts — Cormorant Garamond (display) + DM Sans (body)
       fontFamily: {
-        display: ['var(--font-display)', 'Playfair Display', 'Georgia', 'serif'],
-        body: ['var(--font-body)', 'Manrope', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
+        body: ['var(--font-body)', 'DM Sans', 'Manrope', 'system-ui', 'sans-serif'],
       },
 
       // ─────────────────────────────────────────
@@ -41,57 +42,60 @@ const config: Config = {
         // Fond minéral — lavande grise subtile, sections premium
         mineral:  '#D2C9D6',
 
-        // Fond sombre — violet nuit profond (du logo)
+        // Fond sombre — violet profond dérivé du logo SRD (même teinte que primary, plus sombre)
         navy: {
-          DEFAULT: '#301B4A',
-          800:     '#1C102B',
-          700:     '#231436',
+          DEFAULT: '#46184E',
+          800:     '#301236',
+          700:     '#3B163D',
         },
 
-        // Alias sémantique accent/crimson → utilisé pour CTA, overlines, séparateurs
+        // Alias sémantique accent/bordeaux → utilisé pour CTA, overlines, séparateurs
         // (préserve les classes bg-gold, text-gold, etc. déjà en place)
         gold: {
-          DEFAULT: '#97144F',
-          light:   '#E84272',
-          pale:    '#FFF0F4',
-          dark:    '#A00E3A',
+          DEFAULT: '#800F33',
+          light:   '#C01F55',
+          pale:    '#FFF0F3',
+          dark:    '#6A0B2B',
         },
 
         // Texte principal — violet nuit très sombre
-        ink: '#1A0F2A',
+        ink: '#1E0F28',
 
         // Texte secondaire — cool muted
         muted: '#5A6080',
 
-        // ── Échelle primaire complète (violet logo SRD)
+        // ── Échelle primaire complète (violet logo SRD — #65366D)
         primary: {
-          50:  '#F5F4F6',
-          100: '#EBE9ED',
-          200: '#D6D2DB',
-          300: '#B8B1C1',
-          400: '#8F839D',
-          500: '#301B4A', // rgb(48, 27, 74)
-          600: '#2A1841',
-          700: '#231436',
-          800: '#1C102B',
-          900: '#150C21',
-          950: '#0E0816',
+          50:  '#F4F0F6',
+          100: '#E7DEEC',
+          200: '#CEB9D8',
+          300: '#AE8DC3',
+          400: '#886BAD',
+          500: '#65366D', // rgb(101, 54, 109) — violet logo officiel
+          600: '#552C5B',
+          700: '#432249',
+          800: '#311838',
+          900: '#200F26',
+          950: '#130918',
         },
 
-        // ── Échelle accent complète (crimson arrow du logo)
+        // ── Échelle accent complète (bordeaux arrow du logo — #800F33)
         accent: {
-          50:  '#FFF0F4',
-          100: '#FFE1EC',
-          200: '#FFC3D9',
-          300: '#FF95BB',
-          400: '#FF5A8F',
-          500: '#E01855',
-          600: '#97144F',
-          700: '#A00E3A',
-          800: '#81092F',
-          900: '#620624',
-          950: '#3D0314',
+          50:  '#FFF0F3',
+          100: '#FFE1EA',
+          200: '#FFC3D4',
+          300: '#FF95B3',
+          400: '#E05580',
+          500: '#C01F55',
+          600: '#800F33',
+          700: '#6A0B2B',
+          800: '#550820',
+          900: '#400618',
+          950: '#28030E',
         },
+
+        // Champagne — or chaud subtil pour numéros de stats, séparateurs, accents titres
+        champagne: '#C9A96E',
 
         // ── Nuancier gris cool (zéro ton chaud/beige)
         gray: {
@@ -115,8 +119,8 @@ const config: Config = {
       boxShadow: {
         card: '0 1px 3px rgba(26,10,40,0.06), 0 4px 16px rgba(26,10,40,0.06)',
         'card-hover': '0 8px 32px rgba(26,10,40,0.14)',
-        // Ombre teintée crimson pour les CTA
-        gold: '0 4px 20px rgb(151, 20, 79,0.30)',
+        // Ombre teintée bordeaux pour les CTA
+        gold: '0 4px 20px rgb(128, 15, 51,0.30)',
         // Ombres multicouches premium (légèrement violet-tintées)
         premium: [
           '0 0 0 1px rgba(26,10,40,0.05)',

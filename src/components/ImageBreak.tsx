@@ -38,12 +38,12 @@ export function ImageBreak({ tagline }: ImageBreakProps) {
         {/* Primary dark overlay — keeps image readable and brand-consistent */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(160deg, rgba(26,16,40,0.84) 0%, rgba(31,9,50,0.72) 100%)' }}
+          style={{ background: 'linear-gradient(160deg, rgba(var(--primary-950-rgb),0.84) 0%, rgba(var(--primary-900-rgb),0.72) 100%)' }}
         />
-        {/* Crimson accent glow — echoes the hero radial */}
+        {/* Accent glow — echoes the hero radial */}
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 80% at 75% 40%, rgb(151, 20, 79,0.08) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 80% at 75% 40%, rgba(var(--gold-rgb),0.08) 0%, transparent 65%)' }}
         />
         {/* Bottom gradient — blends into the cream Features panel rising over it */}
         <div

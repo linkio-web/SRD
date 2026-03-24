@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Playfair_Display, Manrope } from 'next/font/google'
+// MODIFIED: Updated fonts to Cormorant Garamond (display) + DM Sans (body) for premium feel
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import '@/app/globals.css'
 import { Header } from '@/components/Header'
 import {
@@ -13,19 +14,20 @@ import {
 import { services, contactInfo } from '@/lib/siteData'
 import { MEGA_COL_INDICES } from '@/lib/navConfig'
 
-// Playfair Display — serif éditorial, utilisé pour les titres H1/H2 et l'accent italique
-const playfairDisplay = Playfair_Display({
+// Cormorant Garamond — serif luxe raffiné, idéal pour un cabinet fiduciaire premium
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   display: 'swap',
 })
 
-// Manrope — sans-serif moderne et corporate, corps de texte et UI
-const manrope = Manrope({
+// DM Sans — sans-serif neutre et lisible, moderna pour le corps de texte et l'UI
+const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-body',
+  weight: ['400', '500'],
   display: 'swap',
 })
 
@@ -108,13 +110,14 @@ export default async function LocaleLayout({
 
   return (
     <html lang={validLocale} suppressHydrationWarning>
-      <body className={`${playfairDisplay.variable} ${manrope.variable} font-body antialiased`} suppressHydrationWarning>
+      <body className={`${cormorantGaramond.variable} ${dmSans.variable} font-body antialiased`} suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            // MODIFIED: Updated to FinancialService schema type
+          __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'AccountingService',
+              '@type': 'FinancialService',
               name: 'SRD Partners Sàrl',
               url: contactInfo.website,
               telephone: contactInfo.phone.replace(/\s/g, ''),

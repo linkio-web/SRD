@@ -6,7 +6,7 @@
 export const BG = {
   cream:   '#F8F9FC',
   stone:   '#D2C9D6',
-  navy:    '#301B4A',
+  navy:    '#46184E',
   mineral: '#D2C9D6',
 } as const
 

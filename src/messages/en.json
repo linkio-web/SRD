@@ -274,13 +274,6 @@
         "bio": "Main point of contact for the firm, Cremilde coordinates all client files with rigor and availability.",
         "initials": "CH",
         "quote": "I personally commit to supporting every client with rigour and full availability."
-      },
-      {
-        "name": "To be confirmed",
-        "role": "Accounting & Tax",
-        "bio": "Specialist in bookkeeping and tax filings for SMEs and freelancers in French-speaking Switzerland.",
-        "initials": "–",
-        "quote": ""
       }
     ]
   },
@@ -316,6 +309,9 @@
       "successTitle": "Message sent!",
       "successMsg": "Thank you for your message. Our team will contact you shortly.",
       "sendAnother": "Send another message",
+      "errorTitle": "Sending failed",
+      "errorMsg": "An error occurred. Please try again or contact us directly by phone.",
+      "retry": "Try again",
       "subjects": {
         "accounting": "Accounting & Tax",
         "consulting": "Management consulting",
@@ -380,7 +376,8 @@
     "contact": "Contact",
     "tagline": "Corcelles NE • Switzerland",
     "rights": "All rights reserved.",
-    "signature": "Independent fiduciary firm · French-speaking Switzerland"
+    "signature": "Independent fiduciary firm · French-speaking Switzerland",
+    "privacy": "Privacy Policy"
   },
   "meta": {
     "homeTitle": "SRD Partners Sàrl – Fiduciary & Business Advisory in French-speaking Switzerland",
@@ -401,6 +398,8 @@
     "aboutDescription": "Discover the team and values of SRD Partners, your trusted fiduciary firm in French-speaking Switzerland.",
     "contactTitle": "Contact – SRD Partners Sàrl",
     "contactDescription": "Contact SRD Partners for all your fiduciary needs. Our team is available Monday to Friday.",
+    "privacyTitle": "Privacy Policy – SRD Partners Sàrl",
+    "privacyDescription": "Information on the protection of your personal data in accordance with Swiss nFADP.",
     "titleTemplate": "%s | SRD Partners"
   },
   "brand": {

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { contactInfo, BG } from '@/lib/siteData'
 import { Section } from '@/components/Section'
@@ -32,47 +31,72 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative bg-navy overflow-hidden pt-28 pb-14 sm:pt-36 sm:pb-16">
+      {/* ── Hero — typographic, no image ──────────────────── */}
+      <section className="relative bg-navy overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
 
-        {/* Photo immeuble — plein fond, focus bas-droite, fondu gauche fort */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <Image
-            src="/images/hero-section-image.png"
-            alt=""
-            fill
-            className="object-cover object-right-bottom"
-            priority
-          />
-          {/* Dégradé : navy opaque à gauche (texte lisible) → image visible à droite */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy from-[45%] via-navy/80 to-navy/20" />
-          {/* Fondu bas pour transition douce avec la section suivante */}
-          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-navy to-transparent" />
-        </div>
+        {/* Decorative layers */}
+        <div className="navy-grain absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
+        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
+
+        {/* Decorative concentric circles — right side */}
+        <svg
+          aria-hidden="true"
+          className="absolute right-[-8rem] top-1/2 -translate-y-1/2 pointer-events-none"
+          width="960"
+          height="960"
+          viewBox="-480 -480 960 960"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="0" cy="0" r="200" stroke="white" strokeOpacity="0.05" />
+          <circle cx="0" cy="0" r="340" stroke="white" strokeOpacity="0.05" />
+          <circle cx="0" cy="0" r="480" stroke="white" strokeOpacity="0.05" />
+        </svg>
 
         <div className="container-main relative z-10">
-          <div className="max-w-lg">
+          <div className="max-w-2xl">
 
-            {/* Retour services */}
-            <Link
-              href={`/${locale}/services`}
-              className="inline-flex items-center gap-1.5 font-body text-xs text-white/40 hover:text-white/65 transition-colors duration-200 mb-8 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/30 rounded"
-            >
-              <Icon name="chevron" size={12} strokeWidth={2.5} className="-rotate-90" />
-              {t.nav.services}
-            </Link>
+            {/* Inline breadcrumb — white variant */}
+            <nav aria-label="Fil d'Ariane" className="mb-10">
+              <ol className="flex items-center flex-wrap gap-x-2 gap-y-1">
+                <li>
+                  <Link
+                    href={`/${locale}`}
+                    className="font-body text-xs text-white/35 hover:text-white/65 transition-colors"
+                  >
+                    {t.nav.home}
+                  </Link>
+                </li>
+                <li><span className="text-white/20 text-xs mx-1">›</span></li>
+                <li>
+                  <Link
+                    href={`/${locale}/services`}
+                    className="font-body text-xs text-white/35 hover:text-white/65 transition-colors"
+                  >
+                    {t.nav.services}
+                  </Link>
+                </li>
+                <li><span className="text-white/20 text-xs mx-1">›</span></li>
+                <li>
+                  <span className="font-body text-xs text-white/60" aria-current="page">
+                    {service.title}
+                  </span>
+                </li>
+              </ol>
+            </nav>
 
-            <span className="block section-label text-gold/70 mb-3">{t.services.pageOverline}</span>
+            <span className="section-label text-champagne/70">{t.services.pageOverline}</span>
 
-            <PremiumHeading as="h1" size="page" color="light" className="mb-5">
+            <PremiumHeading as="h1" size="page" color="light" className="mt-2">
               {service.heroTitle1} <Accent>{service.heroTitle2}</Accent>
             </PremiumHeading>
 
-            <p className="font-body text-white/60 text-base sm:text-lg leading-relaxed mb-8">
+            <div className="w-10 h-px bg-champagne/30 my-6" aria-hidden="true" />
+
+            <p className="font-body text-white/58 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
               {service.heroIntro}
             </p>
 
-            {/* CTA — inline-flex autonome, aucun wrapper flex parent */}
             <Link href={`/${locale}/contact`} className="btn-primary">
               {t.cta.button}
               <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
@@ -82,151 +106,185 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
         </div>
       </section>
 
-      {/* ── Ce que nous prenons en charge ────────────────── */}
-      <Section bg="cream" slant="right" slantFill={BG.navy}>
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-10">
-            <span className="section-label">{t.services.pageOverline}</span>
-            <h2 className="section-title">{t.services.chargeTitle}</h2>
-          </div>
+      {/* ── Main content — two-column editorial ───────────── */}
+      <section className="relative bg-cream overflow-hidden">
 
-          <div>
-            {service.bullets.map((bullet, i) => {
-              const { title, desc } = parseLine(bullet)
-              return (
+        {/* SVG slant — upper-right triangle fills with navy from above */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          className="absolute top-0 left-0 w-full"
+          style={{ height: 'var(--slant-h)' }}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon points="0,0 1440,0 1440,80" fill={BG.navy} />
+        </svg>
+
+        <div className="container-main pt-32 sm:pt-40 pb-24 sm:pb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_288px] gap-16 items-start">
+
+            {/* ── Left column ──────────────────────────────── */}
+            <div>
+
+              {/* Section A — Ce que nous prenons en charge */}
+              <h2 className="font-display text-2xl sm:text-3xl font-light text-navy mb-10 leading-tight">
+                {t.services.chargeTitle}
+              </h2>
+
+              <div>
+                {service.bullets.map((bullet, i) => {
+                  const { title, desc } = parseLine(bullet)
+                  return (
+                    <div
+                      key={i}
+                      className="flex items-start gap-6 py-7 border-b border-primary-100/40 last:border-b-0"
+                    >
+                      <span
+                        className="font-body text-[10px] font-semibold tracking-[0.14em] text-champagne w-5 shrink-0 mt-0.5 select-none"
+                        aria-hidden="true"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <p className="font-body font-semibold text-navy text-base leading-snug">{title}</p>
+                        {desc && (
+                          <p className="font-body text-sm text-muted leading-relaxed mt-1">{desc}</p>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Separator between A and B */}
+              <div className="flex items-center gap-4 my-12" aria-hidden="true">
+                <div className="h-px flex-1 bg-primary-100/40" />
+                <div className="w-1.5 h-1.5 rounded-full bg-champagne/40" />
+                <div className="h-px flex-1 bg-primary-100/40" />
+              </div>
+
+              {/* Section B — Pour qui */}
+              <h2 className="font-display text-2xl sm:text-3xl font-light text-navy mb-10 leading-tight">
+                {t.services.forWhoTitle}
+              </h2>
+
+              <div>
+                {service.forWho.map((item, i) => {
+                  const { title, desc } = parseLine(item)
+                  return (
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 py-4 border-b border-primary-100/25 last:border-b-0"
+                    >
+                      <span className="text-champagne text-xs mt-1 shrink-0 select-none" aria-hidden="true">
+                        →
+                      </span>
+                      <div>
+                        <p className="font-body text-sm font-medium text-navy">{title}</p>
+                        {desc && (
+                          <p className="font-body text-xs text-muted leading-relaxed mt-0.5">{desc}</p>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+            </div>
+
+            {/* ── Right column — sticky sidebar ─────────────── */}
+            <aside className="lg:sticky lg:top-28">
+              <div className="bg-white rounded-2xl border border-primary-100/70 shadow-card overflow-hidden">
+
+                {/* Top accent strip */}
                 <div
-                  key={i}
-                  className="flex items-start gap-6 py-6 border-b border-primary-100/50 last:border-b-0"
-                >
-                  <span
-                    className="font-body text-[11px] font-semibold tracking-[0.12em] text-gold/60 mt-0.5 w-5 shrink-0 select-none"
-                    aria-hidden="true"
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                  className="h-1 w-full bg-gradient-to-r from-champagne/60 via-champagne to-champagne/60"
+                  aria-hidden="true"
+                />
+
+                <div className="p-7 space-y-6">
+
+                  {/* Contact person */}
                   <div>
-                    <h3 className="font-body font-semibold text-navy text-base leading-snug">{title}</h3>
-                    {desc && (
-                      <p className="font-body text-sm text-muted leading-relaxed mt-1">{desc}</p>
-                    )}
+                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-2">
+                      {t.contact.directContact}
+                    </p>
+                    <p className="font-body font-semibold text-navy text-sm">{contactInfo.contact}</p>
+                    <p className="font-body text-xs text-muted mt-0.5">{contactInfo.role}</p>
                   </div>
+
+                  <div className="h-px w-full bg-primary-50" aria-hidden="true" />
+
+                  {/* Phone */}
+                  <div>
+                    <a
+                      href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+                      className="flex items-center gap-3 group"
+                    >
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 hover:bg-gold/[0.07] flex items-center justify-center transition-colors duration-150">
+                        <Icon name="chevron" size={16} strokeWidth={2} className="text-gold -rotate-90" />
+                      </div>
+                      <span className="font-body text-sm text-navy group-hover:text-gold transition-colors duration-150">
+                        {contactInfo.phone}
+                      </span>
+                    </a>
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="flex items-center gap-3 group"
+                    >
+                      <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 hover:bg-gold/[0.07] flex items-center justify-center transition-colors duration-150">
+                        <Icon name="arrow" size={16} strokeWidth={2} className="text-gold" />
+                      </div>
+                      <span className="font-body text-sm text-navy group-hover:text-gold transition-colors duration-150 break-all">
+                        {contactInfo.email}
+                      </span>
+                    </a>
+                  </div>
+
+                  <div className="h-px w-full bg-primary-50" aria-hidden="true" />
+
+                  {/* Response delay */}
+                  <div>
+                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-2">
+                      {t.contact.responseDelay}
+                    </p>
+                    <p className="font-body text-xs text-muted leading-relaxed">{t.contact.form.trustLine}</p>
+                    <p className="font-body text-xs text-muted mt-1">{t.contact.hours}</p>
+                  </div>
+
+                  {/* CTA */}
+                  <Link href={`/${locale}/contact`} className="btn-primary w-full justify-center">
+                    {t.cta.button}
+                    <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
+                  </Link>
+
                 </div>
-              )
-            })}
+              </div>
+            </aside>
+
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* ── Pour qui ─────────────────────────────────────── */}
-      <Section bg="stone" slant="left" slantFill={BG.cream}>
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-10">
-            <span className="section-label">{t.services.pageOverline}</span>
-            <h2 className="section-title">{t.services.forWhoTitle}</h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
-            {service.forWho.map((item, i) => {
-              const { title, desc } = parseLine(item)
-              return (
-                <div
-                  key={i}
-                  className="py-5 border-b border-primary-200/40 last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0"
-                >
-                  <h3 className="font-body font-semibold text-navy text-sm mb-1">{title}</h3>
-                  {desc && (
-                    <p className="font-body text-xs text-muted leading-relaxed">{desc}</p>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </Section>
-
-      {/* ── CTA ──────────────────────────────────────────── */}
-      <Section bg="cream" slant="right" slantFill={BG.stone}>
-        <div className="max-w-xl mx-auto text-center">
-          <h2 className="section-title mb-4">
-            {t.cta.titleMain}{' '}
-            <span className="italic text-gold">{t.cta.titleAccent}</span>
-          </h2>
-          <p className="font-body text-muted text-base leading-relaxed mb-8 max-w-sm mx-auto">
-            {t.cta.subtitle}
-          </p>
-          <Link href={`/${locale}/contact`} className="btn-primary">
-            {t.cta.button}
-            <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
-          </Link>
-        </div>
-      </Section>
-
-      {/* ── Contact ───────────────────────────────────────── */}
+      {/* ── Contact form section ────────────────────────── */}
       <Section bg="stone" slant="left" slantFill={BG.cream} id="contact">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_272px] gap-10 lg:gap-16 items-start">
+        <div className="max-w-2xl mx-auto">
 
-          {/* Formulaire */}
-          <div>
-            <div className="mb-8">
-              <span className="section-label">{t.contact.form.overline}</span>
-              <h2 className="section-title">{t.contact.form.title}</h2>
-              <p className="font-body text-sm text-muted mt-3 leading-relaxed max-w-md">
-                {t.contact.form.subtitle}
-              </p>
-            </div>
-            <ContactForm t={t.contact.form} variant="compact" />
+          <div className="mb-8">
+            <span className="section-label">{t.contact.form.overline}</span>
+            <h2 className="section-title">{t.contact.form.title}</h2>
+            <p className="font-body text-sm text-muted mt-3 leading-relaxed">
+              {t.contact.form.subtitle}
+            </p>
           </div>
 
-          {/* Sidebar coordonnées */}
-          <aside className="lg:pt-[6.5rem]">
-            <div className="space-y-7">
+          <ContactForm t={t.contact.form} variant="compact" />
 
-              <div>
-                <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-3">
-                  {t.contact.directContact}
-                </p>
-                <p className="font-body font-semibold text-navy text-sm">{contactInfo.contact}</p>
-                <p className="font-body text-xs text-muted mt-0.5">{contactInfo.role}</p>
-              </div>
-
-              <div className="w-8 h-px bg-primary-200/60" aria-hidden="true" />
-
-              <div>
-                <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-1.5">
-                  {t.contact.phoneLabel}
-                </p>
-                <a
-                  href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                  className="font-body text-sm text-navy hover:text-gold transition-colors duration-150"
-                >
-                  {contactInfo.phone}
-                </a>
-              </div>
-
-              <div>
-                <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-1.5">
-                  {t.contact.emailLabel}
-                </p>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="font-body text-sm text-navy hover:text-gold transition-colors duration-150 break-all"
-                >
-                  {contactInfo.email}
-                </a>
-              </div>
-
-              <div className="w-8 h-px bg-primary-200/60" aria-hidden="true" />
-
-              <div>
-                <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-1.5">
-                  {t.contact.responseDelay}
-                </p>
-                <p className="font-body text-xs text-muted leading-relaxed">{t.contact.form.trustLine}</p>
-                <p className="font-body text-xs text-muted mt-1">{t.contact.hours}</p>
-              </div>
-
-            </div>
-          </aside>
         </div>
       </Section>
 

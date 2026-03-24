@@ -1,3 +1,4 @@
+// MODIFIED: Implement diagonal slant SVG + increase padding vertical
 import { cn } from '@/lib/utils'
 
 type BgVariant = 'cream' | 'stone' | 'navy' | 'white' | 'mineral'
@@ -32,14 +33,6 @@ const bgMap: Record<BgVariant, string> = {
   mineral: 'bg-mineral',
 }
 
-// Points SVG pour le triangle de biseau (viewBox 0 0 1440 80)
-// 'left'  → triangle en haut-droite → diagonal montant /
-// 'right' → triangle en haut-gauche → diagonal descendant \
-const slantPoints = {
-  left: '0,0 1440,0 1440,80',
-  right: '0,0 0,80 1440,0',
-}
-
 export function Section({
   children,
   bg = 'cream',
@@ -51,33 +44,41 @@ export function Section({
 }: SectionProps) {
   return (
     <section id={id} className={cn('relative w-full overflow-hidden', bgMap[bg], className)}>
-      {/* Biseau diagonal supérieur — décoratif, masqué aux lecteurs d'écran */}
-      {slant && slantFill && (
+
+      {/* ── Grain texture sur fond navy — profondeur quasi imperceptible ── */}
+      {bg === 'navy' && (
         <div
-          className="absolute top-0 left-[-2%] w-[104%] pointer-events-none z-10"
+          className="navy-grain absolute inset-0 pointer-events-none z-0 opacity-[0.04]"
           aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 1440 80"
-            preserveAspectRatio="none"
-            className="w-full h-10 sm:h-14 md:h-20"
-          >
-            <polygon points={slantPoints[slant]} fill={slantFill} />
-          </svg>
-        </div>
+        />
       )}
 
-      {/* Contenu — z-index au-dessus du biseau */}
-      <div
-        className={cn(
-          'relative z-20 container-main',
-          noPadding
-            ? ''
-            : slant
-              ? 'pt-20 sm:pt-28 md:pt-32 pb-20 sm:pb-28'
-              : 'py-20 sm:py-28'
-        )}
-      >
+      {/* ── Biseau diagonal — décoratif, transition section précédente ── */}
+      {slant && slantFill && (
+        <svg
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute top-0 left-0 w-full pointer-events-none z-0"
+          style={{ height: 'var(--slant-h)' }}
+        >
+          {/*
+           * slant="right" (\) : triangle haut-gauche → bas-droite
+           *   → polygon remplit le triangle supérieur-gauche avec la couleur précédente
+           * slant="left"  (/) : triangle haut-droite → bas-gauche
+           *   → polygon remplit le triangle supérieur-droit avec la couleur précédente
+           */}
+          <polygon
+            points={slant === 'right' ? '0,0 1440,0 0,80' : '0,0 1440,0 1440,80'}
+            fill={slantFill}
+          />
+        </svg>
+      )}
+
+      <div className={cn(
+        'relative z-10 container-main',
+        noPadding ? '' : slant ? 'pt-32 sm:pt-40 pb-28 sm:pb-36' : 'py-28 sm:py-36',
+      )}>
         {children}
       </div>
     </section>

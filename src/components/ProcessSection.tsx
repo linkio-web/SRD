@@ -75,23 +75,6 @@ export function ProcessSection({ t, slantFill }: ProcessSectionProps) {
     // Pas d'overflow-hidden sur la section : nécessaire pour que position:sticky
     // fonctionne sur l'enfant. Le biseau est clippé dans son propre wrapper.
     <section ref={sectionRef} className="relative bg-navy">
-      {/* ── Biseau supérieur (overflow-hidden sur le wrapper pour clipper le bleed) */}
-      {slantFill && (
-        <div
-          className="absolute top-0 inset-x-0 h-10 sm:h-14 md:h-20 overflow-hidden pointer-events-none z-10"
-          aria-hidden="true"
-        >
-          <div className="absolute top-0 left-[-2%] w-[104%]">
-            <svg
-              viewBox="0 0 1440 80"
-              preserveAspectRatio="none"
-              className="w-full h-10 sm:h-14 md:h-20"
-            >
-              <polygon points="0,0 1440,0 1440,80" fill={slantFill} />
-            </svg>
-          </div>
-        </div>
-      )}
 
       {/* ── DESKTOP : conteneur tall pour le scroll, sticky interne ─────── */}
       {/* height = steps.length × 100vh crée l'espace de scroll nécessaire  */}

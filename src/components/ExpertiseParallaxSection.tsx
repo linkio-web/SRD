@@ -106,7 +106,7 @@ export function ExpertiseParallaxSection({
       {/* Fondu de raccord hero → expertise */}
       <div
         className="absolute top-0 inset-x-0 h-20 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to bottom, #0E0816, transparent)' }}
+        style={{ background: 'linear-gradient(to bottom, #130918, transparent)' }}
         aria-hidden="true"
       />
 
@@ -118,9 +118,9 @@ export function ExpertiseParallaxSection({
           aria-hidden="true"
           style={{
             background:
-              'radial-gradient(ellipse at 72% 28%, rgb(48, 27, 74,0.32) 0%, transparent 58%),' +
-              'radial-gradient(ellipse at 20% 72%, rgb(151, 20, 79,0.20) 0%, transparent 52%),' +
-              '#1C102B',
+              'radial-gradient(ellipse at 72% 28%, rgb(101, 54, 109,0.32) 0%, transparent 58%),' +
+              'radial-gradient(ellipse at 20% 72%, rgb(128, 15, 51,0.20) 0%, transparent 52%),' +
+              '#301236',
           }}
         >
           <svg

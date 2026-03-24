@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { type Locale, type Messages } from '@/lib/i18n'
-import { contactInfo, socials } from '@/lib/siteData'
+import { contactInfo, services, socials } from '@/lib/siteData'
 import { Icon } from '@/lib/icons'
 
 interface FooterProps {
@@ -13,253 +13,216 @@ interface FooterProps {
   slantFill?: string
 }
 
-// ─────────────────────────────────────────────────────
-// Sous-composant : ligne de contact
-// align="end"   → texte à gauche, icône ronde à droite, ligne alignée à droite  (desktop)
-// align="start" → même ordre, ligne alignée à gauche                             (mobile)
-// ─────────────────────────────────────────────────────
-type ContactIcon = 'mail' | 'phone' | 'mappin' | 'globe'
-
-interface ContactRowProps {
-  icon: ContactIcon
-  text: string
-  href?: string
-  external?: boolean
-  align?: 'start' | 'end'
-}
-
-function ContactRow({ icon, text, href, external, align = 'end' }: ContactRowProps) {
-  const base = [
-    'flex items-center gap-2.5 group',
-    align === 'end' ? 'justify-end' : 'justify-start',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded',
-  ].join(' ')
-
-  const iconCircle = (
-    <span
-      className="w-[23px] h-[23px] rounded-full border border-ink/35 flex items-center justify-center flex-shrink-0 text-ink/50 group-hover:text-primary-500 group-hover:border-primary-500/50 transition-colors duration-200"
-      aria-hidden="true"
-    >
-      <Icon name={icon} size={11} strokeWidth={1.5} />
-    </span>
-  )
-
-  const label = (
-    <span className="font-body text-[0.78rem] text-ink/80 group-hover:text-primary-500 transition-colors duration-200">
-      {text}
-    </span>
-  )
-
-  const inner = (
-    <>
-      {label}
-      {iconCircle}
-    </>
-  )
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        className={base}
-        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      >
-        {inner}
-      </a>
-    )
-  }
-  return <div className={base}>{inner}</div>
-}
-
-// ─────────────────────────────────────────────────────
-// Footer principal
-// ─────────────────────────────────────────────────────
 export function Footer({ locale, t }: FooterProps) {
   const year = new Date().getFullYear()
+
+  const navLinks = [
+    { label: t.nav.home,     href: `/${locale}` },
+    { label: t.nav.services, href: `/${locale}/services` },
+    { label: t.nav.whoWeAre, href: `/${locale}/qui-sommes-nous` },
+    { label: t.nav.contact,  href: `/${locale}/contact` },
+  ]
 
   return (
     <footer>
 
-      {/* ── Trait cramoisi — haut (3 px, full-width) ─── */}
+      {/* ── Séparateur bordeaux — haut ──────────────────── */}
       <div className="h-[3px] bg-gold" aria-hidden="true" />
 
-      {/* ── Carte de visite ──────────────────────────── */}
-      {/*    Desktop : hauteur fixe 180 px, layout absolu */}
-      {/*    Mobile  : flux normal, layout vertical       */}
-      <div className="relative overflow-hidden bg-stone lg:h-[220px]">
+      {/* ── Corps principal — fond navy ─────────────────── */}
+      <div className="bg-navy">
+        <div className="container-main pt-14 pb-10 lg:pt-16 lg:pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
 
-        {/* Triangle violet — derrière (z-1)
-            Angle droit bas-gauche : (0,0) → (0,100%) → (30%,100%) */}
-        <div
-          className="absolute inset-0 z-[1]"
-          style={{
-            clipPath: 'polygon(0 0, 0 100%, 30% 100%)',
-            background: 'linear-gradient(to bottom right, #9040c0 0%, #3d0e65 100%)',
-            filter: 'drop-shadow(8px 0px 12px rgba(0,0,0,0.50))',
-          }}
-          aria-hidden="true"
-        />
+            {/* ── Colonne 1 : Marque ─── */}
+            <div className="md:col-span-2 lg:col-span-1 flex flex-col gap-5">
 
-        {/* Triangle gris — devant (z-2)
-            Angle droit haut-gauche : (0,0) → (44%,0) → (0,100%) */}
-        <div
-          className="absolute inset-0 bg-[#c8c3d0] z-[2]"
-          style={{
-            clipPath: 'polygon(0 0, 44% 0, 0 100%)',
-            filter: 'drop-shadow(6px 2px 10px rgba(0,0,0,0.40))',
-          }}
-          aria-hidden="true"
-        />
-
-        {/* ══ MOBILE — flux vertical (masqué sur lg) ══ */}
-        <div className="relative z-[3] lg:hidden flex flex-col gap-5 px-6 py-8">
-
-          {/* Logo */}
-          <Link
-            href={`/${locale}`}
-            className="inline-flex group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-            aria-label={t.brand.legal}
-          >
-            <Image
-              src="/logo.png"
-              alt={t.brand.legal}
-              width={900}
-              height={600}
-              className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-75"
-            />
-          </Link>
-          <p
-            className="font-body text-[10px] text-ink/30 tracking-[0.22em] uppercase -mt-3 select-none"
-            aria-hidden="true"
-          >
-            Partners Sàrl
-          </p>
-
-          {/* Identité */}
-          <div className="flex flex-col gap-1">
-            <p className="font-body text-[13px] font-semibold text-ink tracking-[0.12em] uppercase">
-              {contactInfo.contact}
-            </p>
-            <p className="font-body text-[10px] text-muted tracking-[0.15em] uppercase">
-              {contactInfo.role}
-            </p>
-            <div
-              className="h-px w-20 mt-2 bg-gradient-to-r from-gold/70 to-transparent"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Contacts — left-aligned on mobile */}
-          <div className="flex flex-col gap-[5px]">
-            <ContactRow align="start" icon="mail"    text={contactInfo.email}                            href={`mailto:${contactInfo.email}`} />
-            <ContactRow align="start" icon="phone"   text={contactInfo.phone}                            href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} />
-            {contactInfo.addresses.map((addr) => (
-              <ContactRow align="start" key={addr.id} icon="mappin" text={`${addr.street}, ${addr.city}`} />
-            ))}
-            <ContactRow align="start" icon="globe"   text={contactInfo.website.replace('https://', '')} href={contactInfo.website} external />
-          </div>
-
-          {/* Réseaux sociaux */}
-          <div className="flex gap-2">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-black/[0.12] text-primary-500/50 hover:text-primary-500 hover:border-primary-500/30 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                rel="noopener noreferrer"
-                target="_blank"
+              {/* Logo */}
+              <Link
+                href={`/${locale}`}
+                className="inline-flex self-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                aria-label={t.brand.legal}
               >
-                <Icon name={s.icon} size={14} strokeWidth={1.75} />
-              </a>
-            ))}
-          </div>
+                <div className="bg-white rounded-lg px-3 py-2">
+                  <Image
+                    src="/logo.png"
+                    alt={t.brand.legal}
+                    width={900}
+                    height={600}
+                    className="h-10 w-auto"
+                  />
+                </div>
+              </Link>
 
+              {/* Signature */}
+              <p className="font-body text-[0.8rem] text-white/45 leading-relaxed max-w-[220px]">
+                {t.footer.signature}
+              </p>
+
+              {/* MODIFIED: Réseaux sociaux — masqués si href="#" ou vide */}
+              {socials.some((s) => s.href && !s.href.startsWith('#')) && (
+                <div className="flex gap-2">
+                  {socials.filter((s) => s.href && !s.href.startsWith('#')).map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      aria-label={s.label}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center
+                                 text-white/35 hover:text-white hover:border-white/40
+                                 transition-colors duration-200
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name={s.icon} size={13} strokeWidth={1.75} />
+                    </a>
+                  ))}
+                </div>
+              )}
+
+            </div>
+
+            {/* ── Colonne 2 : Navigation ─── */}
+            <div className="flex flex-col gap-4">
+              <p className="font-body text-[10px] tracking-[0.22em] uppercase font-semibold text-gold">
+                {t.footer.navigation}
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="font-body text-sm text-white/50 hover:text-white
+                                 transition-colors duration-200
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ── Colonne 3 : Services ─── */}
+            <div className="flex flex-col gap-4">
+              <p className="font-body text-[10px] tracking-[0.22em] uppercase font-semibold text-gold">
+                {t.footer.services}
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {services.map((s, i) => (
+                  <li key={s.id}>
+                    <Link
+                      href={`/${locale}/services/${s.id}`}
+                      className="font-body text-sm text-white/50 hover:text-white
+                                 transition-colors duration-200
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                    >
+                      {t.services.items[i].title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ── Colonne 4 : Contact ─── */}
+            <div className="flex flex-col gap-4">
+              <p className="font-body text-[10px] tracking-[0.22em] uppercase font-semibold text-gold">
+                {t.footer.contact}
+              </p>
+              <ul className="flex flex-col gap-3">
+
+                <li>
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    className="group flex items-start gap-2.5
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                  >
+                    <Icon
+                      name="mail" size={13} strokeWidth={1.5}
+                      className="mt-[3px] shrink-0 text-white/25 group-hover:text-gold transition-colors duration-200"
+                    />
+                    <span className="font-body text-sm text-white/50 group-hover:text-white transition-colors duration-200 break-all">
+                      {contactInfo.email}
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+                    className="group flex items-center gap-2.5
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                  >
+                    <Icon
+                      name="phone" size={13} strokeWidth={1.5}
+                      className="shrink-0 text-white/25 group-hover:text-gold transition-colors duration-200"
+                    />
+                    <span className="font-body text-sm text-white/50 group-hover:text-white transition-colors duration-200">
+                      {contactInfo.phone}
+                    </span>
+                  </a>
+                </li>
+
+                {contactInfo.addresses.map((addr) => (
+                  <li key={addr.id} className="flex items-start gap-2.5">
+                    <Icon
+                      name="mappin" size={13} strokeWidth={1.5}
+                      className="mt-[3px] shrink-0 text-white/25"
+                    />
+                    <span className="font-body text-sm text-white/50">
+                      {addr.street}<br />{addr.city}
+                    </span>
+                  </li>
+                ))}
+
+                <li>
+                  <a
+                    href={contactInfo.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2.5
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                  >
+                    <Icon
+                      name="globe" size={13} strokeWidth={1.5}
+                      className="shrink-0 text-white/25 group-hover:text-gold transition-colors duration-200"
+                    />
+                    <span className="font-body text-sm text-white/50 group-hover:text-white transition-colors duration-200">
+                      {contactInfo.website.replace('https://', '')}
+                    </span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
         </div>
 
-        {/* ══ DESKTOP — overlay absolu (masqué sur mobile) ══ */}
-        <div className="hidden lg:block absolute inset-0 z-[3]">
-
-          {/* Zone logo — haut-gauche */}
-          <div className="absolute top-5 left-7 flex flex-col gap-1.5">
-            <Link
-              href={`/${locale}`}
-              className="inline-flex group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-              aria-label={t.brand.legal}
-            >
-              <Image
-                src="/logo.png"
-                alt={t.brand.legal}
-                width={900}
-                height={600}
-                className="h-10 w-auto transition-opacity duration-200 group-hover:opacity-75"
-              />
-            </Link>
-            <p
-              className="font-body text-[10px] text-ink/30 tracking-[0.22em] uppercase select-none"
-              aria-hidden="true"
-            >
-              Partners Sàrl
-            </p>
+        {/* ── Barre de copyright ─────────────────────────── */}
+        {/* MODIFIED: Added privacy policy link */}
+        <div className="border-t border-white/[0.07]">
+          <div className="container-main py-5">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+              <p className="font-body text-xs text-white/25">
+                &copy; {year} {t.brand.legal}. {t.footer.rights}
+              </p>
+              <div className="flex items-center gap-4">
+                <Link
+                  href={`/${locale}/politique-de-confidentialite`}
+                  className="font-body text-xs text-white/25 hover:text-white/55 transition-colors duration-200
+                             focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
+                >
+                  {t.footer.privacy}
+                </Link>
+                <p className="font-body text-xs text-white/20">
+                  {t.footer.tagline}
+                </p>
+              </div>
+            </div>
           </div>
-
-          {/* Réseaux sociaux — bas-gauche (emplacement du QR code sur la carte) */}
-          <div className="absolute bottom-5 left-7 flex gap-2">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-black/[0.12] text-primary-500/50 hover:text-primary-500 hover:border-primary-500/30 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <Icon name={s.icon} size={13} strokeWidth={1.75} />
-              </a>
-            ))}
-          </div>
-
-          {/* Zone contacts — droite, centré verticalement */}
-          {/*   left: 38% → la zone commence après la diagonale du triangle gris */}
-          <div
-            className="absolute inset-y-0 right-0 flex flex-col justify-center items-end pr-10 gap-[5px]"
-            style={{ left: '38%' }}
-          >
-            <p className="font-body text-[1.1rem] font-semibold text-ink tracking-[0.12em] uppercase leading-none">
-              {contactInfo.contact}
-            </p>
-            <p className="font-body text-[0.72rem] font-light text-muted tracking-[0.15em]">
-              {contactInfo.role}
-            </p>
-
-            {/* Trait dégradé cramoisi — direction droite→gauche (right-aligned) */}
-            <div
-              className="w-full h-px mt-1 mb-1 bg-gradient-to-l from-gold/70 to-transparent"
-              aria-hidden="true"
-            />
-
-            <ContactRow icon="mail"    text={contactInfo.email}                            href={`mailto:${contactInfo.email}`} />
-            <ContactRow icon="phone"   text={contactInfo.phone}                            href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} />
-            {contactInfo.addresses.map((addr) => (
-              <ContactRow key={addr.id} icon="mappin" text={`${addr.street}, ${addr.city}`} />
-            ))}
-            <ContactRow icon="globe"   text={contactInfo.website.replace('https://', '')} href={contactInfo.website} external />
-          </div>
-
         </div>
-      </div>
 
-      {/* ── Trait cramoisi — bas (3 px, full-width) ─── */}
-      <div className="h-[3px] bg-gold" aria-hidden="true" />
-
-      {/* ── Copyright ─────────────────────────────────── */}
-      <div className="container-main py-5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-body text-xs text-black/30">
-            &copy; {year} {t.brand.legal}. {t.footer.rights}
-          </p>
-          <p className="font-body text-xs text-black/25">{t.footer.tagline}</p>
-        </div>
       </div>
 
     </footer>

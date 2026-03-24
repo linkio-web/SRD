@@ -274,13 +274,6 @@
         "bio": "Interlocutrice principale du cabinet, Cremilde coordonne l'ensemble des dossiers clients avec rigueur et disponibilité.",
         "initials": "CH",
         "quote": "Je m'engage personnellement à accompagner chaque client avec rigueur et une totale disponibilité."
-      },
-      {
-        "name": "À définir",
-        "role": "Comptabilité & Fiscalité",
-        "bio": "Spécialiste de la tenue des comptes et des déclarations fiscales pour les PME et indépendants romands.",
-        "initials": "–",
-        "quote": ""
       }
     ]
   },
@@ -316,6 +309,9 @@
       "successTitle": "Message envoyé !",
       "successMsg": "Merci pour votre message. Notre équipe vous contactera très prochainement.",
       "sendAnother": "Envoyer un autre message",
+      "errorTitle": "Envoi échoué",
+      "errorMsg": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement par téléphone.",
+      "retry": "Réessayer",
       "subjects": {
         "accounting": "Comptabilité & Fiscalité",
         "consulting": "Conseil en gestion",
@@ -380,7 +376,8 @@
     "contact": "Contact",
     "tagline": "Corcelles NE • Suisse",
     "rights": "Tous droits réservés.",
-    "signature": "Cabinet fiduciaire indépendant · Romandie"
+    "signature": "Cabinet fiduciaire indépendant · Romandie",
+    "privacy": "Politique de confidentialité"
   },
   "meta": {
     "homeTitle": "SRD Partners Sàrl – Fiduciaire & Conseil d'entreprise en Suisse romande",
@@ -401,6 +398,8 @@
     "aboutDescription": "Découvrez l'équipe et les valeurs de SRD Partners, votre cabinet fiduciaire de confiance en Romandie.",
     "contactTitle": "Contact – SRD Partners Sàrl",
     "contactDescription": "Contactez SRD Partners pour tous vos besoins fiduciaires. Notre équipe est disponible du lundi au vendredi.",
+    "privacyTitle": "Politique de confidentialité – SRD Partners Sàrl",
+    "privacyDescription": "Informations sur la protection de vos données personnelles conformément à la nLPD suisse.",
     "titleTemplate": "%s | SRD Partners"
   },
   "brand": {

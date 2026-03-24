@@ -57,7 +57,8 @@ export function StatCounter({ value, label }: StatCounterProps) {
 
   return (
     <div ref={ref} className="text-center py-6">
-      <p className="font-display text-[2rem] sm:text-5xl font-semibold text-navy leading-none mb-2">
+      {/* MODIFIED: text-navy → text-champagne pour les chiffres de stats */}
+      <p className="font-display text-[2rem] sm:text-5xl font-semibold text-champagne leading-none mb-2">
         {displayed}{suffix}
       </p>
       <p className="font-body text-[10px] sm:text-xs text-muted tracking-wide">{label}</p>

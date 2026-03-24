@@ -9,12 +9,12 @@
   --slant-h: 4rem;   /* hauteur du biseau de section */
 
   /* Tokens RGB — permettent rgba() dans les gradients sans hardcoder les valeurs */
-  --primary-950-rgb: 14, 8, 22;    /* #0E0816 */
-  --primary-900-rgb: 21, 12, 33;   /* #150C21 */
-  --primary-500-rgb: 48, 27, 74;   /* #301B4A — violet logo */
-  --gold-rgb:        151, 20, 79;  /* #97144F — crimson accent */
-  --cta-rgb: 138, 37, 72;          /* rgb(138, 37, 72) */
-  --cta-hover-rgb: 118, 31, 62;    /* darker hover */
+  --primary-950-rgb: 19, 9, 24;    /* #130918 */
+  --primary-900-rgb: 32, 15, 38;   /* #200F26 */
+  --primary-500-rgb: 101, 54, 109; /* #65366D — violet logo officiel */
+  --gold-rgb:        128, 15, 51;  /* #800F33 — bordeaux accent */
+  --cta-rgb: 128, 15, 51;          /* #800F33 */
+  --cta-hover-rgb: 107, 12, 43;    /* #6B0C2B — darker hover */
 
   /* ── Couleur minérale — lavande grise premium ── */
   --color-mineral:     #D2C9D6;
@@ -194,14 +194,27 @@
 }
 
 /* ─────────────────────────────────────────
+   Grille décorative — fond hero et pages sombres
+   Appliqué sur un div aria-hidden avec opacity faible
+───────────────────────────────────────── */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+  background-size: 80px 80px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────
    Dégradé de fond du Hero
    Violet nuit profond + lueur crimson subtile
 ───────────────────────────────────────── */
 .hero-gradient {
   background:
-    radial-gradient(ellipse at 70% 25%, rgb(151, 20, 79, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(48, 27, 74, 0.50) 0%, transparent 50%),
-    linear-gradient(135deg, #301B4A 0%, #1C102B 50%, #301B4A 100%);
+    radial-gradient(ellipse at 70% 25%, rgb(128, 15, 51, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(70, 24, 78, 0.50) 0%, transparent 50%),
+    linear-gradient(135deg, #46184E 0%, #301236 50%, #46184E 100%);
 }
 
 /* Texture grain subtile pour le hero */
@@ -330,8 +343,19 @@
   background-image:
     radial-gradient(ellipse 70% 50% at 22% 35%, rgba(255, 255, 255, 0.040) 0%, transparent 55%),
     radial-gradient(ellipse 55% 40% at 80% 60%, rgba(255, 255, 255, 0.025) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 60% at 50% 95%, rgba(151, 20, 79, 0.080)  0%, transparent 45%);
+    radial-gradient(ellipse 40% 60% at 50% 95%, rgba(128, 15, 51, 0.080)  0%, transparent 45%);
   mix-blend-mode: soft-light;
+}
+
+/* ─────────────────────────────────────────
+   Texture grain navy — appliquée via Section.tsx (navy-grain)
+   Utilisée sur les <Section bg="navy"> via un div aria-hidden interne.
+   MODIFIED: Grain texture for navy sections (component-scoped)
+───────────────────────────────────────── */
+.navy-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 /* ─────────────────────────────────────────
