@@ -1,8 +1,7 @@
 import type { NextConfig } from 'next'
 
-// MODIFIED: Add Unsplash remote patterns for hero image
+
 const nextConfig: NextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
   images: {
     remotePatterns: [

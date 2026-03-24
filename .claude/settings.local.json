@@ -18,7 +18,14 @@
       "Bash(echo no root images:*)",
       "Bash(find /c/work/fiducaire-rayan/src/app/[locale]/services -type f -name \"*.tsx\")",
       "Bash(npm uninstall:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(find /c/work/fiducaire-rayan/.open-next -type f -name *.js -o -name *.json)",
+      "Bash(find /c/work/fiducaire-rayan/.next/server -type f -name *.js -o -name *.json)",
+      "Bash(ls:*)",
+      "Bash(find /c/work/fiducaire-rayan -maxdepth 2 -name *cloudflare* -o -name *build* -o -name *deploy*)",
+      "Bash(cat /c/work/fiducaire-rayan/.next/server/app/[locale]/page.js)",
+      "Bash(cat /c/work/fiducaire-rayan/src/app/[locale]/services/page.tsx)",
+      "Bash(cat /c/work/fiducaire-rayan/src/app/[locale]/services/comptabilite-fiscalite/page.tsx)"
     ]
   }
 }
