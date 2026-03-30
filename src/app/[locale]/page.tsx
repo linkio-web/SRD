@@ -155,17 +155,17 @@ export default async function HomePage({
         <div className="relative z-10 container-main py-20 sm:py-28">
 
           {/* En-tête */}
-          <div className="flex items-end justify-between pb-8 sm:pb-10 border-b border-white/[0.08]">
+          <div className="flex items-end justify-between pb-8 sm:pb-10 border-b border-white/[0.14]">
             <div>
-              <span className="section-label text-gold/60">{t.services.overline}</span>
+              <span className="section-label text-gold">{t.services.overline}</span>
               <h2 className="font-display text-3xl sm:text-4xl font-light text-white mt-1 leading-tight">
                 {t.services.titleMain}{' '}
-                <span className="italic text-white/60">{t.services.titleAccent}</span>
+                <span className="italic text-white/75">{t.services.titleAccent}</span>
               </h2>
             </div>
             <Link
               href={`/${validLocale}/services`}
-              className="hidden sm:flex items-center gap-1.5 font-body text-xs text-white/30 hover:text-white/70 transition-colors duration-200 shrink-0 ml-8 pb-1"
+              className="hidden sm:flex items-center gap-1.5 font-body text-xs text-white/50 hover:text-white transition-colors duration-200 shrink-0 ml-8 pb-1"
             >
               {t.services.cta}
               <Icon name="arrow" size={13} strokeWidth={2} />
@@ -178,36 +178,27 @@ export default async function HomePage({
               <Link
                 key={s.id}
                 href={`/${validLocale}/services/${s.id}`}
-                className="group flex items-center justify-between py-6 sm:py-8 border-b border-white/[0.05] hover:border-white/[0.12] transition-colors duration-300"
+                className="group flex items-center justify-between py-6 sm:py-8 border-b border-white/[0.10] hover:border-white/[0.22] transition-colors duration-300"
               >
                 <div className="flex items-center gap-5 sm:gap-10">
                   <span
-                    className="font-body text-[9px] tracking-[0.18em] text-white/15 font-medium w-5 shrink-0 select-none group-hover:text-white/35 transition-colors duration-300"
+                    className="font-body text-[9px] tracking-[0.18em] text-white/35 font-medium w-5 shrink-0 select-none group-hover:text-gold transition-colors duration-300"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-light text-white/85 group-hover:text-white transition-colors duration-300 leading-tight">
+                    <p className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-light text-white group-hover:text-white transition-colors duration-300 leading-tight">
                       {t.services.items[i].title}
                     </p>
-                    <p className="font-body text-xs text-white/25 mt-1 group-hover:text-white/45 transition-colors duration-300">
+                    <p className="font-body text-xs text-white/50 mt-1 group-hover:text-white/70 transition-colors duration-300">
                       {t.services.items[i].shortDesc}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 shrink-0 ml-4">
-                  <div className="hidden sm:block relative w-20 h-13 lg:w-24 lg:h-[3.75rem] rounded-lg overflow-hidden opacity-35 group-hover:opacity-65 transition-opacity duration-300">
-                    <Image
-                      src={`/images/services/${s.id}.png`}
-                      alt=""
-                      fill
-                      sizes="96px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="w-9 h-9 rounded-full border border-white/[0.10] flex items-center justify-center text-white/20 group-hover:border-white/30 group-hover:text-white/70 transition-all duration-300">
+                <div className="shrink-0 ml-4">
+                  <div className="w-9 h-9 rounded-full border border-white/[0.18] flex items-center justify-center text-white/40 group-hover:border-white/50 group-hover:text-white transition-all duration-300">
                     <Icon name="arrow" size={14} strokeWidth={2} />
                   </div>
                 </div>
