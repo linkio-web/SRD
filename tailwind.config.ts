@@ -20,7 +20,7 @@ const config: Config = {
 
         // ── Violet SRD — fond sombre, hero, footer
         navy: {
-          DEFAULT: '#2D1640',
+          DEFAULT: '#301B4A',
           dark:    '#1E0D2B',
           light:   '#3E2056',
         },

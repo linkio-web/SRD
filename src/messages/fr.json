@@ -24,7 +24,10 @@
     "overline": "Fiduciaire & Conseil d'entreprise",
     "baseline": "Votre partenaire de confiance pour la gestion, la fiscalité et la croissance de votre entreprise en Romandie.",
     "ctaSecondary": "Découvrir nos services",
-    "scroll": ""
+    "scroll": "",
+    "stat1Label": "Années d'expérience",
+    "stat2Label": "Entreprises accompagnées",
+    "statTagline": "Des conseils éprouvés pour les PME romandes."
   },
   "features": {
     "overline": "Pourquoi nous choisir",

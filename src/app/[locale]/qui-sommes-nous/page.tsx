@@ -9,6 +9,7 @@ import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
 import { Icon } from '@/lib/icons'
 import { StatCounter } from '@/components/StatCounter'
+import { ScrollReveal } from '@/components/ScrollReveal'
 
 export async function generateMetadata({
   params,
@@ -96,6 +97,7 @@ export default async function QuiSommesNousPage({
         </div>
 
         <div className="max-w-xl mx-auto">
+          <ScrollReveal stagger={0.14}>
           {t.about.values.map((v, i) => (
             <div key={v.title} className="pb-10 sm:pb-12 last:pb-0">
 
@@ -115,6 +117,7 @@ export default async function QuiSommesNousPage({
 
             </div>
           ))}
+          </ScrollReveal>
         </div>
       </Section>
 

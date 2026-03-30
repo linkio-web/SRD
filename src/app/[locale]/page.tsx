@@ -9,8 +9,8 @@ import { ProcessSection } from '@/components/ProcessSection'
 import { FaqSection } from '@/components/FaqSection'
 import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
-import { HomeParallax } from '@/components/HomeParallax'
 import { ScrollReveal } from '@/components/ScrollReveal'
+import { StatCounter } from '@/components/StatCounter'
 import { Icon } from '@/lib/icons'
 
 export async function generateMetadata({
@@ -45,83 +45,93 @@ export default async function HomePage({
 
   return (
     <>
-      <HomeParallax />
-
       {/* ── HERO ────────────────────────────────────────────────── */}
       <section
         data-section="hero"
-        className="relative min-h-[92vh] flex items-center overflow-hidden bg-navy-dark"
+        className="relative flex min-h-screen overflow-hidden pt-16 sm:pt-[4.5rem]"
       >
-        {/* Image de fond */}
-        <div
-          data-parallax="hero-img"
-          className="absolute inset-0 pointer-events-none select-none"
-          aria-hidden="true"
-        >
+        {/* ── GAUCHE ── */}
+        <div className="flex flex-1 flex-col items-center justify-center bg-cream px-8 sm:px-16 py-16 gap-8 text-center">
+
+          {/* Overline */}
+          <p className="section-label text-gold mb-5">{t.hero.overline}</p>
+
+          {/* Titre */}
+          <PremiumHeading as="h1" size="hero" color="dark" className="mb-6">
+            <span className="block">SRD</span>
+            <Accent><span className="block">Partners</span></Accent>
+          </PremiumHeading>
+
+          {/* Sous-titre */}
+          <p className="font-body text-muted text-base sm:text-lg max-w-md leading-relaxed mb-9">
+            {t.hero.baseline}
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-auto">
+            <Link href={`/${validLocale}/contact`} className="btn-primary">
+              {t.nav.cta}
+              <Icon name="arrow" size={15} strokeWidth={2} />
+            </Link>
+            <Link href={`/${validLocale}/services`} className="btn-outline">
+              {t.hero.ctaSecondary}
+            </Link>
+          </div>
+
+          {/* Tags services */}
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 pt-6 border-t border-primary-500/10 mt-auto w-full">
+            {t.services.items.map((s) => (
+              <span key={s.title} className="text-[11px] tracking-[0.14em] text-muted font-body">
+                <span className="text-gold mr-2" aria-hidden="true">—</span>{s.title}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* ── DROITE ── */}
+        <div className="relative hidden lg:flex w-[420px] flex-col justify-end p-12 overflow-hidden">
+
+          {/* Photo de fond */}
           <Image
             src="/images/dd9685_afdddc3055804f4a8b4851f53718c39d~mv2.png"
             alt=""
             fill
             priority
-            sizes="100vw"
+            sizes="420px"
             className="object-cover object-center"
+            aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-navy-dark/60" />
-        </div>
+          {/* Overlay navy */}
+          <div className="absolute inset-0 bg-navy/80" aria-hidden="true" />
 
-        {/* Overlay directionnel */}
-        <div className="hero-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
-        <div className="hero-bottom-fade absolute bottom-0 inset-x-0 h-40 pointer-events-none" aria-hidden="true" />
+          {/* Cercles décoratifs */}
+          <div className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full border border-gold/20 pointer-events-none" aria-hidden="true" />
+          <div className="absolute -top-10 -right-10 w-[200px] h-[200px] rounded-full border border-gold/10 pointer-events-none" aria-hidden="true" />
 
-        {/* Contenu */}
-        <div className="relative z-10 container-main w-full py-32 lg:py-0 min-h-[92vh] flex items-center">
-          <div className="w-full lg:max-w-[52%] animate-fade-up">
+          {/* Contenu relatif au-dessus de l'overlay */}
+          <div className="relative z-10 flex flex-col justify-end">
+            {/* Stat 1 */}
+            <StatCounter value="15+" label={t.hero.stat1Label} duration={1500} color="light" />
 
-            <p className="section-label text-gold/75 mb-5">{t.hero.overline}</p>
+            <div className="w-8 h-px bg-gold/60 my-7" aria-hidden="true" />
 
-            <PremiumHeading as="h1" size="hero" color="light" className="mb-6">
-              <span className="block">SRD</span>
-              <Accent><span className="block">Partners</span></Accent>
-            </PremiumHeading>
+            {/* Stat 2 */}
+            <StatCounter value="400+" label={t.hero.stat2Label} duration={2000} color="light" />
 
-            <p className="font-body text-white/55 text-base sm:text-lg max-w-md leading-relaxed mb-9 animate-fade-up delay-200">
-              {t.hero.baseline}
+            <div className="w-8 h-px bg-gold/60 my-7" aria-hidden="true" />
+
+            {/* Tagline */}
+            <p className="font-body text-[13px] text-cream/60 leading-relaxed max-w-[240px]">
+              {t.hero.statTagline}
             </p>
-
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 animate-fade-up delay-300">
-              <Link href={`/${validLocale}/contact`} className="btn-primary w-full sm:w-auto justify-center">
-                {t.nav.cta}
-                <Icon name="arrow" size={15} strokeWidth={2} />
-              </Link>
-              <Link href={`/${validLocale}/services`} className="btn-outline-dark w-full sm:w-auto justify-center">
-                {t.hero.ctaSecondary}
-              </Link>
-            </div>
-
           </div>
-        </div>
-
-        {/* Indicateur de scroll */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10" aria-hidden="true">
-          <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent" />
         </div>
       </section>
 
       {/* ── ENGAGEMENTS ─────────────────────────────────────────── */}
       <section className="relative bg-cream overflow-hidden">
 
-        {/* Biseau hero → cream */}
-        <svg
-          viewBox="0 0 1440 56"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          className="absolute top-0 left-0 w-full pointer-events-none"
-          style={{ height: 'var(--slant-h)' }}
-        >
-          <polygon points="0,0 1440,0 0,56" fill={BG.navy} />
-        </svg>
-
-        <div className="relative z-10 container-main pt-28 sm:pt-36 pb-20 sm:pb-28">
+        <div className="relative z-10 container-main pt-20 sm:pt-28 pb-20 sm:pb-28">
 
           <div className="max-w-xl mb-14 sm:mb-18">
             <h2 className="font-display text-3xl sm:text-[2.4rem] font-light text-navy leading-[1.2] tracking-[-0.015em]">
@@ -173,7 +183,7 @@ export default async function HomePage({
           </div>
 
           {/* Liste services */}
-          <div>
+          <ScrollReveal stagger={0.08}>
             {services.map((s, i) => (
               <Link
                 key={s.id}
@@ -204,7 +214,7 @@ export default async function HomePage({
                 </div>
               </Link>
             ))}
-          </div>
+          </ScrollReveal>
 
           {/* CTA mobile */}
           <div className="mt-8 sm:hidden">
@@ -248,7 +258,7 @@ export default async function HomePage({
         </div>
 
         {/* Citations secondaires */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+        <ScrollReveal stagger={0.12} className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
           {t.testimonials.items.slice(1).map((item) => (
             <figure key={item.author} className="flex flex-col gap-4">
               <blockquote>
@@ -270,7 +280,7 @@ export default async function HomePage({
               </figcaption>
             </figure>
           ))}
-        </div>
+        </ScrollReveal>
       </Section>
 
       {/* ── PROCESSUS ───────────────────────────────────────────── */}

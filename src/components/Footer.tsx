@@ -37,11 +37,12 @@ export function Footer({ locale, t }: FooterProps) {
             >
               <div className="bg-white rounded-lg px-3 py-2">
                 <Image
-                  src="/logo.png"
+                  src="/NewLogoDR.svg"
                   alt={t.brand.legal}
-                  width={900}
-                  height={600}
+                  width={1790}
+                  height={830}
                   className="h-9 w-auto"
+                  unoptimized
                 />
               </div>
             </Link>

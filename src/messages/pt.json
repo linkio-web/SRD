@@ -24,7 +24,10 @@
     "overline": "Fiduciária & Consultoria Empresarial",
     "baseline": "O seu parceiro de confiança para gestão, fiscalidade e crescimento do seu negócio na Suíça francófona.",
     "ctaSecondary": "Descobrir os nossos serviços",
-    "scroll": ""
+    "scroll": "",
+    "stat1Label": "Anos de experiência",
+    "stat2Label": "Empresas acompanhadas",
+    "statTagline": "Consultoria comprovada para PME na Suíça francófona."
   },
   "features": {
     "overline": "Porquê escolher-nos",

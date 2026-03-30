@@ -3,15 +3,17 @@
 import { useEffect, useRef, useState } from 'react'
 
 interface StatCounterProps {
-  value: string      // e.g. "15+", "200+", "4"
+  value: string           // e.g. "15+", "400+"
   label: string
+  duration?: number       // animation duration in ms (default 1400)
+  color?: 'dark' | 'light' // dark = on cream/stone bg, light = on navy bg (default: dark)
 }
 
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3)
 }
 
-export function StatCounter({ value, label }: StatCounterProps) {
+export function StatCounter({ value, label, duration = 1400, color = 'dark' }: StatCounterProps) {
   const match  = value.match(/^(\d+)(\D*)$/)
   const target = match ? parseInt(match[1], 10) : 0
   const suffix = match ? match[2] : ''
@@ -40,7 +42,6 @@ export function StatCounter({ value, label }: StatCounterProps) {
   useEffect(() => {
     if (!started) return
 
-    const duration = 1400 // ms
     const startTime = performance.now()
 
     let raf: number
@@ -53,15 +54,14 @@ export function StatCounter({ value, label }: StatCounterProps) {
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [started, target])
+  }, [started, target, duration])
 
   return (
-    <div ref={ref} className="text-center py-6">
-      {/* MODIFIED: text-navy → text-champagne pour les chiffres de stats */}
-      <p className="font-display text-[2rem] sm:text-5xl font-semibold text-champagne leading-none mb-2">
+    <div ref={ref} className="py-6">
+      <p className={`font-display text-[2rem] sm:text-5xl font-light leading-none mb-2 ${color === 'light' ? 'text-cream' : 'text-navy'}`}>
         {displayed}{suffix}
       </p>
-      <p className="font-body text-[10px] sm:text-xs text-muted tracking-wide">{label}</p>
+      <p className={`font-body text-[10px] sm:text-xs tracking-wide ${color === 'light' ? 'text-cream/60' : 'text-muted'}`}>{label}</p>
     </div>
   )
 }

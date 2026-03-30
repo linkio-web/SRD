@@ -97,12 +97,13 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
             aria-label={brandLegal}
           >
             <Image
-              src="/logo.png"
+              src="/NewLogoDR.svg"
               alt={brandLegal}
-              width={900}
-              height={600}
+              width={1790}
+              height={830}
               className="h-8 sm:h-9 w-auto"
               priority
+              unoptimized
             />
           </Link>
 

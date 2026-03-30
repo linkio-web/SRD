@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { services, contactInfo, BG } from '@/lib/siteData'
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { Section } from '@/components/Section'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
 import { ContactForm } from '@/components/ContactForm'
@@ -34,95 +34,54 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────── */}
-      <section className="relative bg-navy overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
+      <section className="relative bg-navy overflow-hidden min-h-[60vh] flex items-center">
 
-
-        <div className="container-main relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-2xl">
-
-            {/* Inline breadcrumb — white variant */}
-            <nav aria-label="Fil d'Ariane" className="mb-10">
-              <ol className="flex items-center flex-wrap gap-x-2 gap-y-1">
-                <li>
-                  <Link
-                    href={`/${locale}`}
-                    className="font-body text-xs text-white/35 hover:text-white/65 transition-colors"
-                  >
-                    {t.nav.home}
-                  </Link>
-                </li>
-                <li><span className="text-white/20 text-xs mx-1">›</span></li>
-                <li>
-                  <Link
-                    href={`/${locale}/services`}
-                    className="font-body text-xs text-white/35 hover:text-white/65 transition-colors"
-                  >
-                    {t.nav.services}
-                  </Link>
-                </li>
-                <li><span className="text-white/20 text-xs mx-1">›</span></li>
-                <li>
-                  <span className="font-body text-xs text-white/60" aria-current="page">
-                    {service.title}
-                  </span>
-                </li>
-              </ol>
-            </nav>
-
-            <span className="section-label text-gold/55">{t.services.pageOverline}</span>
-
-            <PremiumHeading as="h1" size="page" color="light" className="mt-2">
-              {service.heroTitle1} <Accent>{service.heroTitle2}</Accent>
-            </PremiumHeading>
-
-            <div className="w-8 h-px bg-white/18 my-6" aria-hidden="true" />
-
-            <p className="font-body text-white/58 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
-              {service.heroIntro}
-            </p>
-
-            <Link href={`/${locale}/contact`} className="btn-primary">
-              {t.cta.button}
-              <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
-            </Link>
-
-          </div>
-
-            {/* Service illustration */}
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden bg-white/5">
-                <Image
-                  src={`/images/services/${serviceId}.png`}
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 0px, 448px"
-                  className="object-contain p-4"
-                  priority
-                />
-              </div>
-            </div>
-
-          </div>
+        {/* Décoration géométrique */}
+        <div className="absolute right-0 top-0 bottom-0 w-[480px] pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute top-1/2 right-[-120px] -translate-y-1/2 w-[420px] h-[420px] rounded-full border border-gold/15" />
+          <div className="absolute top-1/2 right-[-60px] -translate-y-1/2 w-[280px] h-[280px] rounded-full border border-gold/10" />
+          <div className="absolute top-[30%] right-[120px] w-[12px] h-[12px] rounded-full bg-gold/30" />
+          <div className="absolute top-[20%] right-[200px] w-px h-[120px] bg-gold/20" />
         </div>
+
+        {/* Contenu */}
+        <div className="relative z-10 container-main py-24 sm:py-32 lg:max-w-[55%]">
+
+          <p className="section-label text-gold mb-6">{t.services.pageOverline}</p>
+
+          <PremiumHeading as="h1" size="hero" color="light" className="mb-8">
+            <span className="block">{service.heroTitle1}</span>
+            <Accent><span className="block">{service.heroTitle2}</span></Accent>
+          </PremiumHeading>
+
+          <p className="font-body text-white/55 text-base sm:text-lg max-w-lg leading-relaxed mb-10">
+            {service.heroIntro}
+          </p>
+
+          <Link href={`/${locale}/contact`} className="btn-primary">
+            {t.cta.button}
+            <Icon name="arrow" size={16} strokeWidth={2} aria-hidden="true" />
+          </Link>
+
+        </div>
+
+        {/* Biseau bas */}
+        <svg
+          viewBox="0 0 1440 56"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 w-full pointer-events-none"
+          style={{ height: 'var(--slant-h)' }}
+        >
+          <polygon points="0,56 1440,0 1440,56" fill={BG.cream} />
+        </svg>
+
       </section>
 
       {/* ── Main content — two-column editorial ───────────── */}
       <section className="relative bg-cream overflow-hidden">
 
-        {/* SVG slant — upper-right triangle fills with navy from above */}
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 80"
-          preserveAspectRatio="none"
-          className="absolute top-0 left-0 w-full"
-          style={{ height: 'var(--slant-h)' }}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <polygon points="0,0 1440,0 1440,80" fill={BG.navy} />
-        </svg>
-
-        <div className="container-main pt-32 sm:pt-40 pb-24 sm:pb-32">
+        <div className="container-main pt-20 sm:pt-28 pb-24 sm:pb-32">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_288px] gap-16 items-start">
 
             {/* ── Left column ──────────────────────────────── */}
@@ -133,7 +92,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                 {t.services.chargeTitle}
               </h2>
 
-              <div>
+              <ScrollReveal stagger={0.1}>
                 {service.bullets.map((bullet, i) => {
                   const { title, desc } = parseLine(bullet)
                   return (
@@ -156,7 +115,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                     </div>
                   )
                 })}
-              </div>
+              </ScrollReveal>
 
               {/* Separator between A and B */}
               <div className="flex items-center gap-4 my-12" aria-hidden="true">
@@ -170,7 +129,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                 {t.services.forWhoTitle}
               </h2>
 
-              <div>
+              <ScrollReveal stagger={0.1}>
                 {service.forWho.map((item, i) => {
                   const { title, desc } = parseLine(item)
                   return (
@@ -190,7 +149,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                     </div>
                   )
                 })}
-              </div>
+              </ScrollReveal>
 
             </div>
 

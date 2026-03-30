@@ -5,6 +5,7 @@ import { services, BG } from '@/lib/siteData'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
 import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { Icon } from '@/lib/icons'
 
 function parseLine(text: string) {
@@ -83,6 +84,7 @@ export default async function ServicesPage({
 
         <div className="container-main pt-28 sm:pt-36 pb-20 sm:pb-28">
 
+          <ScrollReveal stagger={0.12}>
           {services.map((s, i) => (
             <article
               key={s.id}
@@ -141,6 +143,7 @@ export default async function ServicesPage({
               </div>
             </article>
           ))}
+          </ScrollReveal>
 
         </div>
       </section>
@@ -148,7 +151,7 @@ export default async function ServicesPage({
       {/* ── Promesse ───────────────────────────────────── */}
       <section className="bg-stone py-20 sm:py-28">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <ScrollReveal stagger={0.15} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             <div>
               <span className="section-label">{t.services.promiseOverline}</span>
@@ -173,7 +176,7 @@ export default async function ServicesPage({
               </div>
             </div>
 
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

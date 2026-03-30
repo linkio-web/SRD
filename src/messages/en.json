@@ -24,7 +24,10 @@
     "overline": "Fiduciary & Business Advisory",
     "baseline": "Your trusted partner for management, taxation and the growth of your business in French-speaking Switzerland.",
     "ctaSecondary": "Discover our services",
-    "scroll": ""
+    "scroll": "",
+    "stat1Label": "Years of experience",
+    "stat2Label": "Companies supported",
+    "statTagline": "Proven advisory for SMEs in French-speaking Switzerland."
   },
   "features": {
     "overline": "Why choose us",
