@@ -36,9 +36,6 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="relative bg-navy overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
 
-        {/* Decorative layers */}
-        <div className="navy-grain absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
-        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.03]" aria-hidden="true" />
 
         <div className="container-main relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -73,13 +70,13 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
               </ol>
             </nav>
 
-            <span className="section-label text-champagne/70">{t.services.pageOverline}</span>
+            <span className="section-label text-gold/55">{t.services.pageOverline}</span>
 
             <PremiumHeading as="h1" size="page" color="light" className="mt-2">
               {service.heroTitle1} <Accent>{service.heroTitle2}</Accent>
             </PremiumHeading>
 
-            <div className="w-10 h-px bg-champagne/30 my-6" aria-hidden="true" />
+            <div className="w-8 h-px bg-white/18 my-6" aria-hidden="true" />
 
             <p className="font-body text-white/58 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
               {service.heroIntro}
@@ -145,7 +142,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                       className="flex items-start gap-6 py-7 border-b border-primary-100/40 last:border-b-0"
                     >
                       <span
-                        className="font-body text-[10px] font-semibold tracking-[0.14em] text-champagne w-5 shrink-0 mt-0.5 select-none"
+                        className="font-body text-[10px] font-semibold tracking-[0.14em] text-gold/60 w-5 shrink-0 mt-0.5 select-none"
                         aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, '0')}
@@ -181,7 +178,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                       key={i}
                       className="flex items-start gap-3 py-4 border-b border-primary-100/25 last:border-b-0"
                     >
-                      <span className="text-champagne text-xs mt-1 shrink-0 select-none" aria-hidden="true">
+                      <span className="text-gold/60 text-xs mt-1 shrink-0 select-none" aria-hidden="true">
                         →
                       </span>
                       <div>
@@ -203,7 +200,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
 
                 {/* Top accent strip */}
                 <div
-                  className="h-1 w-full bg-gradient-to-r from-champagne/60 via-champagne to-champagne/60"
+                  className="h-px w-full bg-ink/[0.05]"
                   aria-hidden="true"
                 />
 

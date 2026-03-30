@@ -1,5 +1,3 @@
-// MODIFIED: Refonte éditoriale — suppression des grilles de cards répétitives.
-// Features → liste réglée | Services → répertoire directory style index
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -47,20 +45,14 @@ export default async function HomePage({
 
   return (
     <>
-      {/* Client-side parallax effects — no DOM output */}
       <HomeParallax />
 
-      {/* ─────────────────────────────────────────────────────────────────────
-          HERO
-          Image à remplacer : placez votre photo dans /public/images/hero-building.jpg
-          puis changez le src ci-dessous en "/images/hero-building.jpg"
-      ───────────────────────────────────────────────────────────────────── */}
+      {/* ── HERO ────────────────────────────────────────────────── */}
       <section
         data-section="hero"
-        className="relative min-h-[90vh] md:min-h-screen flex items-center overflow-hidden bg-primary-950 hero-grain"
+        className="relative min-h-[92vh] flex items-center overflow-hidden bg-navy-dark"
       >
-        <div className="hero-gradient absolute inset-0 pointer-events-none" aria-hidden="true" />
-
+        {/* Image de fond */}
         <div
           data-parallax="hero-img"
           className="absolute inset-0 pointer-events-none select-none"
@@ -74,36 +66,32 @@ export default async function HomePage({
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-navy-dark/60" />
         </div>
 
+        {/* Overlay directionnel */}
         <div className="hero-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
-        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" />
-        <div className="hero-mineral absolute inset-0 pointer-events-none" aria-hidden="true" />
-        <div className="hero-bottom-fade absolute bottom-0 inset-x-0 h-48 pointer-events-none" aria-hidden="true" />
+        <div className="hero-bottom-fade absolute bottom-0 inset-x-0 h-40 pointer-events-none" aria-hidden="true" />
 
-        <div className="relative z-10 container-main w-full py-36 lg:py-0 min-h-[90vh] md:min-h-screen flex items-center">
-          <div className="w-full lg:max-w-[56%] text-center lg:text-left animate-fade-up">
+        {/* Contenu */}
+        <div className="relative z-10 container-main w-full py-32 lg:py-0 min-h-[92vh] flex items-center">
+          <div className="w-full lg:max-w-[52%] animate-fade-up">
 
-            <p className="section-label text-gold/80 mb-6">{t.hero.overline}</p>
+            <p className="section-label text-gold/75 mb-5">{t.hero.overline}</p>
 
-            <PremiumHeading as="h1" size="hero" color="light" className="mb-5">
+            <PremiumHeading as="h1" size="hero" color="light" className="mb-6">
               <span className="block">SRD</span>
               <Accent><span className="block">Partners</span></Accent>
             </PremiumHeading>
 
-            <div className="flex justify-center lg:justify-start mb-8">
-              <div className="w-16 h-px bg-gold/50" />
-            </div>
-
-            <p className="font-body text-white/60 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10 animate-fade-up delay-200">
+            <p className="font-body text-white/55 text-base sm:text-lg max-w-md leading-relaxed mb-9 animate-fade-up delay-200">
               {t.hero.baseline}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up delay-300">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 animate-fade-up delay-300">
               <Link href={`/${validLocale}/contact`} className="btn-primary w-full sm:w-auto justify-center">
                 {t.nav.cta}
-                <Icon name="arrow" size={16} strokeWidth={2} />
+                <Icon name="arrow" size={15} strokeWidth={2} />
               </Link>
               <Link href={`/${validLocale}/services`} className="btn-outline-dark w-full sm:w-auto justify-center">
                 {t.hero.ctaSecondary}
@@ -113,146 +101,113 @@ export default async function HomePage({
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-up delay-500 z-10" aria-hidden="true">
-          <div className="w-px h-10 bg-gradient-to-b from-white/25 to-transparent" />
+        {/* Indicateur de scroll */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10" aria-hidden="true">
+          <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent" />
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────────────
-          ENGAGEMENT — liste réglée éditoriale (remplace les 3 cards)
-          Transition hero navy → cream via biseau SVG
-      ───────────────────────────────────────────────────────────────────── */}
+      {/* ── ENGAGEMENTS ─────────────────────────────────────────── */}
       <section className="relative bg-cream overflow-hidden">
 
-        {/* Biseau de transition hero → cream */}
+        {/* Biseau hero → cream */}
         <svg
-          viewBox="0 0 1440 80"
+          viewBox="0 0 1440 56"
           preserveAspectRatio="none"
           aria-hidden="true"
-          className="absolute top-0 left-0 w-full pointer-events-none z-0"
+          className="absolute top-0 left-0 w-full pointer-events-none"
           style={{ height: 'var(--slant-h)' }}
         >
-          <polygon points="0,0 1440,0 0,80" fill={BG.navy} />
+          <polygon points="0,0 1440,0 0,56" fill={BG.navy} />
         </svg>
 
-        <div className="relative z-10 container-main pt-32 sm:pt-40 pb-20 sm:pb-24">
+        <div className="relative z-10 container-main pt-28 sm:pt-36 pb-20 sm:pb-28">
 
-          {/* Titre éditorial centré */}
-          <div className="max-w-2xl mx-auto text-center mb-16 sm:mb-20">
-            <h2 className="font-display text-3xl sm:text-[2.6rem] lg:text-5xl font-light text-navy leading-[1.2] tracking-[-0.01em]">
+          <div className="max-w-xl mb-14 sm:mb-18">
+            <h2 className="font-display text-3xl sm:text-[2.4rem] font-light text-navy leading-[1.2] tracking-[-0.015em]">
               {t.features.titleMain}{' '}
-              <span className="italic text-champagne">{t.features.titleAccent}</span>
+              <span className="italic text-gold/80">{t.features.titleAccent}</span>
             </h2>
           </div>
 
-          {/* Engagements — timeline verticale avec stagger */}
-          <div className="relative">
-
-            {/* Trait vertical continu */}
-            <div
-              className="hidden sm:block absolute left-[0.55rem] top-2 bottom-2 w-px bg-black/[0.06]"
-              aria-hidden="true"
-            />
-
-            <ScrollReveal stagger={0.18} distance={20} duration={0.9}>
-              {t.features.items.map((item, i) => (
-                <div
-                  key={item.title}
-                  className="relative sm:pl-10 py-10 sm:py-12"
-                >
-                  {/* Dot sur le trait */}
-                  <div
-                    className="hidden sm:block absolute left-[0.2rem] top-[3.35rem] w-[0.6rem] h-[0.6rem] rounded-full border border-black/[0.12] bg-cream"
-                    aria-hidden="true"
-                  />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[16rem_1fr] gap-x-12 lg:gap-x-16 gap-y-2 items-start sm:items-center">
-                    <h3 className="font-display text-xl sm:text-2xl font-light text-navy leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-sm text-muted leading-[1.80]">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Séparateur léger sauf dernier */}
-                  {i < t.features.items.length - 1 && (
-                    <div className="absolute bottom-0 left-0 right-0 h-px bg-black/[0.04]" aria-hidden="true" />
-                  )}
-                </div>
-              ))}
-            </ScrollReveal>
-
-          </div>
+          <ScrollReveal stagger={0.14} distance={16} duration={0.75}>
+            {t.features.items.map((item, i) => (
+              <div
+                key={item.title}
+                className="grid grid-cols-1 sm:grid-cols-[14rem_1fr] gap-x-12 lg:gap-x-20 gap-y-2 py-8 sm:py-10 border-b border-ink/[0.06] last:border-b-0"
+              >
+                <h3 className="font-display text-lg sm:text-xl font-light text-navy leading-snug">
+                  {item.title}
+                </h3>
+                <p className="font-body text-sm text-muted leading-[1.80]">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </ScrollReveal>
 
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────────────
-          SERVICES — répertoire / index éditorial (remplace la grille de cards)
-          Fond navy foncé — coupure franche depuis cream, effet intentionnel
-      ───────────────────────────────────────────────────────────────────── */}
+      {/* ── SERVICES ────────────────────────────────────────────── */}
       <section className="bg-navy relative overflow-hidden">
-        {/* Grain texture */}
-        <div className="navy-grain absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true" />
 
-        <div className="relative z-10 container-main py-24 sm:py-32">
+        <div className="relative z-10 container-main py-20 sm:py-28">
 
-          {/* En-tête — titre à gauche, CTA à droite */}
-          <div className="flex items-end justify-between pb-10 sm:pb-14 border-b border-white/[0.07]">
+          {/* En-tête */}
+          <div className="flex items-end justify-between pb-8 sm:pb-10 border-b border-white/[0.08]">
             <div>
-              <span className="section-label text-champagne/70">{t.services.overline}</span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-white mt-1 leading-tight">
+              <span className="section-label text-gold/60">{t.services.overline}</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-light text-white mt-1 leading-tight">
                 {t.services.titleMain}{' '}
-                <span className="italic text-champagne">{t.services.titleAccent}</span>
+                <span className="italic text-white/60">{t.services.titleAccent}</span>
               </h2>
             </div>
             <Link
               href={`/${validLocale}/services`}
-              className="hidden sm:flex items-center gap-2 font-body text-xs text-white/30 hover:text-champagne transition-colors duration-200 shrink-0 ml-8 pb-1"
+              className="hidden sm:flex items-center gap-1.5 font-body text-xs text-white/30 hover:text-white/70 transition-colors duration-200 shrink-0 ml-8 pb-1"
             >
               {t.services.cta}
               <Icon name="arrow" size={13} strokeWidth={2} />
             </Link>
           </div>
 
-          {/* Lignes de service — chaque service est un lien cliquable pleine largeur */}
+          {/* Liste services */}
           <div>
             {services.map((s, i) => (
               <Link
                 key={s.id}
                 href={`/${validLocale}/services/${s.id}`}
-                className="group flex items-center justify-between py-7 sm:py-9 border-b border-white/[0.05] hover:border-champagne/25 transition-colors duration-300"
+                className="group flex items-center justify-between py-6 sm:py-8 border-b border-white/[0.05] hover:border-white/[0.12] transition-colors duration-300"
               >
-                <div className="flex items-center gap-6 sm:gap-12">
+                <div className="flex items-center gap-5 sm:gap-10">
                   <span
-                    className="font-body text-[10px] tracking-[0.20em] text-white/18 font-medium w-5 shrink-0 select-none group-hover:text-champagne/50 transition-colors duration-300"
+                    className="font-body text-[9px] tracking-[0.18em] text-white/15 font-medium w-5 shrink-0 select-none group-hover:text-white/35 transition-colors duration-300"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl lg:text-[2.6rem] font-light text-white group-hover:text-champagne transition-colors duration-300 leading-tight">
+                    <p className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-light text-white/85 group-hover:text-white transition-colors duration-300 leading-tight">
                       {t.services.items[i].title}
                     </p>
-                    <p className="font-body text-xs sm:text-sm text-white/28 mt-1.5 group-hover:text-white/50 transition-colors duration-300">
+                    <p className="font-body text-xs text-white/25 mt-1 group-hover:text-white/45 transition-colors duration-300">
                       {t.services.items[i].shortDesc}
                     </p>
                   </div>
                 </div>
 
-                {/* Image + flèche */}
-                <div className="flex items-center gap-4 sm:gap-6 shrink-0 ml-4">
-                  <div className="hidden sm:block relative w-20 h-14 lg:w-28 lg:h-[4.5rem] rounded-lg overflow-hidden opacity-50 group-hover:opacity-80 transition-opacity duration-300">
+                <div className="flex items-center gap-4 shrink-0 ml-4">
+                  <div className="hidden sm:block relative w-20 h-13 lg:w-24 lg:h-[3.75rem] rounded-lg overflow-hidden opacity-35 group-hover:opacity-65 transition-opacity duration-300">
                     <Image
                       src={`/images/services/${s.id}.png`}
                       alt=""
                       fill
-                      sizes="112px"
+                      sizes="96px"
                       className="object-cover"
                     />
                   </div>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/[0.08] flex items-center justify-center text-white/20 group-hover:border-champagne/35 group-hover:text-champagne transition-all duration-300 group-hover:scale-110">
+                  <div className="w-9 h-9 rounded-full border border-white/[0.10] flex items-center justify-center text-white/20 group-hover:border-white/30 group-hover:text-white/70 transition-all duration-300">
                     <Icon name="arrow" size={14} strokeWidth={2} />
                   </div>
                 </div>
@@ -261,63 +216,58 @@ export default async function HomePage({
           </div>
 
           {/* CTA mobile */}
-          <div className="mt-10 sm:hidden">
+          <div className="mt-8 sm:hidden">
             <Link href={`/${validLocale}/services`} className="btn-outline-dark w-full justify-center">
               {t.services.cta}
-              <Icon name="arrow" size={16} strokeWidth={2} />
+              <Icon name="arrow" size={15} strokeWidth={2} />
             </Link>
           </div>
 
         </div>
       </section>
 
-      {/* ── Testimonials — reste éditorial, slantFill mis à jour (navy) ──── */}
-      <Section bg="mineral" slant="right" slantFill={BG.navy}>
-        <div className="text-center mb-16 sm:mb-20">
+      {/* ── TÉMOIGNAGES ─────────────────────────────────────────── */}
+      <Section bg="stone" slant="right" slantFill={BG.navy}>
+        <div className="text-center mb-14 sm:mb-18">
           <span className="section-label">{t.testimonials.overline}</span>
           <PremiumHeading as="h2" size="section" color="dark">
             {t.testimonials.titleMain} <Accent>{t.testimonials.titleAccent}</Accent>
           </PremiumHeading>
         </div>
 
-        <figure className="text-center max-w-3xl mx-auto">
-          <span
-            className="font-display block leading-[0.75] text-gold/[0.13] select-none pointer-events-none -mb-5"
-            style={{ fontSize: 'clamp(5rem, 12vw, 8rem)' }}
-            aria-hidden="true"
-          >
-            &ldquo;
-          </span>
+        {/* Citation principale */}
+        <figure className="text-center max-w-2xl mx-auto">
           <blockquote>
-            <p className="font-display font-light italic text-xl sm:text-[1.6rem] text-ink/80 leading-[1.62]">
-              {t.testimonials.items[0].quote}
+            <p className="font-display font-light italic text-xl sm:text-[1.55rem] text-ink/75 leading-[1.65]">
+              &ldquo;{t.testimonials.items[0].quote}&rdquo;
             </p>
           </blockquote>
-          <figcaption className="mt-8 flex flex-col items-center gap-1.5">
-            <div className="w-8 h-px bg-gold/45 mb-3" aria-hidden="true" />
+          <figcaption className="mt-8 flex flex-col items-center gap-1">
+            <div className="w-6 h-px bg-gold/40 mb-3" aria-hidden="true" />
             <p className="font-body text-sm font-semibold text-navy">{t.testimonials.items[0].author}</p>
             <p className="font-body text-xs text-muted">{t.testimonials.items[0].role}</p>
           </figcaption>
         </figure>
 
-        <div className="flex items-center gap-5 my-14 sm:my-16" aria-hidden="true">
-          <div className="flex-1 h-px bg-black/[0.07]" />
-          <div className="w-1 h-1 rounded-full bg-gold/40" />
-          <div className="flex-1 h-px bg-black/[0.07]" />
+        {/* Séparateur */}
+        <div className="flex items-center gap-4 my-12 sm:my-14" aria-hidden="true">
+          <div className="flex-1 h-px bg-ink/[0.06]" />
+          <div className="w-1 h-1 rounded-full bg-gold/35" />
+          <div className="flex-1 h-px bg-ink/[0.06]" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16">
+        {/* Citations secondaires */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
           {t.testimonials.items.slice(1).map((item) => (
-            <figure key={item.author} className="flex flex-col gap-5">
-              <Icon name="quote" size={20} className="text-gold/35" />
+            <figure key={item.author} className="flex flex-col gap-4">
               <blockquote>
-                <p className="font-display font-light italic text-base sm:text-lg text-ink/70 leading-[1.76]">
-                  {item.quote}
+                <p className="font-display font-light italic text-base sm:text-lg text-ink/65 leading-[1.72]">
+                  &ldquo;{item.quote}&rdquo;
                 </p>
               </blockquote>
-              <figcaption className="flex items-center gap-3 pt-5 border-t border-black/[0.07]">
+              <figcaption className="flex items-center gap-3 pt-4 border-t border-ink/[0.07]">
                 <div
-                  className="w-9 h-9 rounded-full bg-navy text-white flex items-center justify-center font-body text-[10px] font-semibold tracking-[0.08em] shrink-0"
+                  className="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center font-body text-[9px] font-semibold tracking-[0.06em] shrink-0"
                   aria-hidden="true"
                 >
                   {item.initials}
@@ -332,17 +282,16 @@ export default async function HomePage({
         </div>
       </Section>
 
-      {/* ── Process (parallax — ne pas modifier) ─────────────────────────── */}
-      <ProcessSection t={t.process} slantFill={BG.mineral} />
+      {/* ── PROCESSUS ───────────────────────────────────────────── */}
+      <ProcessSection t={t.process} slantFill={BG.stone} />
 
-      {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+      {/* ── FAQ ─────────────────────────────────────────────────── */}
       <FaqSection t={t.faq} />
 
-      {/* ── Contact ──────────────────────────────────────────────────────── */}
-      {/* slantFill=BG.cream car FaqSection a bg-cream */}
+      {/* ── CONTACT ─────────────────────────────────────────────── */}
       <ContactBlock bg="stone" slant="left" slantFill={BG.cream} t={t.contact.form} />
 
-      {/* ── Footer ───────────────────────────────────────────────────────── */}
+      {/* ── FOOTER ──────────────────────────────────────────────── */}
       <Footer locale={validLocale} t={t} navItems={navItems} />
     </>
   )

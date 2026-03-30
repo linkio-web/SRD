@@ -30,7 +30,7 @@ interface HeaderProps {
   }
 }
 
-const CLOSE_DELAY_MS = 200
+const CLOSE_DELAY_MS = 180
 
 export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
@@ -42,7 +42,7 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
   const homeHref = `/${locale}`
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10)
+    const handler = () => setScrolled(window.scrollY > 8)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
@@ -81,39 +81,34 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-200',
+        'fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200',
         scrolled || activeMenu
-          ? 'shadow-[0_1px_16px_rgba(26,10,40,0.10)]'
-          : 'border-b border-black/[0.06]'
+          ? 'shadow-[0_1px_12px_rgba(26,13,38,0.09)]'
+          : 'border-b border-ink/[0.07]'
       )}
     >
       <div className="container-main">
-        <div className={cn(
-          'flex items-center justify-between transition-all duration-300',
-          scrolled ? 'h-14 sm:h-16' : 'h-20 sm:h-24'
-        )}>
+        <div className="flex items-center justify-between h-16 sm:h-[4.5rem]">
 
-          {/* ── Logo ─────────────────────────────── */}
+          {/* Logo */}
           <Link
             href={homeHref}
-            className="flex items-center shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+            className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
             aria-label={brandLegal}
           >
-            <div className="px-2 py-1 transition-opacity duration-200 group-hover:opacity-75">
-              <Image
-                src="/logo.png"
-                alt={brandLegal}
-                width={900}
-                height={600}
-                className={cn('w-auto transition-all duration-300', scrolled ? 'h-8' : 'h-12')}
-                priority
-              />
-            </div>
+            <Image
+              src="/logo.png"
+              alt={brandLegal}
+              width={900}
+              height={600}
+              className="h-8 sm:h-9 w-auto"
+              priority
+            />
           </Link>
 
-          {/* ── Navigation desktop ───────────────── */}
+          {/* Navigation desktop */}
           <nav aria-label={aria.mainNav} className="hidden md:flex items-center">
-            <ul className="flex items-center gap-0.5">
+            <ul className="flex items-center">
               {items.map((item) => {
                 const hasMega = !!item.columns?.length
                 const key = item.href ?? item.label
@@ -137,19 +132,19 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
                         aria-haspopup="true"
                         aria-expanded={isMenuOpen}
                         className={cn(
-                          'flex items-center gap-1.5 px-4 py-2.5 font-body text-sm rounded',
-                          'transition-colors duration-200',
+                          'flex items-center gap-1 px-3.5 py-2 font-body text-sm rounded',
+                          'transition-colors duration-150',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
-                          isActive || isMenuOpen ? 'text-gold' : 'text-ink hover:text-gold'
+                          isActive || isMenuOpen ? 'text-gold' : 'text-ink/70 hover:text-ink'
                         )}
                       >
                         {item.label}
                         <Icon
                           name="chevron"
-                          size={13}
+                          size={12}
                           strokeWidth={2.5}
                           className={cn(
-                            'transition-transform duration-200',
+                            'transition-transform duration-150 text-muted/60',
                             isMenuOpen ? '-rotate-90' : 'rotate-90'
                           )}
                         />
@@ -158,16 +153,16 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
                       <Link
                         href={item.href!}
                         className={cn(
-                          'relative flex items-center px-4 py-2.5 font-body text-sm rounded',
-                          'transition-colors duration-200',
+                          'relative flex items-center px-3.5 py-2 font-body text-sm rounded',
+                          'transition-colors duration-150',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
-                          isActive ? 'text-gold' : 'text-ink hover:text-gold'
+                          isActive ? 'text-gold' : 'text-ink/70 hover:text-ink'
                         )}
                         aria-current={isActive ? 'page' : undefined}
                       >
                         {item.label}
                         {isActive && (
-                          <span className="absolute bottom-0 left-4 right-4 h-px bg-gold/40 rounded-full" />
+                          <span className="absolute bottom-0.5 left-3.5 right-3.5 h-px bg-gold/40 rounded-full" />
                         )}
                       </Link>
                     )}
@@ -177,8 +172,8 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
             </ul>
           </nav>
 
-          {/* ── Droite : langue + CTA + burger ───── */}
-          <div className="flex items-center gap-4">
+          {/* Droite */}
+          <div className="flex items-center gap-3">
             <LanguageSwitcher currentLocale={locale} variant="light" />
             <Link
               href={ctaLink.href}
@@ -190,21 +185,21 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                'md:hidden inline-flex items-center justify-center w-9 h-9 rounded',
-                'text-ink hover:text-gold transition-colors duration-200',
+                'md:hidden inline-flex items-center justify-center w-8 h-8 rounded',
+                'text-ink/60 hover:text-ink transition-colors duration-150',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold'
               )}
               aria-label={mobileOpen ? aria.closeMenu : aria.openMenu}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
             >
-              {mobileOpen ? <Icon name="close" size={20} /> : <Icon name="menu" size={20} />}
+              {mobileOpen ? <Icon name="close" size={18} /> : <Icon name="menu" size={18} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* ── Mega-menus ─────────────────────────── */}
+      {/* Mega-menus */}
       {items.map((item) => {
         if (!item.columns?.length) return null
         const key = item.href ?? item.label
@@ -220,23 +215,23 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
         )
       })}
 
-      {/* ── Drawer mobile ──────────────────────── */}
+      {/* Drawer mobile */}
       <div
         id="mobile-menu"
         className={cn(
-          'md:hidden absolute left-0 right-0 top-full bg-white border-t border-black/[0.06]',
-          'transition-all duration-300 overflow-hidden',
+          'md:hidden absolute left-0 right-0 top-full bg-white border-t border-ink/[0.06]',
+          'transition-all duration-250 overflow-hidden',
           mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
         )}
         aria-hidden={!mobileOpen}
       >
         <nav aria-label={aria.mobileNav}>
-          <ul className="container-main pt-3 pb-6 flex flex-col">
+          <ul className="container-main pt-2 pb-5 flex flex-col">
             {items.map((item) => {
               const key = item.href ?? item.label
               return <MobileItem key={key} item={item} locale={locale} />
             })}
-            <li className="flex items-center justify-between gap-4 mt-3 pt-4 border-t border-black/[0.06] px-1">
+            <li className="flex items-center justify-between gap-4 mt-2 pt-4 border-t border-ink/[0.06] px-1">
               <LanguageSwitcher currentLocale={locale} variant="light" />
               <Link href={ctaLink.href} className="btn-primary text-xs py-2 px-4">
                 {ctaLink.label}
@@ -249,9 +244,6 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
   )
 }
 
-// ─────────────────────────────────────────────────────────
-// Sous-composant : item mobile (lien simple ou accordéon)
-// ─────────────────────────────────────────────────────────
 function MobileItem({ item, locale }: { item: NavItemData; locale: Locale }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
@@ -259,38 +251,38 @@ function MobileItem({ item, locale }: { item: NavItemData; locale: Locale }) {
 
   if (hasMega) {
     return (
-      <li className="border-b border-black/[0.05] last:border-0">
+      <li className="border-b border-ink/[0.05] last:border-0">
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           className={cn(
             'w-full flex items-center justify-between gap-3 px-1 py-3.5',
-            'font-body text-sm font-medium text-ink',
-            'transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded'
+            'font-body text-sm text-ink/75',
+            'transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded'
           )}
         >
           {item.label}
           <Icon
             name="chevron"
-            size={14}
+            size={12}
             strokeWidth={2}
             className={cn(
-              'transition-transform duration-200 text-muted/50',
+              'transition-transform duration-150 text-muted/40',
               open ? '-rotate-90' : 'rotate-90'
             )}
           />
         </button>
         <div
           className={cn(
-            'overflow-hidden transition-all duration-300',
+            'overflow-hidden transition-all duration-250',
             open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="pb-3 space-y-4">
+          <div className="pb-3 space-y-3">
             {item.columns!.map((col) => (
               <div key={col.title}>
-                <p className="font-body text-[10px] font-semibold text-muted tracking-[0.14em] uppercase mb-1.5 px-1">
+                <p className="font-body text-[9.5px] font-semibold text-muted/50 tracking-[0.14em] uppercase mb-1 px-1">
                   {col.title}
                 </p>
                 <ul className="flex flex-col">
@@ -298,7 +290,7 @@ function MobileItem({ item, locale }: { item: NavItemData; locale: Locale }) {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="block px-3 py-2.5 font-body text-sm text-ink hover:text-gold transition-colors duration-150 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                        className="block px-3 py-2.5 font-body text-sm text-ink/70 hover:text-ink transition-colors duration-150 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                       >
                         {link.label}
                       </Link>
@@ -320,13 +312,13 @@ function MobileItem({ item, locale }: { item: NavItemData; locale: Locale }) {
     : false
 
   return (
-    <li className="border-b border-black/[0.05] last:border-0">
+    <li className="border-b border-ink/[0.05] last:border-0">
       <Link
         href={item.href!}
         className={cn(
-          'flex items-center px-1 py-3.5 font-body text-sm font-medium rounded',
-          'transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
-          isActive ? 'text-gold' : 'text-ink hover:text-gold'
+          'flex items-center px-1 py-3.5 font-body text-sm rounded',
+          'transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
+          isActive ? 'text-gold' : 'text-ink/75 hover:text-ink'
         )}
         aria-current={isActive ? 'page' : undefined}
       >

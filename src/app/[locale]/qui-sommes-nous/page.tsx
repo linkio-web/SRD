@@ -49,71 +49,67 @@ export default async function QuiSommesNousPage({
 
   return (
     <>
-      {/* ── Hero ───────────────────────────── */}
-      <section className="relative bg-navy overflow-hidden pt-36 pb-20 sm:pt-48 sm:pb-24">
-        <div className="hero-grid absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" />
-        <div
-          className="absolute -top-24 right-0 w-96 h-96 rounded-full border border-gold/8 pointer-events-none"
-          aria-hidden="true"
-        />
+      {/* ── Hero ───────────────────────────────────────── */}
+      <section className="relative bg-navy overflow-hidden pt-32 pb-16 sm:pt-44 sm:pb-20">
         <div className="container-main relative z-10 text-center">
-          <span className="section-label text-gold/70">{t.about.overline}</span>
+          <span className="section-label text-gold/55">{t.about.overline}</span>
           <PremiumHeading as="h1" size="page" color="light" className="mt-2 mb-6">
             {t.about.title1}{' '}
             <Accent>{t.about.title2}</Accent>
           </PremiumHeading>
           <div className="flex justify-center mb-6">
-            <div className="w-12 h-px bg-gold/40" />
+            <div className="w-8 h-px bg-white/20" />
           </div>
-          <p className="font-body text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="font-body text-white/45 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             {t.about.subtitle}
           </p>
         </div>
       </section>
 
-      {/* ── Mission & Stats ────────────────── */}
+      {/* ── Mission & Stats ─────────────────────────────── */}
       <Section bg="cream" slant="right" slantFill={BG.navy}>
-        <div className="max-w-2xl">
+        <div className="max-w-xl">
           <span className="section-label">{t.about.missionOverline}</span>
-          <h2 className="section-title mb-6">{t.about.missionTitle}</h2>
-          <p className="font-body text-muted leading-relaxed">{t.about.missionP1}</p>
+          <h2 className="section-title mb-5">{t.about.missionTitle}</h2>
+          <p className="font-body text-sm text-muted leading-relaxed">{t.about.missionP1}</p>
           <Link
             href={`/${validLocale}/contact`}
-            className="inline-flex items-center gap-2 font-body text-sm font-semibold text-navy hover:text-primary-600 transition-colors mt-8 group"
+            className="inline-flex items-center gap-2 font-body text-sm font-medium text-navy hover:text-gold transition-colors mt-7 group"
           >
             {t.about.missionCta}
-            <Icon name="arrow" size={14} strokeWidth={2} />
+            <Icon name="arrow" size={14} strokeWidth={2} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* MODIFIED: Stats grid — responsive (1 col mobile → 2 col sm → 4 col lg) */}
-        <div className="mt-16 pt-10 border-t border-black/[0.07] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 sm:divide-x divide-black/[0.07]">
+        <div className="mt-14 pt-10 border-t border-ink/[0.06] grid grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-10 sm:divide-x divide-ink/[0.06]">
           {stats.map((stat) => (
             <StatCounter key={stat.label} value={stat.value} label={stat.label} />
           ))}
         </div>
       </Section>
 
-      {/* ── Valeurs ────────────────────────── */}
+      {/* ── Valeurs ─────────────────────────────────────── */}
       <Section bg="stone" slant="left" slantFill={BG.cream}>
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12 sm:mb-14">
           <span className="section-label">{t.about.valuesOverline}</span>
           <h2 className="section-title">{t.about.valuesTitle}</h2>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-xl mx-auto">
           {t.about.values.map((v, i) => (
-            <div key={v.title} className="pb-12 sm:pb-14 last:pb-0">
+            <div key={v.title} className="pb-10 sm:pb-12 last:pb-0">
 
-              {/* Numéro en cercle violet */}
-              <div className="w-9 h-9 rounded-full bg-primary-500 text-white flex items-center justify-center font-body font-semibold text-sm mb-5 select-none">
-                0{i + 1}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-body text-[9.5px] tracking-[0.18em] text-gold/55 font-medium select-none">
+                  0{i + 1}
+                </span>
+                <div className="h-px flex-1 bg-ink/[0.06]" aria-hidden="true" />
               </div>
 
-              <h3 className="font-display text-[1.625rem] sm:text-3xl font-light text-navy mb-4 leading-[1.2]">
+              <h3 className="font-display text-[1.5rem] sm:text-[1.75rem] font-light text-navy mb-3 leading-[1.25]">
                 {v.title}
               </h3>
-              <p className="font-body text-[0.9375rem] text-muted leading-[1.82] max-w-md">
+              <p className="font-body text-sm text-muted leading-[1.80] max-w-md">
                 {v.description}
               </p>
 
@@ -122,14 +118,14 @@ export default async function QuiSommesNousPage({
         </div>
       </Section>
 
-      {/* ── Équipe ─────────────────────────── */}
-      <Section bg="mineral" slant="right" slantFill={BG.stone}>
+      {/* ── Équipe ──────────────────────────────────────── */}
+      <Section bg="cream" slant="right" slantFill={BG.stone}>
         <div className="text-center mb-12">
           <span className="section-label">{t.team.overline}</span>
           <h2 className="section-title">{t.team.title}</h2>
-          <p className="section-subtitle mx-auto text-center mt-4">{t.team.subtitle}</p>
+          <p className="section-subtitle mx-auto text-center mt-3">{t.team.subtitle}</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-xl mx-auto">
           {t.team.members.map((member, i) => (
             <div key={member.name} className={`animate-fade-up delay-${(i + 1) * 100}`}>
               <TeamCard
@@ -144,10 +140,10 @@ export default async function QuiSommesNousPage({
         </div>
       </Section>
 
-      {/* ── Contact ────────────────────────── */}
-      <ContactBlock bg="stone" slant="left" slantFill={BG.mineral} t={t.contact.form} />
+      {/* ── Contact ─────────────────────────────────────── */}
+      <ContactBlock bg="stone" slant="left" slantFill={BG.cream} t={t.contact.form} />
 
-      {/* ── Footer ─────────────────────────── */}
+      {/* ── Footer ──────────────────────────────────────── */}
       <Footer locale={validLocale} t={t} navItems={navItems} />
     </>
   )

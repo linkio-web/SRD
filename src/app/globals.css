@@ -3,28 +3,17 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────
-   CSS Custom Properties
+   Tokens CSS
 ───────────────────────────────────────── */
 :root {
-  --slant-h: 4rem;   /* hauteur du biseau de section */
-
-  /* Tokens RGB — permettent rgba() dans les gradients sans hardcoder les valeurs */
-  --primary-950-rgb: 19, 9, 24;    /* #130918 */
-  --primary-900-rgb: 32, 15, 38;   /* #200F26 */
-  --primary-500-rgb: 101, 54, 109; /* #65366D — violet logo officiel */
-  --gold-rgb:        128, 15, 51;  /* #800F33 — bordeaux accent */
-  --cta-rgb: 128, 15, 51;          /* #800F33 */
-  --cta-hover-rgb: 107, 12, 43;    /* #6B0C2B — darker hover */
-
-  /* ── Couleur minérale — lavande grise premium ── */
-  --color-mineral:     #D2C9D6;
-  --color-mineral-rgb: 210, 201, 214;
+  --slant-h: 3.5rem;
+  --navy-rgb:    45, 22, 64;
+  --gold-rgb:   139, 16, 56;
+  --ink-rgb:    26, 13, 38;
 }
 
 @media (max-width: 640px) {
-  :root {
-    --slant-h: 2rem;
-  }
+  :root { --slant-h: 2rem; }
 }
 
 /* ─────────────────────────────────────────
@@ -33,38 +22,29 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Rendu de police optimisé — critique pour Manrope et Playfair Display */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* NE PAS mettre overflow-x:hidden ici — cela casse position:fixed de GSAP
-       (html overflow-x:hidden crée un nouveau scroll container) */
   }
 
   body {
     @apply bg-cream text-ink font-body;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
-    /* NE PAS mettre overflow-x:hidden ici non plus — même raison que html.
-       Le débordement horizontal est géré par overflow:hidden sur chaque section. */
   }
 
-  /* H1, H2 : Playfair Display — serif éditorial, présence et hiérarchie */
   h1, h2 {
     @apply font-display;
     font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
   }
 
-  /* H3, H4 : Manrope — sans-serif neutre, lisible, subordonné */
   h3, h4 {
     @apply font-body font-semibold;
   }
 
-  /* Focus visible — accessibilité clavier */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-primary-500;
   }
 
-  /* Sélection de texte */
   ::selection {
     background-color: theme('colors.gold.pale');
     color: theme('colors.navy.DEFAULT');
@@ -72,97 +52,79 @@
 }
 
 /* ─────────────────────────────────────────
-   Composants utilitaires
+   Composants
 ───────────────────────────────────────── */
 @layer components {
-  /* Conteneur principal */
+
   .container-main {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10;
   }
 
-  /* Étiquette de section (overline) — crimson, uppercase, très espacé */
+  /* Overline de section */
   .section-label {
-    @apply inline-block text-[11px] tracking-[0.22em] uppercase font-body font-semibold text-gold mb-3;
+    @apply inline-block text-[10.5px] tracking-[0.20em] uppercase font-body font-semibold text-gold mb-3;
   }
 
-  /* Titre de section H2 — Playfair léger, espacement raffiné */
+  /* Titre H2 de section */
   .section-title {
-    @apply font-display text-3xl sm:text-[2.5rem] lg:text-[3.25rem] font-normal text-navy leading-[1.12] tracking-[-0.02em];
+    @apply font-display text-3xl sm:text-[2.4rem] lg:text-[3rem] font-light text-navy leading-[1.15] tracking-[-0.015em];
   }
 
-  /* Sous-titre de section */
+  /* Sous-titre */
   .section-subtitle {
     @apply font-body text-base sm:text-lg text-muted mt-4 max-w-2xl leading-relaxed;
   }
 
-  /* ── Bouton principal — crimson, pill, hover plus foncé ── */
+  /* CTA principal — bordeaux plein */
   .btn-primary {
-    @apply inline-flex items-center gap-2.5
-           px-8 py-4
-           text-white font-body font-semibold text-[13px] tracking-[0.05em]
+    @apply inline-flex items-center gap-2
+           px-7 py-3.5
+           text-white font-body font-medium text-sm
            rounded-full
-           transition-all duration-300 ease-smooth
-           hover:-translate-y-0.5 hover:shadow-gold
+           transition-all duration-200 ease-smooth
+           hover:-translate-y-px hover:shadow-gold
            focus-visible:outline-2 focus-visible:outline-offset-2;
-    background-color: rgb(var(--cta-rgb));
-    outline-color: rgb(var(--cta-rgb));
+    background-color: rgb(var(--gold-rgb));
+    outline-color:    rgb(var(--gold-rgb));
   }
-
   .btn-primary:hover {
-    background-color: rgb(var(--cta-hover-rgb));
+    background-color: theme('colors.gold.light');
   }
 
-  .btn-primary:focus-visible {
-    outline-color: rgb(var(--cta-rgb));
-  }
-
-  /* ── Bouton secondaire — outline cramoisi (cohérent avec btn-primary) ── */
+  /* CTA secondaire — outline bordeaux */
   .btn-outline {
-    @apply inline-flex items-center gap-2.5
-           px-8 py-4
-           font-body font-semibold text-[13px] tracking-[0.05em]
+    @apply inline-flex items-center gap-2
+           px-7 py-3.5
+           font-body font-medium text-sm
            rounded-full border
-           transition-all duration-300 ease-smooth
-           hover:-translate-y-0.5
+           transition-all duration-200 ease-smooth
+           hover:-translate-y-px
            focus-visible:outline-2 focus-visible:outline-offset-2;
-    border-color: rgb(var(--cta-rgb));
-    color:        rgb(var(--cta-rgb));
-    outline-color: rgb(var(--cta-rgb));
+    border-color: rgb(var(--gold-rgb));
+    color:        rgb(var(--gold-rgb));
+    outline-color: rgb(var(--gold-rgb));
   }
-
   .btn-outline:hover {
-    background-color: rgb(var(--cta-rgb));
+    background-color: rgb(var(--gold-rgb));
     color: white;
   }
 
-  /* ── Bouton outline (version sombre — sur fond navy) ── */
+  /* Outline blanc — sur fond navy */
   .btn-outline-dark {
-    @apply inline-flex items-center gap-2.5
-           px-8 py-4
-           border border-white/35 text-white font-body font-semibold text-[13px] tracking-[0.05em]
+    @apply inline-flex items-center gap-2
+           px-7 py-3.5
+           border border-white/25 text-white font-body font-medium text-sm
            rounded-full
-           transition-all duration-300 ease-smooth
-           hover:border-white/70 hover:bg-white/10 hover:-translate-y-0.5
+           transition-all duration-200 ease-smooth
+           hover:border-white/55 hover:bg-white/[0.08] hover:-translate-y-px
            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
   }
 
-  /* Carte de base */
+  /* Carte blanche standard */
   .card-base {
-    @apply bg-white rounded-xl border border-black/[0.05] shadow-card
-           transition-all duration-300 ease-smooth
-           hover:-translate-y-1 hover:shadow-card-hover;
-  }
-
-  /*
-   * .panel-rise
-   * Panel de contenu qui "monte" visuellement sur la section précédente.
-   * Effet : panneau levé au-dessus d'un fond d'image, coins arrondis en haut,
-   * ombre douce remontant vers la section précédente.
-   * Utilisé avec un margin-top négatif (-mt-10 / -mt-16) pour l'overlap.
-   */
-  .panel-rise {
-    border-radius: 2.5rem 2.5rem 0 0;
-    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.10), 0 -1px 0 rgba(0, 0, 0, 0.04);
+    @apply bg-white rounded-2xl border border-black/[0.05] shadow-card
+           transition-all duration-200 ease-smooth
+           hover:-translate-y-0.5 hover:shadow-card-hover;
   }
 }
 
@@ -171,18 +133,12 @@
 ───────────────────────────────────────── */
 @layer utilities {
   .animate-fade-up {
-    animation: fadeUp 0.6s ease both;
+    animation: fadeUp 0.55s ease both;
   }
 
   @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .delay-100 { animation-delay: 100ms; }
@@ -194,182 +150,58 @@
 }
 
 /* ─────────────────────────────────────────
-   Grille décorative — fond hero et pages sombres
-   Appliqué sur un div aria-hidden avec opacity faible
+   Hero
 ───────────────────────────────────────── */
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
-  background-size: 80px 80px;
-  width: 100%;
-  height: 100%;
-}
 
-/* ─────────────────────────────────────────
-   Dégradé de fond du Hero
-   Violet nuit profond + lueur crimson subtile
-───────────────────────────────────────── */
+/* Fond dégradé du hero */
 .hero-gradient {
   background:
-    radial-gradient(ellipse at 70% 25%, rgb(128, 15, 51, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(70, 24, 78, 0.50) 0%, transparent 50%),
-    linear-gradient(135deg, #46184E 0%, #301236 50%, #46184E 100%);
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(139,16,56,0.10) 0%, transparent 60%),
+    linear-gradient(160deg, #2D1640 0%, #1E0D2B 60%, #2D1640 100%);
 }
 
-/* Texture grain subtile pour le hero */
-.hero-grain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* ─────────────────────────────────────────
-   Hero — Overlay premium multi-couche
-   Tokens : --primary-950-rgb | --primary-900-rgb
-───────────────────────────────────────── */
-
-/*
- * .hero-overlay
- * Combinaison de deux couches :
- *   1. Radiale douce centrée sur la zone texte (profondeur, focus visuel)
- *   2. Fondu linéaire gauche → droite (lisibilité + blend image)
- *
- * Courbe d'opacité : 95% → 90% → 75% → 40% → 10% → 0%
- * Aucune coupure visible, transition continue.
- */
+/* Overlay gauche → droite sur l'image hero */
 .hero-overlay {
   background:
-    /* Couche 1 — Lueur focale douce côté texte (profondeur premium) */
-    radial-gradient(
-      ellipse 52% 75% at 16% 55%,
-      rgba(var(--primary-900-rgb), 0.26) 0%,
-      transparent                        100%
-    ),
-    /* Couche 2 — Fondu principal gauche → droite */
     linear-gradient(
       90deg,
-      rgba(var(--primary-950-rgb), 0.95)  0%,
-      rgba(var(--primary-950-rgb), 0.90) 20%,
-      rgba(var(--primary-950-rgb), 0.75) 40%,
-      rgba(var(--primary-950-rgb), 0.40) 65%,
-      rgba(var(--primary-950-rgb), 0.10) 85%,
-      rgba(var(--primary-950-rgb), 0.00) 100%
+      rgba(var(--navy-rgb), 0.92) 0%,
+      rgba(var(--navy-rgb), 0.82) 25%,
+      rgba(var(--navy-rgb), 0.60) 50%,
+      rgba(var(--navy-rgb), 0.20) 75%,
+      rgba(var(--navy-rgb), 0.00) 100%
     );
 }
 
-/* Mobile / tablette : fondu vertical, overlay plus fort */
 @media (max-width: 1023px) {
   .hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(var(--primary-950-rgb), 0.72)  0%,
-      rgba(var(--primary-950-rgb), 0.58) 45%,
-      rgba(var(--primary-950-rgb), 0.72) 100%
-    );
+    background: rgba(var(--navy-rgb), 0.72);
   }
 }
 
-/* Fondu bas — transition douce vers la section suivante */
+/* Fondu bas */
 .hero-bottom-fade {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(var(--primary-950-rgb), 0.45)
-  );
+  background: linear-gradient(to bottom, transparent, rgba(var(--navy-rgb), 0.50));
 }
 
-/* Ligne décorative crimson */
+/* Ligne décorative */
 .gold-line {
   display: inline-block;
-  width: 3rem;
-  height: 2px;
+  width: 2.5rem;
+  height: 1.5px;
   background-color: theme('colors.gold.DEFAULT');
 }
 
 /* ─────────────────────────────────────────
-   Fond minéral — texture marbrée CSS-only, quasi imperceptible
-   Usage sections claires : <Section bg="mineral">
-   Usage hero sombre : <div class="hero-mineral absolute inset-0" aria-hidden>
+   Biseau de section (utilisé dans Section.tsx)
 ───────────────────────────────────────── */
-
-/* Base fond minéral — utilise la CSS var pour la cohérence globale */
-.bg-mineral {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-mineral);
-}
-
-/*
- * Marbré CSS — veine diagonale + radiales douces.
- * z-index: 0 → sous biseau (z-10) et contenu (z-20).
- * Opacités : 8% max — on "sent" la matière sans la voir clairement.
- */
-.bg-mineral::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    /* Veine principale — diagonale, simule un minéral laminé */
-    linear-gradient(
-      112deg,
-      transparent                                0%,
-      rgba(var(--primary-500-rgb), 0.055)       28%,
-      rgba(255, 255, 255, 0.08)                 38%,
-      rgba(var(--primary-500-rgb), 0.040)       48%,
-      transparent                               70%
-    ),
-    /* Lueur violet — coin haut-gauche */
-    radial-gradient(ellipse 75% 50% at 15% 22%, rgba(var(--primary-500-rgb), 0.07)  0%, transparent 55%),
-    /* Lueur crimson — coin bas-droite */
-    radial-gradient(ellipse 60% 40% at 88% 82%, rgba(var(--gold-rgb), 0.055)        0%, transparent 50%),
-    /* Éclat blanc — simule un reflet sur pierre polie */
-    radial-gradient(ellipse 40% 30% at 50%  5%, rgba(255, 255, 255, 0.14)           0%, transparent 45%);
-}
-
-/*
- * Overlay texture pour le hero (fond sombre).
- * Utiliser comme div aria-hidden absolu à l'intérieur de la section.
- * mix-blend-mode: soft-light → s'intègre au fond sombre sans le charger.
- */
-.hero-mineral {
-  background-image:
-    radial-gradient(ellipse 70% 50% at 22% 35%, rgba(255, 255, 255, 0.040) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 40% at 80% 60%, rgba(255, 255, 255, 0.025) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 60% at 50% 95%, rgba(128, 15, 51, 0.080)  0%, transparent 45%);
-  mix-blend-mode: soft-light;
-}
+/* Pas de classes CSS nécessaires — géré inline dans Section.tsx */
 
 /* ─────────────────────────────────────────
-   Texture grain navy — appliquée via Section.tsx (navy-grain)
-   Utilisée sur les <Section bg="navy"> via un div aria-hidden interne.
-   MODIFIED: Grain texture for navy sections (component-scoped)
+   ProcessSection — sticky desktop
 ───────────────────────────────────────── */
-.navy-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.04'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-}
-
-/* ─────────────────────────────────────────
-   ExpertiseParallaxSection — layout sticky
-   Appliqué uniquement au breakpoint lg (≥ 1024px).
-   Sur mobile ces classes sont sans effet (position:relative, hauteur auto).
-───────────────────────────────────────── */
-@media (min-width: 1024px) {
-  /* Section plus haute que le viewport — crée l'espace de scroll pour le parallaxe */
-  .expertise-track {
-    min-height: 200vh;
-  }
-
-  /* Container épinglé — reste dans le viewport pendant tout le scroll de la section */
+@media (min-width: 768px) {
+  .expertise-track { min-height: 200vh; }
   .expertise-pin {
     position: sticky;
     top: 0;
@@ -377,4 +209,3 @@
     overflow: hidden;
   }
 }
-
