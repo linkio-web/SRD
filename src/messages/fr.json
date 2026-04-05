@@ -24,7 +24,7 @@
     "overline": "Fiduciaire & Conseil d'entreprise",
     "baseline": "Votre partenaire de confiance pour la gestion, la fiscalité et la croissance de votre entreprise en Romandie.",
     "ctaSecondary": "Découvrir nos services",
-    "scroll": "",
+    "scroll": "Faire défiler pour découvrir",
     "stat1Label": "Années d'expérience",
     "stat2Label": "Entreprises accompagnées",
     "statTagline": "Des conseils éprouvés pour les PME romandes."
@@ -208,7 +208,8 @@
     "items": [
       {
         "question": "Combien coûte une déclaration d'impôts ?",
-        "answer": "Nos honoraires dépendent de la complexité de votre situation fiscale et du type de déclaration concernée (personne physique, société, succession). Nous établissons systématiquement un devis transparent avant toute mission. N'hésitez pas à nous contacter pour un entretien préliminaire sans engagement."
+        "answer": "Nos honoraires dépendent de la complexité de votre situation fiscale et du type de déclaration concernée (personne physique, société, succession). Nous établissons systématiquement un devis transparent avant toute mission. N'hésitez pas à nous contacter pour un entretien préliminaire sans engagement.",
+        "ctaLabel": "Demander un devis"
       },
       {
         "question": "Quels documents dois-je fournir ?",
@@ -220,7 +221,8 @@
       },
       {
         "question": "Puis-je planifier un rendez-vous ?",
-        "answer": "Absolument. Nous proposons des entretiens en cabinet à Genève ou Lausanne, ainsi que des consultations en visioconférence. Le premier entretien est sans engagement et vous permet d'exposer votre situation en toute sérénité. Contactez-nous via notre formulaire ou par téléphone pour convenir d'un créneau."
+        "answer": "Absolument. Nous vous accueillons dans nos bureaux à Corcelles (NE) ou à distance par visioconférence. Le premier entretien est sans engagement et vous permet d'exposer votre situation en toute sérénité. Contactez-nous via notre formulaire ou par téléphone pour convenir d'un créneau.",
+        "ctaLabel": "Planifier un rendez-vous"
       },
       {
         "question": "Est-ce confidentiel ?",
@@ -232,12 +234,10 @@
     "overline": "Le cabinet",
     "title1": "Qui",
     "title2": "sommes-nous",
-    "subtitle": "Fondé par des professionnels romands passionnés, SRD Partners est bien plus qu'un cabinet fiduciaire : c'est un partenaire engagé dans la durée.",
+    "subtitle": "SRD Partners Sàrl est un cabinet fiduciaire basé à Corcelles (NE), spécialisé dans l'accompagnement des PME et des indépendants en Suisse romande.",
     "missionOverline": "Notre mission",
-    "missionTitle": "Accompagner les entrepreneurs avec rigueur",
-    "missionP1": "Chez SRD Partners, notre mission est simple : vous permettre de vous concentrer sur votre cœur de métier, pendant que nous veillons à la santé financière, fiscale et administrative de votre entreprise.",
-    "missionP2": "Fondé à Corcelles NE, notre cabinet accompagne des PME, des indépendants et des familles à travers toute la Romandie. Notre approche combine expertise technique de haut niveau et relation humaine privilégiée.",
-    "missionP3": "Nous ne sommes pas de simples prestataires : nous sommes vos partenaires, présents à chaque étape importante de la vie de votre entreprise.",
+    "missionTitle": "Un accompagnement fiable, transparent et de proximité",
+    "missionP1": "Nous proposons des prestations en comptabilité, gestion administrative, fiscalité et conseil, avec une approche personnalisée adaptée aux besoins de chaque client. Notre objectif est d'offrir un accompagnement fiable, transparent et de proximité, permettant à nos clients de se concentrer pleinement sur leur cœur de métier.",
     "missionCta": "Prendre rendez-vous",
     "stats": {
       "years": "Années d'expérience",
@@ -317,11 +317,9 @@
       "retry": "Réessayer",
       "subjects": {
         "accounting": "Comptabilité & Fiscalité",
-        "consulting": "Conseil en gestion",
-        "audit": "Audit & Révision",
-        "patrimony": "Planification patrimoniale",
-        "creation": "Création d'entreprise",
-        "hr": "RH & Paie",
+        "hr": "Ressources Humaines",
+        "admin": "Gestion administrative",
+        "realestate": "Gestion Immobilière",
         "other": "Autre"
       },
       "errors": {
@@ -340,38 +338,12 @@
       }
     }
   },
-  "activity": {
-    "overline": "Domaines d'activité",
-    "title": "Nos expertises au cœur de votre développement",
-    "description": "De la révision comptable à la gestion administrative, nous couvrons l'ensemble des besoins fiduciaires de votre entreprise avec rigueur et confidentialité.",
-    "items": {
-      "revision": {
-        "title": "Révision & Audit",
-        "description": "Contrôle indépendant et rigoureux de vos états financiers selon les normes d'audit suisses."
-      },
-      "payroll": {
-        "title": "Salaires & RH",
-        "description": "Traitement des fiches de salaire, déclarations sociales et gestion des contrats de travail."
-      },
-      "tax": {
-        "title": "Fiscalité",
-        "description": "Optimisation de votre charge fiscale et conformité avec la législation fiscale suisse."
-      },
-      "administration": {
-        "title": "Administration",
-        "description": "Secrétariat juridique, domiciliation d'entreprise et gestion administrative complète."
-      }
-    }
-  },
   "cta": {
     "overline": "Passons à l'action",
     "titleMain": "Parlons de",
     "titleAccent": "votre entreprise.",
     "subtitle": "Premier entretien sans engagement. Réponse garantie sous 24 heures ouvrables.",
     "button": "Prendre contact"
-  },
-  "imageBreak": {
-    "tagline": "L'excellence fiduciaire, au service de votre ambition."
   },
   "footer": {
     "navigation": "Navigation",

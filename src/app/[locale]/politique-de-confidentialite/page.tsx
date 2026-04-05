@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i18n'
 import { contactInfo } from '@/lib/siteData'
+import { buildAlternates, socialMeta } from '@/lib/seo'
 import { Footer } from '@/components/Footer'
 
 export async function generateMetadata({
@@ -10,10 +11,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const t = getMessages(isValidLocale(locale) ? locale : defaultLocale)
+  const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
+  const t = getMessages(validLocale)
   return {
     title: t.meta.privacyTitle,
     description: t.meta.privacyDescription,
+    alternates: buildAlternates(validLocale, '/politique-de-confidentialite'),
+    ...socialMeta(validLocale, t.meta.privacyTitle, t.meta.privacyDescription, '/politique-de-confidentialite'),
   }
 }
 

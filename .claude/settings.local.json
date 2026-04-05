@@ -25,7 +25,10 @@
       "Bash(find /c/work/fiducaire-rayan -maxdepth 2 -name *cloudflare* -o -name *build* -o -name *deploy*)",
       "Bash(cat /c/work/fiducaire-rayan/.next/server/app/[locale]/page.js)",
       "Bash(cat /c/work/fiducaire-rayan/src/app/[locale]/services/page.tsx)",
-      "Bash(cat /c/work/fiducaire-rayan/src/app/[locale]/services/comptabilite-fiscalite/page.tsx)"
+      "Bash(cat /c/work/fiducaire-rayan/src/app/[locale]/services/comptabilite-fiscalite/page.tsx)",
+      "Bash(find src:*)",
+      "Bash(python3:*)",
+      "Bash(rm:*)"
     ]
   }
 }

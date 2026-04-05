@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i18n'
+import { buildAlternates, socialMeta } from '@/lib/seo'
 import { ServicePage } from '@/components/ServicePage'
 
 export async function generateMetadata({
@@ -8,11 +9,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const t = getMessages(isValidLocale(locale) ? locale : defaultLocale)
+  const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
+  const t = getMessages(validLocale)
   return {
     title: t.meta.adminTitle,
     description: t.meta.adminDescription,
-    openGraph: { title: t.meta.adminTitle, description: t.meta.adminDescription },
+    alternates: buildAlternates(validLocale, '/services/gestion-administrative'),
+    ...socialMeta(validLocale, t.meta.adminTitle, t.meta.adminDescription, '/services/gestion-administrative'),
   }
 }
 

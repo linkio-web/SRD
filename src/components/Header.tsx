@@ -36,6 +36,7 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [heroActive, setHeroActive] = useState(false)
   const pathname = usePathname()
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -45,6 +46,20 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
     const handler = () => setScrolled(window.scrollY > 8)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
+  }, [])
+
+  /* Hide header while the scroll-expansion hero is animating */
+  useEffect(() => {
+    const check = () => {
+      const active = document.documentElement.hasAttribute('data-hero-active')
+      setHeroActive(active)
+    }
+    // Immediate check on mount (attribute set by inline script before hydration)
+    check()
+
+    const observer = new MutationObserver(check)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-hero-active'] })
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -81,7 +96,10 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200',
+        'fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-500',
+        heroActive
+          ? '-translate-y-full opacity-0 pointer-events-none'
+          : 'translate-y-0 opacity-100',
         scrolled || activeMenu
           ? 'shadow-[0_1px_12px_rgba(26,13,38,0.09)]'
           : 'border-b border-ink/[0.07]'

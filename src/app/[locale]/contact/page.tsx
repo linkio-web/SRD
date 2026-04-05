@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i18n'
 import { contactInfo, BG } from '@/lib/siteData'
+import { buildAlternates, socialMeta } from '@/lib/seo'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
 import { ContactForm } from '@/components/ContactForm'
 import { Footer } from '@/components/Footer'
@@ -13,11 +14,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const t = getMessages(isValidLocale(locale) ? locale : defaultLocale)
+  const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
+  const t = getMessages(validLocale)
   return {
     title: t.meta.contactTitle,
     description: t.meta.contactDescription,
-    openGraph: { title: t.meta.contactTitle, description: t.meta.contactDescription },
+    alternates: buildAlternates(validLocale, '/contact'),
+    ...socialMeta(validLocale, t.meta.contactTitle, t.meta.contactDescription, '/contact'),
   }
 }
 
@@ -88,14 +91,14 @@ export default async function ContactPage({
             <aside className="lg:sticky lg:top-28 space-y-5">
 
               <div className="bg-white rounded-2xl border border-ink/[0.05] shadow-card overflow-hidden">
-                <div className="p-6 space-y-5">
+                <div className="p-7 space-y-7">
 
                   <div>
-                    <p className="font-body text-[9.5px] tracking-[0.14em] uppercase font-semibold text-muted/50 mb-1.5">
+                    <p className="font-body text-[9.5px] tracking-[0.14em] uppercase font-semibold text-muted/50 mb-3">
                       {t.contact.directContact}
                     </p>
                     <p className="font-body font-semibold text-navy text-sm">{contactInfo.contact}</p>
-                    <p className="font-body text-xs text-muted mt-0.5">{contactInfo.role}</p>
+                    <p className="font-body text-xs text-muted mt-1">{contactInfo.role}</p>
                   </div>
 
                   <div className="h-px w-full bg-ink/[0.05]" aria-hidden="true" />
@@ -157,11 +160,11 @@ export default async function ContactPage({
 
                   {/* Horaires */}
                   <div>
-                    <p className="font-body text-[9.5px] tracking-[0.14em] uppercase font-semibold text-muted/50 mb-2">
+                    <p className="font-body text-[9.5px] tracking-[0.14em] uppercase font-semibold text-muted/50 mb-3">
                       {t.contact.responseDelay}
                     </p>
                     <p className="font-body text-xs text-muted leading-relaxed">{t.contact.form.trustLine}</p>
-                    <p className="font-body text-xs text-muted mt-1">{t.contact.hours}</p>
+                    <p className="font-body text-xs text-muted mt-1.5">{t.contact.hours}</p>
                   </div>
 
                 </div>

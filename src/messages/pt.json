@@ -24,7 +24,7 @@
     "overline": "Fiduciária & Consultoria Empresarial",
     "baseline": "O seu parceiro de confiança para gestão, fiscalidade e crescimento do seu negócio na Suíça francófona.",
     "ctaSecondary": "Descobrir os nossos serviços",
-    "scroll": "",
+    "scroll": "Deslizar para explorar",
     "stat1Label": "Anos de experiência",
     "stat2Label": "Empresas acompanhadas",
     "statTagline": "Consultoria comprovada para PME na Suíça francófona."
@@ -208,7 +208,8 @@
     "items": [
       {
         "question": "Quanto custa uma declaração fiscal?",
-        "answer": "Os nossos honorários dependem da complexidade da sua situação fiscal e do tipo de declaração (pessoa singular, empresa, sucessão). Estabelecemos sistematicamente um orçamento transparente antes de qualquer missão. Não hesite em contactar-nos para uma reunião preliminar sem compromisso."
+        "answer": "Os nossos honorários dependem da complexidade da sua situação fiscal e do tipo de declaração (pessoa singular, empresa, sucessão). Estabelecemos sistematicamente um orçamento transparente antes de qualquer missão. Não hesite em contactar-nos para uma reunião preliminar sem compromisso.",
+        "ctaLabel": "Pedir orçamento"
       },
       {
         "question": "Que documentos devo fornecer?",
@@ -220,7 +221,8 @@
       },
       {
         "question": "Posso marcar uma reunião?",
-        "answer": "Absolutamente. Propomos reuniões em escritório em Genebra ou Lausana, bem como consultas por videoconferência. A primeira reunião é sem compromisso e permite-lhe expor a sua situação com serenidade. Contacte-nos através do formulário ou por telefone."
+        "answer": "Absolutamente. Recebemo-lo nos nossos escritórios em Corcelles (NE) ou à distância por videoconferência. A primeira reunião é sem compromisso e permite-lhe expor a sua situação com serenidade. Contacte-nos através do formulário ou por telefone.",
+        "ctaLabel": "Marcar reunião"
       },
       {
         "question": "É confidencial?",
@@ -232,12 +234,10 @@
     "overline": "O gabinete",
     "title1": "Quem",
     "title2": "somos",
-    "subtitle": "Fundada por profissionais apaixonados da Suíça francófona, a SRD Partners é muito mais do que um gabinete fiduciário: é um parceiro comprometido a longo prazo.",
+    "subtitle": "A SRD Partners Sàrl é um gabinete fiduciário sediado em Corcelles (NE), especializado no acompanhamento de PME e profissionais independentes na Suíça francófona.",
     "missionOverline": "A nossa missão",
-    "missionTitle": "Acompanhar os empresários com rigor",
-    "missionP1": "Na SRD Partners, a nossa missão é simples: permitir-lhe concentrar-se no seu negócio principal, enquanto velamos pela saúde financeira, fiscal e administrativa da sua empresa.",
-    "missionP2": "Sediados em Corcelles NE, acompanhamos PME, independentes e famílias em toda a Suíça francófona. A nossa abordagem combina expertise técnica de alto nível e uma relação humana privilegiada.",
-    "missionP3": "Não somos simples prestadores de serviços: somos os seus parceiros, presentes em cada etapa importante da vida da sua empresa.",
+    "missionTitle": "Acompanhamento fiável, transparente e de proximidade",
+    "missionP1": "Oferecemos serviços de contabilidade, gestão administrativa, fiscalidade e consultoria, com uma abordagem personalizada adaptada às necessidades de cada cliente. O nosso objetivo é proporcionar um acompanhamento fiável, transparente e de proximidade, permitindo aos nossos clientes concentrarem-se plenamente na sua atividade principal.",
     "missionCta": "Marcar uma reunião",
     "stats": {
       "years": "Anos de experiência",
@@ -317,11 +317,9 @@
       "retry": "Tentar novamente",
       "subjects": {
         "accounting": "Contabilidade & Fiscalidade",
-        "consulting": "Consultoria de gestão",
-        "audit": "Auditoria & Revisão",
-        "patrimony": "Planeamento patrimonial",
-        "creation": "Criação de empresa",
-        "hr": "RH & Salários",
+        "hr": "Recursos Humanos",
+        "admin": "Gestão administrativa",
+        "realestate": "Gestão Imobiliária",
         "other": "Outro"
       },
       "errors": {
@@ -340,38 +338,12 @@
       }
     }
   },
-  "activity": {
-    "overline": "Domínios de atividade",
-    "title": "A nossa expertise ao serviço do seu desenvolvimento",
-    "description": "Da revisão contabilística à gestão administrativa, cobrimos todas as necessidades fiduciárias da sua empresa com rigor e confidencialidade.",
-    "items": {
-      "revision": {
-        "title": "Revisão & Auditoria",
-        "description": "Controlo independente e rigoroso das suas demonstrações financeiras segundo as normas de auditoria suíças."
-      },
-      "payroll": {
-        "title": "Salários & RH",
-        "description": "Processamento de recibos de vencimento, declarações sociais e gestão de contratos de trabalho."
-      },
-      "tax": {
-        "title": "Fiscalidade",
-        "description": "Otimização da sua carga fiscal e conformidade com a legislação fiscal suíça."
-      },
-      "administration": {
-        "title": "Administração",
-        "description": "Secretariado jurídico, domiciliação de empresa e gestão administrativa completa."
-      }
-    }
-  },
   "cta": {
     "overline": "Vamos avançar",
     "titleMain": "Vamos falar",
     "titleAccent": "da sua empresa.",
     "subtitle": "Primeira reunião sem compromisso. Resposta garantida em 24 horas úteis.",
     "button": "Entrar em contacto"
-  },
-  "imageBreak": {
-    "tagline": "Excelência fiduciária ao serviço da sua ambição."
   },
   "footer": {
     "navigation": "Navegação",

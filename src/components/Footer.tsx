@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { type Locale, type Messages } from '@/lib/i18n'
-import { contactInfo, services, socials } from '@/lib/siteData'
+import { contactInfo, services } from '@/lib/siteData'
 import { Icon } from '@/lib/icons'
 
 interface FooterProps {
@@ -49,25 +49,6 @@ export function Footer({ locale, t }: FooterProps) {
             <p className="font-body text-[0.8rem] text-white/40 leading-relaxed max-w-[200px]">
               {t.footer.signature}
             </p>
-            {socials.some((s) => s.href && !s.href.startsWith('#')) && (
-              <div className="flex gap-2">
-                {socials.filter((s) => s.href && !s.href.startsWith('#')).map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    aria-label={s.label}
-                    className="w-8 h-8 rounded-full border border-white/12 flex items-center justify-center
-                               text-white/30 hover:text-white hover:border-white/35
-                               transition-colors duration-150
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon name={s.icon} size={13} strokeWidth={1.75} />
-                  </a>
-                ))}
-              </div>
-            )}
           </div>
 
           {/* Navigation */}

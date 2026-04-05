@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i18n'
 import { services, BG } from '@/lib/siteData'
+import { buildAlternates, socialMeta } from '@/lib/seo'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
 import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
@@ -21,11 +22,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const t = getMessages(isValidLocale(locale) ? locale : defaultLocale)
+  const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
+  const t = getMessages(validLocale)
   return {
     title: t.meta.servicesTitle,
     description: t.meta.servicesDescription,
-    openGraph: { title: t.meta.servicesTitle, description: t.meta.servicesDescription },
+    alternates: buildAlternates(validLocale, '/services'),
+    ...socialMeta(validLocale, t.meta.servicesTitle, t.meta.servicesDescription, '/services'),
   }
 }
 

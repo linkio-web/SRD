@@ -6,7 +6,7 @@
 export const BG = {
   cream:   '#F7F6F4',
   stone:   '#EDEBE7',
-  navy:    '#2D1640',
+  navy:    '#301B4A',
   mineral: '#EDEBE7',
 } as const
 
@@ -31,13 +31,6 @@ export const services = [
   { id: 'gestion-immobiliere',     icon: 'home'       as IconName },
 ] as const
 
-export const activityDomains = [
-  { id: 'revision',       icon: 'search'     as IconName },
-  { id: 'payroll',        icon: 'users'      as IconName },
-  { id: 'tax',            icon: 'calculator' as IconName },
-  { id: 'administration', icon: 'shield'     as IconName },
-] as const
-
 export const contactInfo = {
   /** Interlocutrice principale */
   contact: 'Cremilde Hirschi',
@@ -49,12 +42,4 @@ export const contactInfo = {
     { id: 'main', street: 'Les Vernets 2', city: '2035 Corcelles NE' },
   ],
 } as const
-
-export const socials = [
-  { label: 'LinkedIn',  href: '#', icon: 'linkedin'  as IconName },
-  { label: 'Instagram', href: '#', icon: 'instagram' as IconName },
-  { label: 'Facebook',  href: '#', icon: 'facebook'  as IconName },
-] as const
-
-
 

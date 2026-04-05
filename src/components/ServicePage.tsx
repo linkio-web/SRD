@@ -163,15 +163,15 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
                   aria-hidden="true"
                 />
 
-                <div className="p-7 space-y-6">
+                <div className="p-7 sm:p-8 space-y-7">
 
                   {/* Contact person */}
                   <div>
-                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-2">
+                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-3">
                       {t.contact.directContact}
                     </p>
                     <p className="font-body font-semibold text-navy text-sm">{contactInfo.contact}</p>
-                    <p className="font-body text-xs text-muted mt-0.5">{contactInfo.role}</p>
+                    <p className="font-body text-xs text-muted mt-1">{contactInfo.role}</p>
                   </div>
 
                   <div className="h-px w-full bg-primary-50" aria-hidden="true" />
@@ -210,11 +210,11 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
 
                   {/* Response delay */}
                   <div>
-                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-2">
+                    <p className="font-body text-[10px] tracking-[0.14em] uppercase font-semibold text-muted/55 mb-3">
                       {t.contact.responseDelay}
                     </p>
                     <p className="font-body text-xs text-muted leading-relaxed">{t.contact.form.trustLine}</p>
-                    <p className="font-body text-xs text-muted mt-1">{t.contact.hours}</p>
+                    <p className="font-body text-xs text-muted mt-1.5">{t.contact.hours}</p>
                   </div>
 
                   {/* CTA */}

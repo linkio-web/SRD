@@ -49,6 +49,13 @@
     background-color: theme('colors.gold.pale');
     color: theme('colors.navy.DEFAULT');
   }
+
+  /* Hide header instantly while scroll-expansion hero is active (no flash) */
+  html[data-hero-active] header {
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
 
 /* ─────────────────────────────────────────

@@ -24,7 +24,7 @@
     "overline": "Fiduciary & Business Advisory",
     "baseline": "Your trusted partner for management, taxation and the growth of your business in French-speaking Switzerland.",
     "ctaSecondary": "Discover our services",
-    "scroll": "",
+    "scroll": "Scroll to explore",
     "stat1Label": "Years of experience",
     "stat2Label": "Companies supported",
     "statTagline": "Proven advisory for SMEs in French-speaking Switzerland."
@@ -208,7 +208,8 @@
     "items": [
       {
         "question": "How much does a tax return cost?",
-        "answer": "Our fees depend on the complexity of your tax situation and the type of return involved (individual, company, estate). We systematically provide a transparent quote before any engagement. Feel free to contact us for a no-commitment preliminary meeting."
+        "answer": "Our fees depend on the complexity of your tax situation and the type of return involved (individual, company, estate). We systematically provide a transparent quote before any engagement. Feel free to contact us for a no-commitment preliminary meeting.",
+        "ctaLabel": "Request a quote"
       },
       {
         "question": "What documents do I need to provide?",
@@ -220,7 +221,8 @@
       },
       {
         "question": "Can I schedule an appointment?",
-        "answer": "Absolutely. We offer in-office meetings in Geneva or Lausanne, as well as video consultations. The first meeting is free of charge and gives you the opportunity to explain your situation at ease. Contact us via our form or by phone to arrange a suitable time."
+        "answer": "Absolutely. We welcome you at our offices in Corcelles (NE) or remotely via video consultation. The first meeting is free of charge and gives you the opportunity to explain your situation at ease. Contact us via our form or by phone to arrange a suitable time.",
+        "ctaLabel": "Schedule an appointment"
       },
       {
         "question": "Is it confidential?",
@@ -232,12 +234,10 @@
     "overline": "The firm",
     "title1": "Who",
     "title2": "we are",
-    "subtitle": "Founded by passionate professionals from French-speaking Switzerland, SRD Partners is much more than a fiduciary firm: it is a long-term committed partner.",
+    "subtitle": "SRD Partners Sàrl is a fiduciary firm based in Corcelles (NE), specializing in supporting SMEs and self-employed professionals in French-speaking Switzerland.",
     "missionOverline": "Our mission",
-    "missionTitle": "Guiding entrepreneurs with rigour",
-    "missionP1": "At SRD Partners, our mission is simple: help you focus on your core business while we look after the financial, tax and administrative health of your company.",
-    "missionP2": "Based in Corcelles NE, our firm supports SMEs, independent professionals and families throughout French-speaking Switzerland. Our approach combines top-level technical expertise with a strong human relationship.",
-    "missionP3": "We are not just service providers: we are your partners, present at every key stage of your business life.",
+    "missionTitle": "Reliable, transparent and local support",
+    "missionP1": "We provide services in accounting, administrative management, taxation, and consulting, with a personalized approach tailored to each client's needs. Our goal is to offer reliable, transparent, and local support, allowing our clients to fully focus on their core business.",
     "missionCta": "Book an appointment",
     "stats": {
       "years": "Years of experience",
@@ -317,11 +317,9 @@
       "retry": "Try again",
       "subjects": {
         "accounting": "Accounting & Tax",
-        "consulting": "Management consulting",
-        "audit": "Audit & Review",
-        "patrimony": "Wealth planning",
-        "creation": "Company formation",
-        "hr": "HR & Payroll",
+        "hr": "Human Resources",
+        "admin": "Administrative Management",
+        "realestate": "Real Estate Management",
         "other": "Other"
       },
       "errors": {
@@ -340,38 +338,12 @@
       }
     }
   },
-  "activity": {
-    "overline": "Areas of Expertise",
-    "title": "Our expertise at the heart of your growth",
-    "description": "From financial audit to administrative management, we cover all your company's fiduciary needs with rigour and confidentiality.",
-    "items": {
-      "revision": {
-        "title": "Audit & Review",
-        "description": "Independent and rigorous review of your financial statements in line with Swiss audit standards."
-      },
-      "payroll": {
-        "title": "Payroll & HR",
-        "description": "Payslip processing, social declarations and employment contract management."
-      },
-      "tax": {
-        "title": "Taxation",
-        "description": "Optimisation of your tax burden and compliance with Swiss tax legislation."
-      },
-      "administration": {
-        "title": "Administration",
-        "description": "Legal secretarial services, company domiciliation and complete administrative management."
-      }
-    }
-  },
   "cta": {
     "overline": "Let's get started",
     "titleMain": "Let's talk about",
     "titleAccent": "your business.",
     "subtitle": "First consultation at no obligation. Response guaranteed within 24 business hours.",
     "button": "Get in touch"
-  },
-  "imageBreak": {
-    "tagline": "Fiduciary excellence, serving your ambition."
   },
   "footer": {
     "navigation": "Navigation",

@@ -178,11 +178,9 @@ export function ContactForm({ t, variant = 'premium' }: ContactFormProps) {
             >
               <option value="">{t.subjectDefault}</option>
               <option value="comptabilite">{t.subjects.accounting}</option>
-              <option value="conseil">{t.subjects.consulting}</option>
-              <option value="audit">{t.subjects.audit}</option>
-              <option value="patrimoine">{t.subjects.patrimony}</option>
-              <option value="creation">{t.subjects.creation}</option>
               <option value="rh">{t.subjects.hr}</option>
+              <option value="admin">{t.subjects.admin}</option>
+              <option value="immobilier">{t.subjects.realestate}</option>
               <option value="autre">{t.subjects.other}</option>
             </select>
             <span

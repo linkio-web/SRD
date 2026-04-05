@@ -11,8 +11,9 @@ import {
   locales,
   type Locale,
 } from '@/lib/i18n'
-import { services, contactInfo } from '@/lib/siteData'
+import { services } from '@/lib/siteData'
 import { MEGA_COL_INDICES } from '@/lib/navConfig'
+import { buildAlternates, socialMeta, jsonLd } from '@/lib/seo'
 
 // Cormorant Garamond — serif luxe raffiné, idéal pour un cabinet fiduciaire premium
 const cormorantGaramond = Cormorant_Garamond({
@@ -44,27 +45,25 @@ export async function generateMetadata({
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
 
+  const { openGraph, twitter } = socialMeta(
+    validLocale,
+    t.meta.homeTitle,
+    t.meta.homeDescription,
+    '',
+  )
+
   return {
-    metadataBase: new URL(contactInfo.website),
+    metadataBase: new URL('https://www.srdpartners.ch'),
     title: {
       default: t.meta.homeTitle,
       template: t.meta.titleTemplate,
     },
     description: t.meta.homeDescription,
-    alternates: {
-      canonical: `/${validLocale}`,
-      languages: {
-        fr: '/fr',
-        en: '/en',
-        pt: '/pt',
-        'x-default': '/fr',
-      },
-    },
-    openGraph: {
-      type: 'website',
-      locale:
-        validLocale === 'fr' ? 'fr_CH' : validLocale === 'en' ? 'en_US' : 'pt_PT',
-      siteName: 'SRD Partners Sàrl',
+    alternates: buildAlternates(validLocale, ''),
+    openGraph,
+    twitter,
+    icons: {
+      icon: '/NewLogoDR.svg',
     },
   }
 }
@@ -113,24 +112,7 @@ export default async function LocaleLayout({
       <body className={`${cormorantGaramond.variable} ${dmSans.variable} font-body antialiased`} suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            // MODIFIED: Updated to FinancialService schema type
-          __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FinancialService',
-              name: 'SRD Partners Sàrl',
-              url: contactInfo.website,
-              telephone: contactInfo.phone.replace(/\s/g, ''),
-              email: contactInfo.email,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: contactInfo.addresses[0].street,
-                postalCode: '2035',
-                addressLocality: 'Corcelles-NE',
-                addressCountry: 'CH',
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
         />
         <Header
           locale={validLocale}
