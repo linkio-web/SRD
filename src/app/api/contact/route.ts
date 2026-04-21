@@ -1,11 +1,4 @@
-// MODIFIED: Real email submission via Resend
-// Variables d'environnement requises :
-//   RESEND_API_KEY   → Clé API Resend (https://resend.com/api-keys)
-//   CONTACT_EMAIL    → Email destinataire (ex: cremilde.hirschi@srdpartners.ch)
-//   RESEND_FROM      → Expéditeur vérifié (ex: noreply@srdpartners.ch)
-//                      Le domaine doit être vérifié dans Resend.
-//                      Pour les tests : "onboarding@resend.dev"
-
+// Env vars: RESEND_API_KEY, CONTACT_EMAIL, RESEND_FROM
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
@@ -77,8 +70,7 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json({ success: true })
-  } catch (err) {
-    console.error('[api/contact] Resend error:', err)
+  } catch {
     return NextResponse.json(
       { error: "L'envoi a échoué. Veuillez réessayer ou nous contacter directement." },
       { status: 500 }

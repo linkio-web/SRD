@@ -8,13 +8,7 @@ import { ContactBlock } from '@/components/ContactBlock'
 import { Footer } from '@/components/Footer'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { Icon } from '@/lib/icons'
-
-function parseLine(text: string) {
-  const sep = text.indexOf(' — ')
-  return sep >= 0
-    ? { title: text.slice(0, sep), desc: text.slice(sep + 3) }
-    : { title: text, desc: '' }
-}
+import { parseLine } from '@/lib/utils'
 
 export async function generateMetadata({
   params,
@@ -40,13 +34,6 @@ export default async function ServicesPage({
   const { locale } = await params
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
-
-  const navItems = [
-    { label: t.nav.home,     href: `/${validLocale}` },
-    { label: t.nav.services, href: `/${validLocale}/services` },
-    { label: t.nav.whoWeAre, href: `/${validLocale}/qui-sommes-nous` },
-    { label: t.nav.contact,  href: `/${validLocale}/contact` },
-  ]
 
   return (
     <>
@@ -187,7 +174,7 @@ export default async function ServicesPage({
       <ContactBlock bg="cream" slant="right" slantFill={BG.stone} t={t.contact.form} />
 
       {/* ── Footer ─────────────────────────────────────── */}
-      <Footer locale={validLocale} t={t} navItems={navItems} />
+      <Footer locale={validLocale} t={t} />
     </>
   )
 }

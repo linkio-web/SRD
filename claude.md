@@ -50,8 +50,8 @@ Les couleurs, ombres et polices sont définies dans le thème Tailwind — ne pa
 | `text-ink`          | `#1A0F2A`  | Texte principal dark                     |
 | `text-muted`        | `#5A6080`  | Texte secondaire cool                    |
 | `shadow-premium`    | multicouche| Cartes premium                           |
-| `font-display`      | **Playfair Display** | Titres H1/H2, accent italique  |
-| `font-body`         | **Manrope**          | Corps de texte, UI, forms      |
+| `font-display`      | **Cormorant Garamond** | Titres H1/H2, accent italique  |
+| `font-body`         | **DM Sans**            | Corps de texte, UI, forms      |
 
 ### Classes utilitaires dans `globals.css`
 Définies dans `@layer components` / `@layer utilities` — toujours préférer ces classes :

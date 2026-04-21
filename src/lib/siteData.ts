@@ -4,10 +4,9 @@
 // Couleurs de fond des sections — utilisées pour les biseaux (slantFill).
 // Centralisé ici pour éviter la duplication dans chaque page.
 export const BG = {
-  cream:   '#F7F6F4',
-  stone:   '#EDEBE7',
-  navy:    '#301B4A',
-  mineral: '#EDEBE7',
+  cream: '#F7F6F4',
+  stone: '#EDEBE7',
+  navy:  '#301B4A',
 } as const
 
 export type IconName =

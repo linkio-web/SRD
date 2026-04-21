@@ -381,5 +381,8 @@
     "name": "SRD Partners",
     "legal": "SRD Partners Sàrl",
     "baseline": "Your trusted partner for management, taxation and the growth of your business in French-speaking Switzerland."
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
   }
 }

@@ -30,12 +30,6 @@ export default async function PolitiqueDeConfidentialitePage({
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
 
-  const navItems = [
-    { label: t.nav.home,     href: `/${validLocale}` },
-    { label: t.nav.services, href: `/${validLocale}/services` },
-    { label: t.nav.whoWeAre, href: `/${validLocale}/qui-sommes-nous` },
-    { label: t.nav.contact,  href: `/${validLocale}/contact` },
-  ]
 
   return (
     <>
@@ -212,7 +206,7 @@ export default async function PolitiqueDeConfidentialitePage({
       </main>
 
       {/* ── Footer ─────────────────────────────────── */}
-      <Footer locale={validLocale} t={t} navItems={navItems} />
+      <Footer locale={validLocale} t={t} />
     </>
   )
 }

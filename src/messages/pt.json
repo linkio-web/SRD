@@ -381,5 +381,8 @@
     "name": "SRD Partners",
     "legal": "SRD Partners Sàrl",
     "baseline": "O seu parceiro de confiança para gestão, fiscalidade e crescimento do seu negócio na Suíça francófona."
+  },
+  "a11y": {
+    "skipToContent": "Ir para o conteúdo principal"
   }
 }

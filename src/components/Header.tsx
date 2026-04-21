@@ -121,7 +121,6 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
               height={830}
               className="h-8 sm:h-9 w-auto"
               priority
-              unoptimized
             />
           </Link>
 
@@ -148,7 +147,7 @@ export function Header({ locale, items, ctaLink, brandLegal, aria }: HeaderProps
                       <button
                         type="button"
                         onClick={() => setActiveMenu(isMenuOpen ? null : key)}
-                        aria-haspopup="true"
+                        aria-haspopup="menu"
                         aria-expanded={isMenuOpen}
                         className={cn(
                           'flex items-center gap-1 px-3.5 py-2 font-body text-sm rounded',

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-// MODIFIED: Updated fonts to Cormorant Garamond (display) + DM Sans (body) for premium feel
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import '@/app/globals.css'
 import { Header } from '@/components/Header'
@@ -15,7 +14,6 @@ import { services } from '@/lib/siteData'
 import { MEGA_COL_INDICES } from '@/lib/navConfig'
 import { buildAlternates, socialMeta, jsonLd } from '@/lib/seo'
 
-// Cormorant Garamond — serif luxe raffiné, idéal pour un cabinet fiduciaire premium
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
@@ -24,7 +22,6 @@ const cormorantGaramond = Cormorant_Garamond({
   display: 'swap',
 })
 
-// DM Sans — sans-serif neutre et lisible, moderna pour le corps de texte et l'UI
 const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-body',
@@ -114,6 +111,12 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
         />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-navy focus:font-body focus:text-sm focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold"
+        >
+          {t.a11y.skipToContent}
+        </a>
         <Header
           locale={validLocale}
           items={headerItems}
@@ -126,7 +129,7 @@ export default async function LocaleLayout({
             mobileNav: t.header.mobileNav,
           }}
         />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
       </body>
     </html>
   )

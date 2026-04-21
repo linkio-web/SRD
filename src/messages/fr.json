@@ -381,5 +381,8 @@
     "name": "SRD Partners",
     "legal": "SRD Partners Sàrl",
     "baseline": "Votre partenaire de confiance pour la gestion, la fiscalité et la croissance de votre entreprise en Romandie."
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu principal"
   }
 }

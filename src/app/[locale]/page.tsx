@@ -38,13 +38,6 @@ export default async function HomePage({
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
 
-  const navItems = [
-    { label: t.nav.home,     href: `/${validLocale}` },
-    { label: t.nav.services, href: `/${validLocale}/services` },
-    { label: t.nav.whoWeAre, href: `/${validLocale}/qui-sommes-nous` },
-    { label: t.nav.contact,  href: `/${validLocale}/contact` },
-  ]
-
   return (
     <>
       {/* Set data-hero-active before paint so the Header starts hidden (no flash) */}
@@ -53,32 +46,31 @@ export default async function HomePage({
       {/* ── HERO ────────────────────────────────────────────────── */}
       <ScrollExpansionHero
         mediaSrc="/images/vernets-bg.jpeg"
-        bgImageSrc="/images/dd9685_afdddc3055804f4a8b4851f53718c39d~mv2.png"
-        title="SRD Partners"
+        title={t.brand.name}
         subtitle={t.hero.overline}
         scrollLabel={t.hero.scroll}
       >
-        <div className="flex flex-col items-center text-center px-8 sm:px-16 gap-6 max-w-2xl mx-auto">
+        <div className="flex flex-col items-center text-center px-6 sm:px-16 gap-5 sm:gap-6 max-w-2xl mx-auto w-full">
           <p className="section-label text-gold/80">{t.hero.overline}</p>
 
-          <p className="font-body text-white/80 text-base sm:text-lg max-w-md leading-relaxed">
+          <p className="font-body text-white/80 text-sm sm:text-lg max-w-md leading-relaxed">
             {t.hero.baseline}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href={`/${validLocale}/contact`} className="btn-primary">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto">
+            <Link href={`/${validLocale}/contact`} className="btn-primary justify-center">
               {t.nav.cta}
               <Icon name="arrow" size={15} strokeWidth={2} />
             </Link>
-            <Link href={`/${validLocale}/services`} className="btn-outline-dark">
+            <Link href={`/${validLocale}/services`} className="btn-outline-dark justify-center">
               {t.hero.ctaSecondary}
             </Link>
           </div>
 
           {/* Tags services */}
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 pt-6 border-t border-white/10 w-full">
+          <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-10 gap-y-2 pt-5 border-t border-white/10 w-full">
             {t.services.items.map((s) => (
-              <span key={s.title} className="text-[11px] tracking-[0.14em] text-white/50 font-body">
+              <span key={s.title} className="text-[10px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.14em] text-white/50 font-body">
                 <span className="text-gold/60 mr-2" aria-hidden="true">—</span>{s.title}
               </span>
             ))}
@@ -307,7 +299,7 @@ export default async function HomePage({
       <ContactBlock bg="stone" slant="left" slantFill={BG.cream} t={t.contact.form} />
 
       {/* ── FOOTER ──────────────────────────────────────────────── */}
-      <Footer locale={validLocale} t={t} navItems={navItems} />
+      <Footer locale={validLocale} t={t} />
     </>
   )
 }

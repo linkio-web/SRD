@@ -8,26 +8,15 @@ import { Footer } from '@/components/Footer'
 import { Icon } from '@/lib/icons'
 import type { Locale, Messages } from '@/lib/i18n'
 
-interface NavItem {
-  label: string
-  href: string
-}
+import { parseLine } from '@/lib/utils'
 
 interface ServicePageProps {
   locale: Locale
   t: Messages
   serviceIndex: number
-  navItems: NavItem[]
 }
 
-function parseLine(text: string) {
-  const sep = text.indexOf(' — ')
-  return sep >= 0
-    ? { title: text.slice(0, sep), desc: text.slice(sep + 3) }
-    : { title: text, desc: '' }
-}
-
-export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePageProps) {
+export function ServicePage({ locale, t, serviceIndex }: ServicePageProps) {
   const service = t.services.items[serviceIndex]
   const serviceId = services[serviceIndex].id
 
@@ -249,7 +238,7 @@ export function ServicePage({ locale, t, serviceIndex, navItems }: ServicePagePr
       </Section>
 
       {/* ── Footer ───────────────────────────────────────── */}
-      <Footer locale={locale} t={t} navItems={navItems} slantFill={BG.stone} />
+      <Footer locale={locale} t={t} />
     </>
   )
 }

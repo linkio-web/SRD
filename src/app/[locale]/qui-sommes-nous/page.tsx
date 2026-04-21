@@ -37,12 +37,6 @@ export default async function QuiSommesNousPage({
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
 
-  const navItems = [
-    { label: t.nav.home,     href: `/${validLocale}` },
-    { label: t.nav.services, href: `/${validLocale}/services` },
-    { label: t.nav.whoWeAre, href: `/${validLocale}/qui-sommes-nous` },
-    { label: t.nav.contact,  href: `/${validLocale}/contact` },
-  ]
 
   const stats = [
     { value: '15+', label: t.about.stats.years   },
@@ -148,7 +142,7 @@ export default async function QuiSommesNousPage({
       <ContactBlock bg="stone" slant="left" slantFill={BG.cream} t={t.contact.form} />
 
       {/* ── Footer ──────────────────────────────────────── */}
-      <Footer locale={validLocale} t={t} navItems={navItems} />
+      <Footer locale={validLocale} t={t} />
     </>
   )
 }

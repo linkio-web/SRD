@@ -7,8 +7,6 @@ import { Icon } from '@/lib/icons'
 interface FooterProps {
   locale: Locale
   t: Messages
-  navItems?: Array<{ label: string; href: string }>
-  slantFill?: string
 }
 
 export function Footer({ locale, t }: FooterProps) {
@@ -42,7 +40,6 @@ export function Footer({ locale, t }: FooterProps) {
                   width={1790}
                   height={830}
                   className="h-9 w-auto"
-                  unoptimized
                 />
               </div>
             </Link>

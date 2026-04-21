@@ -28,12 +28,5 @@ export default async function RessourcesHumainesPage({
   const validLocale: Locale = isValidLocale(locale) ? locale : defaultLocale
   const t = getMessages(validLocale)
 
-  const navItems = [
-    { label: t.nav.home,     href: `/${validLocale}` },
-    { label: t.nav.services, href: `/${validLocale}/services` },
-    { label: t.nav.whoWeAre, href: `/${validLocale}/qui-sommes-nous` },
-    { label: t.nav.contact,  href: `/${validLocale}/contact` },
-  ]
-
-  return <ServicePage locale={validLocale} t={t} serviceIndex={1} navItems={navItems} />
+  return <ServicePage locale={validLocale} t={t} serviceIndex={1} />
 }
