@@ -150,6 +150,16 @@ export function Footer({ locale, t }: FooterProps) {
           </div>
         </div>
 
+        <div className="pt-4 flex justify-center">
+          <a
+            href="https://linkio.ch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-[11px] text-white/18 hover:text-white/40 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
+          >
+            made with ♥ by Linkio
+          </a>
+        </div>
       </div>
     </footer>
   )
