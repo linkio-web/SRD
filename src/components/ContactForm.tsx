@@ -11,10 +11,12 @@ type FormState = 'idle' | 'sending' | 'success' | 'error'
 interface FormData {
   name: string; company: string; email: string
   phone: string; subject: string; message: string
+  _hp: string // honeypot — doit rester vide
 }
 
 const initialData: FormData = {
   name: '', company: '', email: '', phone: '', subject: '', message: '',
+  _hp: '',
 }
 
 /* ── Tokens visuels partagés ────────────────────────────────────── */
@@ -88,13 +90,15 @@ export function ContactForm({ t, variant = 'premium' }: ContactFormProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!validate()) return
+    // Honeypot : si le champ caché est rempli, c'est un bot
+    if (data._hp) return
     setFormState('sending')
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, _hp: undefined }),
       })
 
       if (res.ok) {
@@ -151,6 +155,20 @@ export function ContactForm({ t, variant = 'premium' }: ContactFormProps) {
       suppressHydrationWarning
       className={cn(CARD[variant], padding)}
     >
+      {/* Honeypot anti-spam — masqué visuellement et pour les AT */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+        <label htmlFor="website_url">Ne pas remplir ce champ</label>
+        <input
+          id="website_url"
+          name="_hp"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={data._hp}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
 
         {/* Rangée 1 */}

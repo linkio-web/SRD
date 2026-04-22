@@ -352,7 +352,8 @@
     "tagline": "Corcelles NE • Suisse",
     "rights": "Tous droits réservés.",
     "signature": "Cabinet fiduciaire indépendant · Romandie",
-    "privacy": "Politique de confidentialité"
+    "privacy": "Politique de confidentialité",
+    "mentions": "Mentions légales"
   },
   "meta": {
     "homeTitle": "SRD Partners Sàrl – Fiduciaire & Conseil d'entreprise en Suisse romande",
@@ -375,6 +376,8 @@
     "contactDescription": "Contactez SRD Partners pour tous vos besoins fiduciaires. Notre équipe est disponible du lundi au vendredi.",
     "privacyTitle": "Politique de confidentialité – SRD Partners Sàrl",
     "privacyDescription": "Informations sur la protection de vos données personnelles conformément à la nLPD suisse.",
+    "mentionsTitle": "Mentions légales – SRD Partners Sàrl",
+    "mentionsDescription": "Informations légales sur SRD Partners Sàrl, cabinet fiduciaire à Corcelles NE, Suisse.",
     "titleTemplate": "%s | SRD Partners"
   },
   "brand": {

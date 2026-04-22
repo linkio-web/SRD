@@ -133,18 +133,25 @@ export function Footer({ locale, t }: FooterProps) {
 
         {/* Copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-body text-xs text-white/22">
+          <p className="font-body text-xs text-white/45">
             &copy; {year} {t.brand.legal}. {t.footer.rights}
           </p>
           <div className="flex items-center gap-5">
             <Link
+              href={`/${locale}/mentions-legales`}
+              className="font-body text-xs text-white/45 hover:text-white/70 transition-colors duration-150
+                         focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
+            >
+              {t.footer.mentions}
+            </Link>
+            <Link
               href={`/${locale}/politique-de-confidentialite`}
-              className="font-body text-xs text-white/22 hover:text-white/50 transition-colors duration-150
+              className="font-body text-xs text-white/45 hover:text-white/70 transition-colors duration-150
                          focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
             >
               {t.footer.privacy}
             </Link>
-            <p className="font-body text-xs text-white/18">
+            <p className="font-body text-xs text-white/40">
               {t.footer.tagline}
             </p>
           </div>
@@ -155,7 +162,7 @@ export function Footer({ locale, t }: FooterProps) {
             href="https://linkio.ch"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-[11px] text-white/18 hover:text-white/40 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
+            className="font-body text-[11px] text-white/40 hover:text-white/65 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded"
           >
             made with ♥ by Linkio
           </a>

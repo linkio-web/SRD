@@ -352,7 +352,8 @@
     "tagline": "Corcelles NE • Switzerland",
     "rights": "All rights reserved.",
     "signature": "Independent fiduciary firm · French-speaking Switzerland",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "mentions": "Legal Notice"
   },
   "meta": {
     "homeTitle": "SRD Partners Sàrl – Fiduciary & Business Advisory in French-speaking Switzerland",
@@ -375,6 +376,8 @@
     "contactDescription": "Contact SRD Partners for all your fiduciary needs. Our team is available Monday to Friday.",
     "privacyTitle": "Privacy Policy – SRD Partners Sàrl",
     "privacyDescription": "Information on the protection of your personal data in accordance with Swiss nFADP.",
+    "mentionsTitle": "Legal Notice – SRD Partners Sàrl",
+    "mentionsDescription": "Legal information about SRD Partners Sàrl, fiduciary firm in Corcelles NE, Switzerland.",
     "titleTemplate": "%s | SRD Partners"
   },
   "brand": {

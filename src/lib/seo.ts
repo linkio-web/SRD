@@ -20,6 +20,7 @@ const ROUTES = [
   '/qui-sommes-nous',
   '/contact',
   '/politique-de-confidentialite',
+  '/mentions-legales',
 ] as const
 
 /** Generate full URLs for every locale + route combination (sitemap, etc.). */
@@ -62,11 +63,20 @@ export function socialMeta(
       title,
       description,
       url,
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: 'SRD Partners Sàrl – Fiduciaire & Conseil',
+        },
+      ],
     },
     twitter: {
-      card: 'summary' as const,
+      card: 'summary_large_image' as const,
       title,
       description,
+      images: [`${SITE_URL}/og-image.png`],
     },
   }
 }

@@ -45,7 +45,7 @@ export default async function HomePage({
 
       {/* ── HERO ────────────────────────────────────────────────── */}
       <ScrollExpansionHero
-        mediaSrc="/images/vernets-bg.jpeg"
+        mediaSrc="/images/vernets-bg.webp"
         title={t.brand.name}
         subtitle={t.hero.overline}
         scrollLabel={t.hero.scroll}
