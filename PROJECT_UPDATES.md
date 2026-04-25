@@ -1,5 +1,29 @@
 # PROJECT_UPDATES
 
+## 2026-04-25 — Section partenaires : LogoCloud infinite slider
+
+### Résumé
+Intégration d'un défilement infini horizontal pour la section "Partenaires" sur la home, basé sur les composants UI déjà présents (`InfiniteSlider`, `ProgressiveBlur`, `LogoCloud`). Duplication du tableau de logos × 8 dans `LogoCloud` pour garantir une piste pleinement remplie même avec un seul logo source (`WB-logo_white.svg`), et adoucissement du fade aux bords pour rendre l'animation plus fluide.
+
+### Fichiers modifiés
+| Fichier | Changement |
+|---------|-----------|
+| `src/components/ui/logo-cloud.tsx` | Duplication interne × 8 (`Array.from({ length: 8 }, () => baseLogos).flat()`). Vitesse ajustée : `speed={30}` / `speedOnHover={10}`. `gap={42}` et `reverse` conservés. Clé React rendue unique via index pour autoriser les doublons. `ProgressiveBlur` adouci : `blurIntensity` 1 → 0.25 et largeur 100px → 60px de chaque côté, pour éviter l'effet "les logos disparaissent à la fin". |
+
+### Comportement
+- `LogoCloud` reçoit `baseLogos` via prop, en construit une copie répétée 4 fois, puis la passe à `InfiniteSlider`. Combinée à la duplication interne du slider (×2), la piste rendue contient 8× le tableau d'origine — suffisant pour couvrir la largeur visible avant le démarrage de l'animation et éviter tout vide.
+- Aucune modification du tableau source `partnerLogos` dans `siteData.ts` (la donnée reste la liste réelle des partenaires ; la répétition est purement présentationnelle).
+
+### Notes
+- `PROJECT_RULES.md` mentionné dans la consigne n'existe pas dans le repo ; les règles de référence sont `CLAUDE.md`.
+- `CLAUDE.md` § 4 ("Aucune dépendance npm inutile") liste `framer-motion` comme interdit, mais les dépendances `framer-motion`, `motion` et `react-use-measure` étaient déjà présentes dans `package.json` avant cette tâche (ajoutées avec les composants `ui/`). À arbitrer : mettre à jour `CLAUDE.md` ou retirer les dépendances.
+
+### Vérifications recommandées
+- `npx tsc --noEmit`
+- Test visuel sur la home `/fr` : la piste de logos doit déborder de chaque côté du conteneur dès le rendu initial, sans bande vide visible avant ou pendant le scroll.
+
+---
+
 ## 2026-04-05 — SEO implementation
 
 ### Résumé

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getMessages, isValidLocale, defaultLocale, type Locale } from '@/lib/i18n'
-import { services, BG } from '@/lib/siteData'
+import { services, partnerLogos, BG } from '@/lib/siteData'
 import { buildAlternates, socialMeta } from '@/lib/seo'
 import { Section } from '@/components/Section'
 import { PremiumHeading, Accent } from '@/components/PremiumHeading'
@@ -12,6 +12,7 @@ import { Footer } from '@/components/Footer'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { ScrollExpansionHero } from '@/components/ScrollExpansionHero'
 import { Icon } from '@/lib/icons'
+import { PartnersSection } from '@/components/PartnersSection'
 
 export async function generateMetadata({
   params,
@@ -143,6 +144,15 @@ export default async function HomePage({
             </Link>
           </div>
 
+        </div>
+
+        {/* ── PARTENAIRES ───────────────────────────────────────── */}
+        <div className="border-t border-white/[0.08]">
+          <PartnersSection
+            overline={t.partners.overline}
+            title={t.partners.title}
+            logos={partnerLogos}
+          />
         </div>
       </section>
 

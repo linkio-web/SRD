@@ -42,3 +42,7 @@ export const contactInfo = {
   ],
 } as const
 
+export const partnerLogos = [
+  { src: '/images/WB-logo_white.svg', alt: 'WB' },
+] as const
+

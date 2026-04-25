@@ -200,6 +200,10 @@
       }
     ]
   },
+  "partners": {
+    "overline": "Nossos parceiros",
+    "title": "Eles confiam em nós"
+  },
   "faq": {
     "overline": "Perguntas frequentes",
     "titleMain": "As suas perguntas,",
